@@ -31,7 +31,7 @@ const Input = ({
       {variation === "login" && (
         <div>
           {label && (
-            <label htmlFor="text-xl font-medium text-neutral-500">
+            <label htmlFor="text-xl font-medium text-neutral-500 block">
               {label}
             </label>
           )}

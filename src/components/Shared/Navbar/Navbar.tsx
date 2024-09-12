@@ -5,8 +5,11 @@ import logo from "../../../assets/img/brand.svg";
 import Input from "../Input/Input";
 import Flag from "../Flag/Flag";
 import Button from "../Button/Button";
+import { ROUTER } from '../../../ROUTER'
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [value, setValue] = useState<string>("");
 
   const handleInput = (event: any) => {
@@ -31,7 +34,7 @@ const Navbar = () => {
       <Button
         variation="navbar"
         text="Sign In"
-        click={() => console.log("Login")}
+        click={() => navigate(ROUTER.UserLogin)}
       />
     </nav>
   );

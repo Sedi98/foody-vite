@@ -1,5 +1,6 @@
 
 
+
 export const ROUTER ={
     Home: "/",
     About: "/about",
@@ -7,4 +8,5 @@ export const ROUTER ={
     HowIt: "/how-it-works",
     Contact: "/how-it-works",
     Faq: "/faq",
+    UserLogin: "/login",
 }
