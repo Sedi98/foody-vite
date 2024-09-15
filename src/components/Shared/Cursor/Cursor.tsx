@@ -1,42 +1,56 @@
-// src/CustomCursor.tsx
-import { useEffect, useState } from 'react';
-import './cursor.css'; // Import styles for the cursor
+import React, { useEffect, useState } from "react";
+import "./cursor.css"; // Create a separate CSS file for cursor styling
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [visible, setVisible] = useState(true);
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setPosition({ x: event.clientX, y: event.clientY });
+    const addEventListeners = () => {
+      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mouseenter", onMouseEnter);
+      document.addEventListener("mouseleave", onMouseLeave);
+      document.querySelectorAll("button, a, span, input").forEach((el) => {
+        el.addEventListener("mouseenter", () => setHovered(true));
+        el.addEventListener("mouseleave", () => setHovered(false));
+      });
     };
 
-    const handleMouseEnter = () => {
-      setVisible(true);
+    const removeEventListeners = () => {
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseenter", onMouseEnter);
+      document.removeEventListener("mouseleave", onMouseLeave);
+      document.querySelectorAll("button, a").forEach((el) => {
+        el.removeEventListener("mouseenter", () => setHovered(true));
+        el.removeEventListener("mouseleave", () => setHovered(false));
+      });
     };
 
-    const handleMouseLeave = () => {
-      setVisible(false);
+    const onMouseMove = (e: MouseEvent) => {
+      setPosition({ x: e.clientX, y: e.clientY });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseenter', handleMouseEnter);
-    window.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseenter', handleMouseEnter);
-      window.removeEventListener('mouseleave', handleMouseLeave);
+    const onMouseEnter = () => {
+      setHovered(false);
     };
+
+    const onMouseLeave = () => {
+      setHovered(false);
+    };
+
+    addEventListeners();
+    return () => removeEventListeners();
   }, []);
 
-  const cursorStyle = {
-    left: `${position.x}px`,
-    top: `${position.y}px`,
-    opacity: visible ? 1 : 0,
-  };
-
-  return <div className="custom-cursor" style={cursorStyle}></div>;
+  return (
+    <div
+      className={`custom-cursor ${hovered ? "hovered" : ""}`}
+      style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+      }}
+    />
+  );
 };
 
 export default CustomCursor;

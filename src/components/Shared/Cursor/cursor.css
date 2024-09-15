@@ -1,18 +1,15 @@
-/* src/CustomCursor.css */
 .custom-cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #d63626;
-    pointer-events: none; /* Prevents cursor from blocking clicks */
-    transform: translate(-50%, -50%); /* Centers the cursor */
-    transition: background-color 0.2s ease, transform 0.1s ease; /* Adds smooth transition */
-    z-index: 9999;
-  }
-  
-  .custom-cursor.hovered {
-    background-color: rgba(255, 0, 0, 0.8); /* Change color on hover */
-    transform: scale(1.5); /* Scale up on hover */
-  }
-  
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #f97316; /* Default cursor color */
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s ease;
+  z-index: 9999;
+}
+
+.custom-cursor.hovered {
+  background-color: rgba(109, 212, 147, 0.8); /* Change color when hovering */
+}

@@ -8,7 +8,7 @@ type Props = {
 
 const Button: React.FC<Props> = ({ click, variation, text }: Props) => {
   return (
-    <div>
+    <>
       {variation === "client" && (
         <button
           className="px-6 py-2 rounded-3xl bg-red-600 text-white font-medium shadow-md hover:scale-95 transition-all duration-500 hidden sm:block"
@@ -45,10 +45,37 @@ const Button: React.FC<Props> = ({ click, variation, text }: Props) => {
         </button>
       )}
 
-      {variation === "adminLog" && <button onClick={click}>{text}</button>}
+      {variation === "login" && (
+        <button
+          className="w-full mt-10 bg-red-600 text-xl font-medium p-4 rounded-md text-white hover:scale-95 hover:bg-red-700 transition-all duration-500"
+          onClick={click}
+        >
+          {text}
+        </button>
+      )}
+
+      {variation === "detail" && (
+        <button
+          className="hidden sm:block py-3 px-5 text-white border-2 border-mainRed bg-red-600 rounded-md shadow-md hover:scale-95 transition-all duration-500"
+          onClick={click}
+        >
+          {text}
+        </button>
+      )}
+
+      {variation === "detailContained" && (
+        <button
+          className="py-3 px-2 border-2 border-red-600 text-red-600 rounded-md shadow-md"
+          onClick={click}
+        >
+          {text}
+        </button>
+      )}
+
+      {variation === "adminLog" && <button className=" text-white font-medium text-2xl  w-full bg-[#c035a2] py-3 rounded" onClick={click}>{text}</button>}
 
       {variation === "admin" && <button onClick={click}>{text}</button>}
-    </div>
+    </>
   );
 };
 

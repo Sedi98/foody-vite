@@ -1,6 +1,7 @@
 
 
 
+
 export const ROUTER ={
     Home: "/",
     About: "/about",
@@ -9,4 +10,7 @@ export const ROUTER ={
     Contact: "/how-it-works",
     Faq: "/faq",
     UserLogin: "/login",
+    RestaurantDetail: "/restaurant-detail/:id",
+    AdminLogin: "/admin-login",
+    AdminHome: "/admin/*",
 }

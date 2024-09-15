@@ -9,7 +9,7 @@ const LinkContainer = (): JSX.Element => {
   return (
     <div className="flex gap-10 ml-auto mr-auto">
       <NavbarLinks text="Home" click={() => navigate(ROUTER.Home)} />
-      <NavbarLinks text="Restorants" click={() => console.log("Restorants")} />
+      <NavbarLinks text="Restorants" click={() => navigate(ROUTER.Restaurants_client)} />
       <NavbarLinks text="About us" click={() => navigate(ROUTER.About)} />
       <NavbarLinks text="How it works" click={() => navigate(ROUTER.HowIt)} />
       <NavbarLinks text="FAQs" click={() => navigate(ROUTER.Faq)} />

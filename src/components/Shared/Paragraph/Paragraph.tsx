@@ -9,9 +9,7 @@ const Paragraph: React.FC<Props> = ({ text, variation }: Props) => {
   return (
     <>
       {variation === "hero" && (
-        <p className=" sm:text-xl text-neutral-500 w-3/4 ">
-          {text}
-        </p>
+        <p className=" sm:text-xl text-neutral-500 w-3/4 ">{text}</p>
       )}
 
       {variation === "container" && (
@@ -21,9 +19,11 @@ const Paragraph: React.FC<Props> = ({ text, variation }: Props) => {
       )}
 
       {variation === "card" && (
-        <p className=" w-2/3 mx-auto text-neutral-500 text-lg">
-          {text}
-        </p>
+        <p className=" w-2/3 mx-auto text-neutral-500 text-lg">{text}</p>
+      )}
+
+      {variation === "restaurants" && (
+        <p className="mb-4 text-neutral-500 whitespace-nowrap overflow-x-hidden  ">{text}</p>
       )}
     </>
   );
