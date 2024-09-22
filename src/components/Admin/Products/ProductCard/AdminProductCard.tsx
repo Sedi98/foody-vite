@@ -1,4 +1,4 @@
-import React from "react";
+
 import pizza from "../../../../assets/img/pizza.svg";
 import edit from "../../../../assets/icons/admin/edit.svg";
 import trash from "../../../../assets/icons/admin/delete.svg";

@@ -10,7 +10,6 @@ import { ROUTER } from "../../../ROUTER";
 import { useNavigate } from "react-router-dom";
 // api
 import { signIn } from "../../../services/Api/Api";
-import { startLoading, stopLoading } from "../../../Context/useGlobalLoading";
 
 const AdminLogin: React.FC = () => {
     const navigate = useNavigate();

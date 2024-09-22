@@ -1,4 +1,4 @@
-import React from "react";
+
 import RestaurantSideCard from "./RestaurantSideCard";
 
 const RestaurantSidebar = () => {

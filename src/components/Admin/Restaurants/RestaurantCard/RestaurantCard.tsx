@@ -1,4 +1,3 @@
-import React from "react";
 
 import edit from "../../../../assets/icons/admin/edit.svg";
 import trash from "../../../../assets/icons/admin/delete.svg";

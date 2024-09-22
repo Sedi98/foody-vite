@@ -1,4 +1,4 @@
-import React from "react";
+
 import AdminHeader from "../../../components/Admin/Shared/AdminHeader";
 import RestaurantCard from "../../../components/Admin/Restaurants/RestaurantCard/RestaurantCard";
 
@@ -8,7 +8,7 @@ const Restaurants = () => {
     <div>
       <AdminHeader text="Restaurants" />
       <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-4 mt-5 overflow-auto h-[calc(100vh-210px)]">
-        {data.map((data) => {
+        {data.map(() => {
           return <RestaurantCard />;
         })}
       </main>

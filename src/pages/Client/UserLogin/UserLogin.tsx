@@ -8,7 +8,7 @@ import UserLoginCnt from "../../../components/Client/UserLogin/UserLoginCnt";
 import { LoginContext } from "../../../Context/LoginContext";
 import { AuthContext } from "../../../Context/LoginContext";
 import { RegisterContext } from "../../../Context/LoginContext";
-import { startLoading, stopLoading } from "../../../Context/useGlobalLoading";
+
 // api
 
 import { signUp, signIn } from "../../../services/Api/Api";
@@ -44,22 +44,16 @@ const UserLogin = () => {
   };
 
   const handleLoginClick = async () => {
-    // startLoading();
     
     let response = await signIn(loginCredentials);
 
-
     console.log(response);
-
-    // stopLoading();
   };
 
   const handleRegClick = async () => {
-    // startLoading();
+    
     let response = await signUp(registerCredentials);
-
     console.log(response);
-    // stopLoading();
   };
 
   return (

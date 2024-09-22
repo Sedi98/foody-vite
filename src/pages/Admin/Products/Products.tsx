@@ -1,4 +1,4 @@
-import React from 'react'
+
 import AdminHeader from '../../../components/Admin/Shared/AdminHeader'
 import AdminProductCard from '../../../components/Admin/Products/ProductCard/AdminProductCard'
 
@@ -14,7 +14,7 @@ const Products = () => {
 
         { 
 
-            products.map((product)=>{
+            products.map(()=>{
               return <AdminProductCard />
             })
 

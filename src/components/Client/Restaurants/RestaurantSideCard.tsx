@@ -1,4 +1,4 @@
-import React from 'react'
+
 import pizza from '../../../assets/img/pizza.svg'
 
 const RestaurantSideCard = () => {
