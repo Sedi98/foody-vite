@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AdminHeader from "../../../components/Admin/Shared/AdminHeader";
 import CategoryItem from "../../../components/Admin/Category/CategoryItem/CategoryItem";
 import { getCategory } from "../../../services/Api/Api";

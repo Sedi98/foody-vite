@@ -1,8 +1,8 @@
 import {  useContext } from "react";
 import { ProductContext } from "../../../Context/ProductContext";
 import cloud from "../../../assets/icons/admin/cloud.svg";
-import Input from "../../../components/Shared/Input/Input";
-import Select from "../../../components/Shared/Input/Select";
+// import Input from "../../../components/Shared/Input/Input";
+// import Select from "../../../components/Shared/Input/Select";
 
 const AddOffer = ({ type,op }: { type: string,op:string }) => {
   const { value, setValue } = useContext(ProductContext);

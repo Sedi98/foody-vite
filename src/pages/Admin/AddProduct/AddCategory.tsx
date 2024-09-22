@@ -3,16 +3,14 @@ import { ProductContext } from "../../../Context/ProductContext";
 import cloud from "../../../assets/icons/admin/cloud.svg";
 import Input from "../../../components/Shared/Input/Input";
 // import Select from "../../../components/Shared/Input/Select";
-import { showSuccessToast, showErrorToast } from "../../../services/Utils/ToastUtils";
+import {  showErrorToast } from "../../../services/Utils/ToastUtils";
 
 import { postUpload, postCategory } from "../../../services/Api/Api";
 
 const AddCategory = ({ type, op }: { type: string; op: string }) => {
   const { value, setValue } = useContext(ProductContext);
 
-  const handleClick = () => {
-    console.log(value);
-  };
+
 
   type Option = {
     name: string;
@@ -25,11 +23,10 @@ const AddCategory = ({ type, op }: { type: string; op: string }) => {
     slug: "",
     img_url: "",
   });
-  const [file, setFile] = useState<File | null>(null);
+ 
   const [img, setImg] = useState<string>("");
 
   const handleImage = async (file: File) => {
-    setFile(file);
     let data = new FormData();
     data.append("file", file);
     let resp = await postUpload(data);

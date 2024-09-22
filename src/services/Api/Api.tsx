@@ -8,13 +8,13 @@ const saveToken = (token: string, type: string) => {
   localStorage.setItem(type, encoded);
 };
 
-const decodeToken = (type: string) => {
-  const encoded = localStorage.getItem(type);
-  if (encoded) {
-    const decoded = atob(encoded);
-    return decoded;
-  }
-};
+// const decodeToken = (type: string) => {
+//   const encoded = localStorage.getItem(type);
+//   if (encoded) {
+//     const decoded = atob(encoded);
+//     return decoded;
+//   }
+// };
 
 export const signUp = async (credentials: object) => {
   try {
