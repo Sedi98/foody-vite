@@ -44,22 +44,22 @@ const UserLogin = () => {
   };
 
   const handleLoginClick = async () => {
-    startLoading();
+    // startLoading();
     
     let response = await signIn(loginCredentials);
 
 
     console.log(response);
 
-    stopLoading();
+    // stopLoading();
   };
 
   const handleRegClick = async () => {
-    startLoading();
+    // startLoading();
     let response = await signUp(registerCredentials);
 
     console.log(response);
-    stopLoading();
+    // stopLoading();
   };
 
   return (

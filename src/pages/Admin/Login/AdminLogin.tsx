@@ -26,16 +26,14 @@ const AdminLogin: React.FC = () => {
   }
 
   const handleClick = async () => {
-    startLoading();
+   
 
     let response = await signIn(loginCredentials);
 
     console.log(response);
 
-    stopLoading();
-
     if (response) {
-      navigate(ROUTER.AdminHome);
+      navigate('/admin/');
     }
 
   };

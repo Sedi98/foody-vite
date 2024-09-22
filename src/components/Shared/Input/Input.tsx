@@ -1,10 +1,13 @@
-
-
 type Props = {
   type?: string;
   placeholder?: string;
   inputVal?: string;
-  changeFunc?: (e: React.ChangeEvent<HTMLInputElement>|React.ChangeEvent<HTMLTextAreaElement>| undefined) => void;
+  changeFunc?: (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+      | undefined
+  ) => void;
   variation?: string;
   label?: string;
 };
@@ -12,7 +15,7 @@ type Props = {
 const Input = ({
   type = "text",
   placeholder,
-  inputVal="",
+  inputVal = "",
   changeFunc,
   variation,
   label,
@@ -39,7 +42,6 @@ const Input = ({
           <input
             className="p-4 rounded-md outline-none bg-[#ffe6e6] block w-full text-black"
             type={type}
-            
             value={inputVal}
             onChange={changeFunc}
           />
@@ -53,6 +55,43 @@ const Input = ({
           value={inputVal}
           onChange={changeFunc}
         />
+      )}
+
+      {variation === "adminAdd" && (
+        <div className="w-full  flex flex-col gap-2   mb-6">
+          {label && (
+            <label className=" text-neutral-300 font-medium text-baseblock">
+              {label}
+            </label>
+          )}
+
+          <input
+            className="block w-full bg-[#5a5b70] rounded-2xl font-medium text-base  text-white pl-5 py-3  capitalize  "
+            type={type}
+            placeholder={placeholder}
+            value={inputVal}
+            onChange={changeFunc}
+            name={label?.toLocaleLowerCase()}
+          />
+        </div>
+      )}
+
+      {variation === "adminArea" && (
+        <div className="w-full  flex flex-col gap-2   mb-6">
+          {label && (
+            <label className=" text-neutral-300 font-medium text-baseblock">
+              {label}
+            </label>
+          )}
+
+          <textarea
+            className="block w-full resize-none bg-[#5a5b70] rounded-2xl font-medium text-base  text-white pl-5 py-3  capitalize  "
+           
+            placeholder={placeholder}
+            value={inputVal}
+            onChange={changeFunc}
+          ></textarea>
+        </div>
       )}
     </>
   );
