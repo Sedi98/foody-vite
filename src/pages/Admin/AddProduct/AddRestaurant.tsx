@@ -1,15 +1,79 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ProductContext } from "../../../Context/ProductContext";
 import cloud from "../../../assets/icons/admin/cloud.svg";
 import Input from "../../../components/Shared/Input/Input";
 import Select from "../../../components/Shared/Input/Select";
+import {
+  getCategory,
+  postUpload,
+  postRestuarant,
+} from "../../../services/Api/Api";
+import { showErrorToast } from "../../../services/Utils/ToastUtils";
+
+type inputProps = {
+  name: string;
+  category_id: string;
+  img_url: string;
+  cuisine: string;
+  address: string;
+  delivery_min: number;
+  delivery_price: number;
+};
 
 const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
   const { value, setValue } = useContext(ProductContext);
+  const [category, setCategory] = useState<any[]>([]);
+  const [inputValue, setInputValue] = useState<inputProps>({
+    name: "",
+    category_id: "",
+    img_url: "",
+    cuisine: "",
+    address: "",
+    delivery_min: 0,
+    delivery_price: 0,
+  });
+  const [img, setImg] = useState<string>("");
+  useEffect(() => {
+    getCategory().then((res) => {
+      setCategory(res.result.data);
+    });
+  }, []);
 
-  const handleClick = () => {
-    console.log(value);
+  const handleClick = async () => {
+    setInputValue({ ...inputValue, img_url: img });
+
+    if (!img) {
+      showErrorToast("Image is required");
+      return;
+    }
+    if (
+      inputValue.name === "" ||
+      inputValue.category_id === "" ||
+      inputValue.cuisine === "" ||
+      inputValue.address === "" ||
+      inputValue.delivery_min === 0 ||
+      inputValue.delivery_price === 0
+    ) {
+      showErrorToast("All fields are required");
+      return;
+    }
+
+    console.log(inputValue);
+    await postRestuarant(inputValue);
   };
+
+  const handleImage = async (file: File) => {
+    let data = new FormData();
+    data.append("file", file);
+    let resp = await postUpload(data);
+    setImg(resp.img_url);
+    setInputValue((prevInputValue) => ({
+      ...prevInputValue,
+      img_url: resp.img_url,
+    }));
+  };
+
+  
   return (
     <>
       {value && (
@@ -36,7 +100,11 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
               Upload Image
             </p>
             <img
-              src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+              src={
+                inputValue.img_url
+                  ? inputValue.img_url
+                  : "https://via.placeholder.com/124x124"
+              }
               alt="img"
               className=" w-[124px] h-[124px]"
             />
@@ -51,6 +119,10 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
                   name=""
                   id=""
                   className=" absolute  opacity-0 w-full h-full cursor-pointer"
+                  onChange={(e) => {
+                    console.log(e.target.files);
+                    handleImage(e.target.files![0]);
+                  }}
                 />
                 <img src={cloud} alt="" className="color: transparent;" />
                 <p className=" text-neutral-500  font-medium text-lg ">
@@ -74,8 +146,10 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
               label={`Name`}
               type="text"
               variation="adminAdd"
-              changeFunc={() => {}}
-              inputVal=""
+              changeFunc={(e: any) => {
+                setInputValue({ ...inputValue, name: e.target.value });
+              }}
+              inputVal={inputValue.name}
             />
 
             <Input
@@ -83,8 +157,10 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
               label="Cuisine"
               type="text"
               variation="adminArea"
-              changeFunc={() => {}}
-              inputVal=""
+              changeFunc={(e: any) => {
+                setInputValue({ ...inputValue, cuisine: e.target.value });
+              }}
+              inputVal={inputValue.cuisine}
             />
 
             <Input
@@ -92,8 +168,13 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
               label={`Delivery Price`}
               type="number"
               variation="adminAdd"
-              changeFunc={() => {}}
-              inputVal=""
+              changeFunc={(e: any) => {
+                setInputValue({
+                  ...inputValue,
+                  delivery_price: Number(e.target.value),
+                });
+              }}
+              inputVal={String(inputValue.delivery_price)}
             />
 
             <Input
@@ -101,8 +182,13 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
               label="Delivery Time (in minutes)"
               type="number"
               variation="adminAdd"
-              changeFunc={() => {}}
-              inputVal=""
+              changeFunc={(e: any) => {
+                setInputValue({
+                  ...inputValue,
+                  delivery_min: Number(e.target.value),
+                });
+              }}
+              inputVal={String(inputValue.delivery_min)}
             />
 
             <Input
@@ -110,16 +196,21 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
               label={`Address`}
               type="text"
               variation="adminAdd"
-              changeFunc={() => {}}
-              inputVal=""
+              changeFunc={(e: any) => {
+                setInputValue({ ...inputValue, address: e.target.value });
+              }}
+              inputVal={inputValue.address}
             />
 
             <Select
-              label="Restaurant"
+              label="Category"
               type="text"
               variation="adminAdd"
-              inputVal=""
-              changeFunc={() => {}}
+              inputVal={inputValue.category_id}
+              changeFunc={(e) => {
+                setInputValue({ ...inputValue, category_id: e.target.value });
+              }}
+              options={category}
             />
           </div>
         </div>

@@ -18,3 +18,5 @@ export const ProductContext = createContext<Props>({
     operation: '',
     setOperation: () => {},
 })
+
+

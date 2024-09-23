@@ -66,7 +66,7 @@ const Input = ({
           )}
 
           <input
-            className="block w-full bg-[#5a5b70] rounded-2xl font-medium text-base  text-white pl-5 py-3  capitalize  "
+            className="block w-full bg-[#5a5b70] rounded-2xl font-medium text-base  text-white pl-5 py-3   "
             type={type}
             placeholder={placeholder}
             value={inputVal}
@@ -85,11 +85,13 @@ const Input = ({
           )}
 
           <textarea
-            className="block w-full resize-none bg-[#5a5b70] rounded-2xl font-medium text-base  text-white pl-5 py-3  capitalize  "
+            className="block w-full resize-none bg-[#5a5b70] rounded-2xl font-medium text-base  text-white pl-5 py-3   "
            
             placeholder={placeholder}
             value={inputVal}
             onChange={changeFunc}
+            name={label?.toLocaleLowerCase()}
+            maxLength={150}
           ></textarea>
         </div>
       )}

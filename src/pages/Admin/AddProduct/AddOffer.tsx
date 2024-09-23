@@ -1,16 +1,73 @@
-import {  useContext } from "react";
+import {  useContext, useState } from "react";
 import { ProductContext } from "../../../Context/ProductContext";
 import cloud from "../../../assets/icons/admin/cloud.svg";
-// import Input from "../../../components/Shared/Input/Input";
-// import Select from "../../../components/Shared/Input/Select";
+import Input from "../../../components/Shared/Input/Input";
+
+import {  showErrorToast } from "../../../services/Utils/ToastUtils";
+
+import { postUpload, postOffer } from "../../../services/Api/Api";
+
+
+type Option = {
+  name: string;
+  description: string;
+  img_url: string;
+};
+
 
 const AddOffer = ({ type,op }: { type: string,op:string }) => {
   const { value, setValue } = useContext(ProductContext);
+  const [img, setImg] = useState<string>("");
+  const [inputValue, setInputValue] = useState<Option>({
+    name: "",
+    description: "",
+    img_url: "",
+  });
 
-  const handleClick = () => {
-    console.log(value);
-    
-  }
+  const handleImage = async (file: File) => {
+    let data = new FormData();
+    data.append("file", file);
+    let resp = await postUpload(data);
+    console.log(resp);
+    setImg(resp.img_url);
+  };
+
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+      | any
+  ) => {
+    const { name, value } = e.target;
+
+    setInputValue((prevInputValue) => ({
+      ...prevInputValue,
+      [name]: value,
+    }));
+
+    console.log(inputValue);
+  };
+
+  const handleSubmit = async () => {
+    if (!img) {
+      showErrorToast("Image is required");
+      return;
+    }
+    if (inputValue.name === "" || inputValue.description === "") {
+      showErrorToast("All fields are required");
+      return;
+      
+    }
+    const data = {
+      ...inputValue,
+      img_url: img,
+    };
+    console.log(data);
+
+    const response = await postOffer(data);
+
+    console.log(response);
+  };
   return (
     <>
 
@@ -40,7 +97,7 @@ const AddOffer = ({ type,op }: { type: string,op:string }) => {
               Upload Image
             </p>
             <img
-              src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+              src={img?  img : "https://via.placeholder.com/124x124"}
               alt="img"
               className=" w-[124px] h-[124px]"
             />
@@ -55,6 +112,10 @@ const AddOffer = ({ type,op }: { type: string,op:string }) => {
                   name=""
                   id=""
                   className=" absolute  opacity-0 w-full h-full cursor-pointer"
+                  onChange={(e) => {
+                    console.log(e.target.files);
+                    handleImage(e.target.files![0]);
+                  }}
                 />
                 <img src={cloud} alt="" className="color: transparent;" />
                 <p className=" text-neutral-500  font-medium text-lg ">
@@ -74,12 +135,22 @@ const AddOffer = ({ type,op }: { type: string,op:string }) => {
 
           <div className=" w-full lg:w-2/3  pt-5 pl-5  pr-7 pb-7  rounded-2xl bg-[#43445a] max-h-[600px] overflow-y-auto ">
            {/* content will be there */}
+           <Input
+              placeholder=""
+              label={`Name`}
+              type="text"
+              variation="adminAdd"
+              changeFunc={handleChange}
+              inputVal={inputValue.name}
+            />
+
+            <Input placeholder="" label={`Description`} changeFunc={handleChange} inputVal={inputValue.description} variation="adminArea"/>
           </div>
         </div>
 
         <div className="flex justify-around  border-gray-500 border-t-4 pt-6  gap-10">
         <button className=" text-white bg-[#43445a] w-1/2 rounded-2xl py-3" onClick={() => setValue()}>Cancel</button>
-          <button className=" text-white bg-[#c035a2] w-1/2 rounded-2xl py-3" onClick={handleClick}>{op} {type}</button>
+          <button className=" text-white bg-[#c035a2] w-1/2 rounded-2xl py-3" onClick={handleSubmit}>{op} {type}</button>
         </div>
       </div>
     </>

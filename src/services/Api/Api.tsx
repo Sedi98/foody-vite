@@ -65,7 +65,7 @@ export const getCategory = async () => {
     startLoading();
     const response = await axios.get(`${link}/api/category`);
     stopLoading();
-    showSuccessToast(response.data.message);
+    
     return await response.data;
   } catch (err: any) {
     console.log(err);
@@ -74,12 +74,15 @@ export const getCategory = async () => {
   }
 };
 
-export const getRestuarants = async () => {
+export const getRestuarants = async (search?: string, category_id?: string) => {
   try {
     startLoading();
-    const response = await axios.get(`${link}/api/restuarants`);
+    const response = await axios.get(
+      `${link}/api/restuarants?${search && `search=${search}&`}${
+        category_id && `category_id=${category_id}`
+      } `
+    );
     stopLoading();
-    showSuccessToast(response.data.message);
     return await response.data;
   } catch (err: any) {
     console.log(err);
@@ -93,7 +96,6 @@ export const getOffers = async () => {
     startLoading();
     const response = await axios.get(`${link}/api/offer`);
     stopLoading();
-    showSuccessToast(response.data.message);
     return await response.data;
   } catch (err: any) {
     console.log(err);
@@ -101,7 +103,6 @@ export const getOffers = async () => {
     stopLoading();
   }
 };
-
 
 export const postUpload = async (data: any) => {
   try {
@@ -113,27 +114,74 @@ export const postUpload = async (data: any) => {
       },
     });
     stopLoading();
-    showSuccessToast(response.data.message);
+    showSuccessToast("Image uploaded successfully");
     return await response.data;
   } catch (err: any) {
     console.log(err);
-    showErrorToast(err.response.data.error);
+    showErrorToast("Error uploading image");
     stopLoading();
   }
 };
-
 
 export const postCategory = async (data: any) => {
   try {
     startLoading();
     console.log(data);
-    const response = await axios.post(`${link}/api/category`, data);
+    const response = await axios.post(`${link}/api/category`, data, {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    });
     stopLoading();
-    showSuccessToast(response.data.message);
+    showSuccessToast("Category added successfully");
     return await response.data;
   } catch (err: any) {
     console.log(err);
-    showErrorToast(err);
+    showErrorToast("Something went wrong");
+    stopLoading();
+  }
+};
+
+export const postOffer = async (data: any) => {
+  try {
+    startLoading();
+    console.log(data);
+    const response = await axios.post(`${link}/api/offer`, data, {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    });
+    stopLoading();
+    showSuccessToast("Offer added successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast("Something went wrong");
+    stopLoading();
+  }
+};
+
+
+
+
+export const postRestuarant = async (data: any) => {
+  try {
+    startLoading();
+    console.log(data);
+    const response = await axios.post(`${link}/api/restuarants`, data, {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    });
+    stopLoading();
+    showSuccessToast("Restaurant is added successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast("Something went wrong when adding restaurant");
     stopLoading();
   }
 };
