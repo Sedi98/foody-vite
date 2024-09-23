@@ -4,7 +4,6 @@ import RestaurantCard from "../../../components/Admin/Restaurants/RestaurantCard
 import { getRestuarants } from "../../../services/Api/Api";
 import { getCategory } from "../../../services/Api/Api";
 import { RestaurantContext } from "../../../Context/RestaurantContext";
-import { options } from "../../../components/Admin/Dashboard/OrderPie/PieChart";
 
 type dataProps = {
   address: string;
