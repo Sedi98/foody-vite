@@ -27,7 +27,12 @@ const AdminHeader:React.FC<Props> = ({text}) => {
   const handleSelection = (e: any) => {
     setSelect(e.target.value)
     setOption(e.target.value)
+    console.log(e.target);
+    
   }
+
+
+
   
     
   return (
@@ -36,6 +41,7 @@ const AdminHeader:React.FC<Props> = ({text}) => {
 
 
         {text=== 'Restaurants'&& <Select placeholder='Category' variation='adminHeader' options={options} inputVal={select} changeFunc={handleSelection} />}
+        {text=== 'Products'&& <Select placeholder='Restaurant' variation='adminHeader' options={options} inputVal={select} changeFunc={handleSelection} />}
 
         {text=== 'Category'&& <button className='bg-[#c035a2] py-2 px-8 text-white font-bold text-sm rounded-[14px] uppercase' onClick={() => handleClick("Category","Add")}>+ Add Category</button>}
         {text=== 'Restaurants'&& <button className='bg-[#c035a2] py-2 px-8 text-white font-bold text-sm rounded-[14px] uppercase' onClick={() => handleClick("Restaurant","Add")}>+ Add Restaurant</button>}

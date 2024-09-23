@@ -1,14 +1,75 @@
-import {  useContext } from "react";
+import {  useContext,useState,useEffect } from "react";
 import { ProductContext } from "../../../Context/ProductContext";
 import cloud from "../../../assets/icons/admin/cloud.svg";
 import Input from "../../../components/Shared/Input/Input";
 import Select from "../../../components/Shared/Input/Select";
+import { postUpload,getRestuarants,postProduct } from "../../../services/Api/Api";
+import { showErrorToast } from "../../../services/Utils/ToastUtils";
+
+type dataProps = {
+  name: string,
+  description: string,
+  img_url: string,
+  rest_id: string,
+  price: number
+}
 
 const AddProduct = ({ type,op }: { type: string,op:string }) => {
   const { value, setValue } = useContext(ProductContext);
+  const [inputValue, setInputValue] = useState<dataProps>({
+    name: "",
+    description: "",
+    img_url: "",
+    rest_id: "",
+    price: 0,
+  })
+  const [img, setImg] = useState<string>("");
+  const [restaurant, setRestaurant] = useState<any[]>([]);
 
-  const handleClick = () => {
-    console.log(value);
+
+  useEffect(() => {
+    getRestuarants().then((res) => {
+      setRestaurant(res.result.data);
+    });
+  }, []);
+
+
+  const handleImage = async (file: File) => {
+    let data = new FormData();
+    data.append("file", file);
+    let resp = await postUpload(data);
+    setImg(resp.img_url);
+    setInputValue((prevInputValue) => ({
+      ...prevInputValue,
+      img_url: resp.img_url,
+    }));
+  };
+
+  const handleClick = async() => {
+    
+
+    if (!img) {
+      showErrorToast("Image is required");
+      return;
+    }
+    if (
+      inputValue.name === "" ||
+      inputValue.description === "" ||
+      inputValue.rest_id === "" ||
+      inputValue.price === 0
+    ) {
+      showErrorToast("All fields are required");
+      return;
+    }
+
+    setInputValue((prevInputValue) => ({
+      ...prevInputValue,
+      price: Number(inputValue.price),
+    }));
+
+    console.log(inputValue);
+    let resp = await postProduct(inputValue);
+    console.log(resp);
     
   }
   return (
@@ -40,7 +101,7 @@ const AddProduct = ({ type,op }: { type: string,op:string }) => {
               Upload Image
             </p>
             <img
-              src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+              src={img ? img : "https://via.placeholder.com/124x124"}
               alt="img"
               className=" w-[124px] h-[124px]"
             />
@@ -55,6 +116,10 @@ const AddProduct = ({ type,op }: { type: string,op:string }) => {
                   name=""
                   id=""
                   className=" absolute  opacity-0 w-full h-full cursor-pointer"
+                  onChange={(e) => {
+                    console.log(e.target.files);
+                    handleImage(e.target.files![0]);
+                  }}
                 />
                 <img src={cloud} alt="" className="color: transparent;" />
                 <p className=" text-neutral-500  font-medium text-lg ">
@@ -78,31 +143,32 @@ const AddProduct = ({ type,op }: { type: string,op:string }) => {
               label={`${op} Name`}
               type="text"
               variation="adminAdd"
-              changeFunc={() => {}}
-              inputVal=""
+              changeFunc={(e:any) => {setInputValue({...inputValue,name:e.target.value})}}
+              inputVal={inputValue.name}
             />
             <Input
               placeholder=""
               label="Description"
               type="number"
               variation="adminArea"
-              changeFunc={() => {}}
-              inputVal=""
+              changeFunc={(e:any) => {setInputValue({...inputValue,description:e.target.value})}}
+              inputVal={inputValue.description}
             />
             <Input
               placeholder=""
               label="Price"
               type="text"
               variation="adminAdd"
-              changeFunc={() => {}}
-              inputVal=""
+              changeFunc={(e:any) => {setInputValue({...inputValue,price: e.target.value})}}
+              inputVal={String(inputValue.price)}
             />
             <Select
               label="Restaurant"
               type="text"
               variation="adminAdd"
-              inputVal=""
-              changeFunc={() => {}}
+              inputVal={inputValue.rest_id}
+              changeFunc={(e:any) => {setInputValue({...inputValue,rest_id:e.target.value})}}
+              options={restaurant}
             />
           </div>
         </div>

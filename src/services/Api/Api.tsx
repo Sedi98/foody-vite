@@ -91,6 +91,26 @@ export const getRestuarants = async (search?: string, category_id?: string) => {
   }
 };
 
+
+export const getProducts = async ( rest_id?: string,search?: string) => {
+  try {
+    startLoading();
+    console.log(rest_id, search);
+    
+    const response = await axios.get(
+      `${link}/api/products?${search && `search=${search}&`}${
+        rest_id && `rest_id=${rest_id}`
+      } `
+    );
+    stopLoading();
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast(err.response.data.error);
+    stopLoading();
+  }
+};
+
 export const getOffers = async () => {
   try {
     startLoading();
@@ -182,6 +202,26 @@ export const postRestuarant = async (data: any) => {
   } catch (err: any) {
     console.log(err);
     showErrorToast("Something went wrong when adding restaurant");
+    stopLoading();
+  }
+};
+
+export const postProduct = async (data: any) => {
+  try {
+    startLoading();
+    console.log(data);
+    const response = await axios.post(`${link}/api/products`, data, {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    });
+    stopLoading();
+    showSuccessToast("Product is added successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast("Something went wrong when adding product");
     stopLoading();
   }
 };

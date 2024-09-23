@@ -39,11 +39,8 @@ const Restaurants = () => {
         let response = await getRestuarants('', activeCategory);
         setFetchData(response.result.data);
       })()
-      
-      
-    }
     
-  
+    }
     
   }, [activeCategory])
   

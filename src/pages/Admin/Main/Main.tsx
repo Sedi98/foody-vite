@@ -57,7 +57,7 @@ const Main = () => {
       {(value && type === "Category") && <AddCategory type={type} op={op} />}
       {(value && type === "Restaurant") && <AddRestaurant type={type} op={op} />}
       
-      <div className="ml-0 lg:ml-5 w-full h-full ">
+      <div className="ml-0 md:ml-5 w-full h-full ">
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="products" element={<Products />} />
