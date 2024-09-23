@@ -24,7 +24,7 @@ const Products = () => {
   React.useEffect(() => {
     
     getRestuarants().then((res) => {
-      console.log(res.result.data);
+     
       
       setSelect(res.result.data);
     })
@@ -44,10 +44,10 @@ const Products = () => {
       })()
     } else {
       (async()=>{
-        let response = await getProducts('', activeCategory);
-        console.log(response);
+        let response = await getProducts(activeCategory,'' );
         
-        // setProducts(response.result.data)
+        
+        setProducts(response.result.data)
   
         // const rest=await getRestuarants()
         // setRestaurants(rest.result.data)

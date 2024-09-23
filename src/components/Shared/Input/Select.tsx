@@ -43,6 +43,9 @@ const Select = ({
         </div>
       )}
 
+
+
+
       {variation === "adminHeader" && (
         <select
           className="block bg-[#5a5b70] rounded-2xl font-medium text-base  text-white pl-5 py-1 mr-5 text-whiteLight w-[150px] overflow-x-auto ml-auto  "
@@ -55,6 +58,25 @@ const Select = ({
           </option>
           {options?.map((option: any, index) => (
             <option key={index} value={option.id}>
+              {option.name}
+            </option>
+          ))}
+        </select>
+      )}
+
+
+{variation === "adminHeaderPrd" && (
+        <select
+          className="block bg-[#5a5b70] rounded-2xl font-medium text-base  text-white pl-5 py-1 mr-5 text-whiteLight w-[150px] overflow-x-auto ml-auto  "
+          value={inputVal}
+          onChange={changeFunc}
+        >
+          
+          <option value="All">
+            All
+          </option>
+          {options?.map((option: any, index) => (
+            <option key={index} value={option.name}>
               {option.name}
             </option>
           ))}

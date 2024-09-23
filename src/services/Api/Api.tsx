@@ -95,7 +95,6 @@ export const getRestuarants = async (search?: string, category_id?: string) => {
 export const getProducts = async ( rest_id?: string,search?: string) => {
   try {
     startLoading();
-    console.log(rest_id, search);
     
     const response = await axios.get(
       `${link}/api/products?${search && `search=${search}&`}${
