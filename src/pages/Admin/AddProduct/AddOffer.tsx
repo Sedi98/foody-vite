@@ -5,7 +5,7 @@ import Input from "../../../components/Shared/Input/Input";
 
 import {  showErrorToast } from "../../../services/Utils/ToastUtils";
 
-import { postUpload, postOffer } from "../../../services/Api/Api";
+import { postUpload, postOffer, updateOffer } from "../../../services/Api/Api";
 
 
 type Option = {
@@ -15,13 +15,13 @@ type Option = {
 };
 
 
-const AddOffer = ({ type,op }: { type: string,op:string }) => {
-  const { value, setValue } = useContext(ProductContext);
-  const [img, setImg] = useState<string>("");
+const AddOffer = ({data}: any) => {
+  const { value, setValue,setActiveData } = useContext(ProductContext);
+ 
   const [inputValue, setInputValue] = useState<Option>({
-    name: "",
-    description: "",
-    img_url: "",
+    name:  data? data.name : "",
+    description: data? data.description : "",
+    img_url: data? data.img_url : "",
   });
 
   const handleImage = async (file: File) => {
@@ -29,7 +29,8 @@ const AddOffer = ({ type,op }: { type: string,op:string }) => {
     data.append("file", file);
     let resp = await postUpload(data);
     console.log(resp);
-    setImg(resp.img_url);
+    setInputValue({
+      ...inputValue, img_url: resp.img_url});
   };
 
   const handleChange = (
@@ -49,7 +50,7 @@ const AddOffer = ({ type,op }: { type: string,op:string }) => {
   };
 
   const handleSubmit = async () => {
-    if (!img) {
+    if (!inputValue.img_url) {
       showErrorToast("Image is required");
       return;
     }
@@ -58,16 +59,27 @@ const AddOffer = ({ type,op }: { type: string,op:string }) => {
       return;
       
     }
-    const data = {
-      ...inputValue,
-      img_url: img,
-    };
+    
     console.log(data);
 
-    const response = await postOffer(data);
+    const response =data? await updateOffer(data.id, inputValue) : await postOffer(data);
 
     console.log(response);
+    setActiveData(null);
+    setValue();
   };
+
+  const handleCancel = () => {
+    setActiveData(null);
+    setValue();
+    setInputValue({
+      name: "",
+      description: "",
+      img_url: "",
+    })
+  }
+
+
   return (
     <>
 
@@ -88,7 +100,7 @@ const AddOffer = ({ type,op }: { type: string,op:string }) => {
         }  flex-col pl-7 pt-7 pb-5 pr-7 lg:pr-14 fixed right-0 top-0  max-h-screen   overflow-y-auto h-screen duration-300`}
       >
         <h2 className=" text-neutral-300 font-medium text-2xl  mb-2">
-          {op} {type}
+          {data? "Edit" : "Add"} Offer
         </h2>
 
         <div className=" flex flex-col lg:flex-row w-full mb-20">
@@ -97,7 +109,7 @@ const AddOffer = ({ type,op }: { type: string,op:string }) => {
               Upload Image
             </p>
             <img
-              src={img?  img : "https://via.placeholder.com/124x124"}
+              src={inputValue.img_url?  inputValue.img_url : "https://via.placeholder.com/124x124"}
               alt="img"
               className=" w-[124px] h-[124px]"
             />
@@ -129,7 +141,7 @@ const AddOffer = ({ type,op }: { type: string,op:string }) => {
         <div className="flex   flex-col   lg:flex-row  w-full mb-36 ">
           <div className="w-full lg:w-1/3">
             <p className=" text-neutral-300 font-medium  text-lg  tracking-wide">
-              {op} your {type} information
+              {data? "Edit" : "Add"} your offer
             </p>
           </div>
 
@@ -149,8 +161,8 @@ const AddOffer = ({ type,op }: { type: string,op:string }) => {
         </div>
 
         <div className="flex justify-around  border-gray-500 border-t-4 pt-6  gap-10">
-        <button className=" text-white bg-[#43445a] w-1/2 rounded-2xl py-3" onClick={() => setValue()}>Cancel</button>
-          <button className=" text-white bg-[#c035a2] w-1/2 rounded-2xl py-3" onClick={handleSubmit}>{op} {type}</button>
+        <button className=" text-white bg-[#43445a] w-1/2 rounded-2xl py-3" onClick={handleCancel}>Cancel</button>
+          <button className=" text-white bg-[#c035a2] w-1/2 rounded-2xl py-3" onClick={handleSubmit}>Add Offer</button>
         </div>
       </div>
     </>

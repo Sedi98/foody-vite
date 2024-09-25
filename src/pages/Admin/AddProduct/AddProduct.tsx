@@ -3,7 +3,7 @@ import { ProductContext } from "../../../Context/ProductContext";
 import cloud from "../../../assets/icons/admin/cloud.svg";
 import Input from "../../../components/Shared/Input/Input";
 import Select from "../../../components/Shared/Input/Select";
-import { postUpload,getRestuarants,postProduct } from "../../../services/Api/Api";
+import { postUpload,getRestuarants,postProduct,updateProduct } from "../../../services/Api/Api";
 import { showErrorToast } from "../../../services/Utils/ToastUtils";
 
 type dataProps = {
@@ -14,16 +14,16 @@ type dataProps = {
   price: number
 }
 
-const AddProduct = ({ type,op }: { type: string,op:string }) => {
-  const { value, setValue } = useContext(ProductContext);
+const AddProduct = ({data}: {data?: any}) => {
+  const { value, setValue, setActiveData } = useContext(ProductContext);
   const [inputValue, setInputValue] = useState<dataProps>({
-    name: "",
-    description: "",
-    img_url: "",
-    rest_id: "",
-    price: 0,
+    name: data?.name || "",
+    description: data?.description || "",
+    img_url: data?.img_url || "",
+    rest_id: data?.rest_id || "",
+    price: data?.price || 0,
   })
-  const [img, setImg] = useState<string>("");
+  
   const [restaurant, setRestaurant] = useState<any[]>([]);
 
 
@@ -38,7 +38,7 @@ const AddProduct = ({ type,op }: { type: string,op:string }) => {
     let data = new FormData();
     data.append("file", file);
     let resp = await postUpload(data);
-    setImg(resp.img_url);
+    
     setInputValue((prevInputValue) => ({
       ...prevInputValue,
       img_url: resp.img_url,
@@ -46,9 +46,7 @@ const AddProduct = ({ type,op }: { type: string,op:string }) => {
   };
 
   const handleClick = async() => {
-    
-
-    if (!img) {
+    if (!inputValue.img_url) {
       showErrorToast("Image is required");
       return;
     }
@@ -67,10 +65,23 @@ const AddProduct = ({ type,op }: { type: string,op:string }) => {
       price: Number(inputValue.price),
     }));
 
-    console.log(inputValue);
-    let resp = await postProduct(inputValue);
+    let resp = data?.id ? await updateProduct(data.id,inputValue) : await postProduct(inputValue);
     console.log(resp);
-    
+    setActiveData(null)
+    setValue();
+  }
+
+
+  const handleCancel = () => {
+    setActiveData(null);
+    setValue();
+    setInputValue({
+      name: "",
+      description: "",
+      img_url: "",
+      rest_id: "",
+      price: 0
+    })
   }
   return (
     <>
@@ -92,7 +103,7 @@ const AddProduct = ({ type,op }: { type: string,op:string }) => {
         }  flex-col pl-7 pt-7 pb-5 pr-7 lg:pr-14 fixed right-0 top-0  max-h-screen   overflow-y-auto h-screen duration-300`}
       >
         <h2 className=" text-neutral-300 font-medium text-2xl  mb-2">
-          {op} {type}
+          {data? "Edit" : "Add"} Product
         </h2>
 
         <div className=" flex flex-col lg:flex-row w-full mb-20">
@@ -101,7 +112,7 @@ const AddProduct = ({ type,op }: { type: string,op:string }) => {
               Upload Image
             </p>
             <img
-              src={img ? img : "https://via.placeholder.com/124x124"}
+              src={inputValue.img_url ? inputValue.img_url : "https://via.placeholder.com/124x124"}
               alt="img"
               className=" w-[124px] h-[124px]"
             />
@@ -133,14 +144,14 @@ const AddProduct = ({ type,op }: { type: string,op:string }) => {
         <div className="flex   flex-col   lg:flex-row  w-full mb-36 ">
           <div className="w-full lg:w-1/3">
             <p className=" text-neutral-300 font-medium  text-lg  tracking-wide">
-              {op} your {type} information
+              {data? "Edit" : "Add"} your Product information
             </p>
           </div>
 
           <div className=" w-full lg:w-2/3  pt-5 pl-5  pr-7 pb-7  rounded-2xl bg-[#43445a] max-h-[600px] overflow-y-auto ">
             <Input
               placeholder=""
-              label={`${op} Name`}
+              label={`Add Name`}
               type="text"
               variation="adminAdd"
               changeFunc={(e:any) => {setInputValue({...inputValue,name:e.target.value})}}
@@ -174,8 +185,8 @@ const AddProduct = ({ type,op }: { type: string,op:string }) => {
         </div>
 
         <div className="flex justify-around  border-gray-500 border-t-4 pt-6  gap-10">
-        <button className=" text-white bg-[#43445a] w-1/2 rounded-2xl py-3" onClick={() => setValue()}>Cancel</button>
-          <button className=" text-white bg-[#c035a2] w-1/2 rounded-2xl py-3" onClick={handleClick}>{op} {type}</button>
+        <button className=" text-white bg-[#43445a] w-1/2 rounded-2xl py-3" onClick={handleCancel}>Cancel</button>
+          <button className=" text-white bg-[#c035a2] w-1/2 rounded-2xl py-3" onClick={handleClick}>Add Product</button>
         </div>
       </div>
     </>

@@ -1,16 +1,49 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import AdminHeader from "../../../components/Admin/Shared/AdminHeader";
 import OfferItem from "../../../components/Admin/Offers/OfferItem/OfferItem";
-import { getOffers } from "../../../services/Api/Api";
+import { getOffers,deleteOffer } from "../../../services/Api/Api";
+import { ProductContext } from "../../../Context/ProductContext";
+
+import DeleteModal from "../../../components/Shared/Modal/Modal";
 
 
 const Offers = () => {
+  const { value, setValue, setVariation, setActiveData } = useContext(ProductContext);
   const [offers, setOffers] = useState<any[]>([]);
+
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<string>("");
+  const [isDeleted, setIsDeleted] = useState<boolean>(false);
 
 
   useEffect(() => {
     getOffersData();
-  }, []);
+  }, [isDeleted, !value]);
+
+
+
+  const handleEdit = (item: any) => {
+    setActiveData(item);
+    setValue();
+    setVariation("offer");
+  };
+
+
+  const openModal = (id: string): void => {
+    setSelectedItem(id);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = (): void => {
+    setIsModalOpen(false);
+  };
+
+  const handleDelete = (): void => {
+     deleteOffer(selectedItem);
+    setIsModalOpen(false);
+    setSelectedItem("");
+    setIsDeleted(true);
+  };
 
   const getOffersData = async () => {
     const response = await getOffers();
@@ -37,13 +70,19 @@ const Offers = () => {
 
             {/* <OfferItem /> */}
             {offers.map((data) => {
-              return <OfferItem key={data.id} offerID={data.id} img={data.img_url} name={data.name} desc={data.description} editFunc={() => {}} deleteFunc={() => {}}/>
+              return <OfferItem key={data.id} offerID={data.id} img={data.img_url} name={data.name} desc={data.description} editFunc={() => {handleEdit(data)}} deleteFunc={() => {openModal(data.id)}}/>
             })}
 
 
           </tbody>
         </table>
       </main>
+
+      <DeleteModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          onDelete={handleDelete}
+        />
     </div>
   );
 };

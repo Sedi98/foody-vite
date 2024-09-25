@@ -5,10 +5,10 @@ import Input from "../../../components/Shared/Input/Input";
 // import Select from "../../../components/Shared/Input/Select";
 import {  showErrorToast } from "../../../services/Utils/ToastUtils";
 
-import { postUpload, postCategory } from "../../../services/Api/Api";
+import { postUpload, postCategory, updateCategory } from "../../../services/Api/Api";
 
-const AddCategory = ({ type, op }: { type: string; op: string }) => {
-  const { value, setValue } = useContext(ProductContext);
+const AddCategory = ({data}:any) => {
+  const { value, setValue,setActiveData } = useContext(ProductContext);
 
 
 
@@ -18,20 +18,24 @@ const AddCategory = ({ type, op }: { type: string; op: string }) => {
     img_url: string;
   };
 
+  console.log(data);
+  
+
   const [inputValue, setInputValue] = useState<Option>({
-    name: "",
-    slug: "",
-    img_url: "",
+    name: data?.name ? data.name : "",
+    slug: data?.slug ? data.slug : "",
+    img_url: data?.img_url ? data.img_url : "",
   });
  
-  const [img, setImg] = useState<string>("");
+
 
   const handleImage = async (file: File) => {
     let data = new FormData();
     data.append("file", file);
     let resp = await postUpload(data);
     console.log(resp);
-    setImg(resp.img_url);
+    setInputValue({
+      ...inputValue, img_url: resp.img_url});
   };
 
   const handleChange = (
@@ -51,7 +55,7 @@ const AddCategory = ({ type, op }: { type: string; op: string }) => {
   };
 
   const handleSubmit = async () => {
-    if (!img) {
+    if (!inputValue.img_url) {
       showErrorToast("Image is required");
       return;
     }
@@ -60,15 +64,25 @@ const AddCategory = ({ type, op }: { type: string; op: string }) => {
       return;
       
     }
-    const data = {
-      ...inputValue,
-      img_url: img,
-    };
-    console.log(data);
 
-    const response = await postCategory(data);
-
+    const response =  data ? await updateCategory(data.id,inputValue) : await postCategory(inputValue);
     console.log(response);
+
+
+    setValue();
+    setActiveData(null)
+  };
+
+
+  const handleCancel = () => {
+    setValue();
+    setInputValue({
+      name:"",
+      slug:"",
+      img_url:"",
+    });
+    setActiveData(null)
+
   };
 
   return (
@@ -88,7 +102,7 @@ const AddCategory = ({ type, op }: { type: string; op: string }) => {
         }  flex-col pl-7 pt-7 pb-5 pr-7 lg:pr-14 fixed right-0 top-0  max-h-screen   overflow-y-auto h-screen duration-300`}
       >
         <h2 className=" text-neutral-300 font-medium text-2xl  mb-2">
-          {op} {type}
+          {data ? "Edit" : "Add"} Category
         </h2>
 
         <div className=" flex flex-col lg:flex-row w-full mb-20">
@@ -97,7 +111,7 @@ const AddCategory = ({ type, op }: { type: string; op: string }) => {
               Upload Image
             </p>
             <img
-              src={img ? img : "https://via.placeholder.com/124x124"}
+              src={inputValue.img_url ? inputValue.img_url : "https://via.placeholder.com/124x124"}
               alt="img"
               className=" w-[124px] h-[124px]"
             />
@@ -109,8 +123,7 @@ const AddCategory = ({ type, op }: { type: string; op: string }) => {
                 <input
                   type="file"
                   accept="image/*"
-                  name=""
-                  id=""
+                  
                   className=" absolute  opacity-0 w-full h-full cursor-pointer"
                   onChange={(e) => {
                     console.log(e.target.files);
@@ -129,7 +142,7 @@ const AddCategory = ({ type, op }: { type: string; op: string }) => {
         <div className="flex   flex-col   lg:flex-row  w-full mb-36 ">
           <div className="w-full lg:w-1/3">
             <p className=" text-neutral-300 font-medium  text-lg  tracking-wide">
-              {op} your {type} information
+              {data ? "Edit" : "Add"} your category information
             </p>
           </div>
 
@@ -157,7 +170,7 @@ const AddCategory = ({ type, op }: { type: string; op: string }) => {
         <div className="flex justify-around  border-gray-500 border-t-4 pt-6  gap-10">
           <button
             className=" text-white bg-[#43445a] w-1/2 rounded-2xl py-3"
-            onClick={() => setValue()}
+            onClick={() => handleCancel()}
           >
             Cancel
           </button>
@@ -165,7 +178,7 @@ const AddCategory = ({ type, op }: { type: string; op: string }) => {
             className=" text-white bg-[#c035a2] w-1/2 rounded-2xl py-3"
             onClick={handleSubmit}
           >
-            {op} {type}
+            {data ? "Edit" : "Add"} Category
           </button>
         </div>
       </div>

@@ -3,20 +3,21 @@ import { createContext } from "react";
 type Props = {
     value: boolean
     setValue: () => void
-    type: string
-    setType: (val: string) => void
-    operation: string
-    setOperation: (val: string) => void
+    setActiveData: (val: any) => void
+    setVariation: (val: string) => void
+    data: any
+    variation: string
 }
 
 
 export const ProductContext = createContext<Props>({
     value: true,
+    data: {},
+    variation: "",
     setValue: () => {},
-    type: "",
-    setType: () => {},
-    operation: '',
-    setOperation: () => {},
+    setActiveData: () => {},
+    setVariation: () => {},
+    
 })
 
 

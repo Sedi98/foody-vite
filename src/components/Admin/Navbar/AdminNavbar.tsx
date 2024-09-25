@@ -5,19 +5,18 @@ import { ProductContext } from '../../../Context/ProductContext'
 
 
 const AdminNavbar: React.FC = () => {
-  const { setValue,setType,setOperation } = useContext(ProductContext)
+  const { setValue,setVariation,setActiveData} = useContext(ProductContext)
 
 
-  const handleClick = () => {
+  const handleClick = (variation: string) => {
+    setVariation(variation)
+    setActiveData(null)
     setValue()
-    setType("Product")
-    setOperation("Add")
-    
   }
   return (
     <nav className='flex justify-between m-0 py-5 mb-4 items-center rounded-md lg:py-5 px-5 sm:m-0 sm:mb-4 bg-[#27283c] sm:p-5'>
         <h1 className='text-white text-3xl font-extrabold flex items-center'>Foody <span className='text-[#EAAB00]'>.</span></h1>
-        <Button text="+ Add Product" variation="adminAddProduct" click={handleClick} />
+        <Button text="+ Add Product" variation="adminAddProduct" click={() => handleClick('product')} />
         <Flag />
     </nav>
   )

@@ -224,3 +224,145 @@ export const postProduct = async (data: any) => {
     stopLoading();
   }
 };
+
+
+export const deleteProduct = async (id: string) => {
+  try {
+    startLoading();
+    const response = await axios.delete(`${link}/api/products/${id}`);
+    stopLoading();
+    showSuccessToast("Product is deleted successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast("Something went wrong when deleting product");
+    stopLoading();
+  }
+};
+
+
+export const updateProduct = async (id: string, data: any) => {
+  try {
+    startLoading();
+    const response = await axios.put(`${link}/api/products/${id}`, data, {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    });
+    stopLoading();
+    showSuccessToast("Product is updated successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast("Something went wrong when updating product");
+    stopLoading();
+  }
+};
+
+
+export const updateRestuarant = async (id: string, data: any) => {
+  try {
+    startLoading();
+    const response = await axios.put(`${link}/api/restuarants/${id}`, data, {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    });
+    stopLoading();
+    showSuccessToast("Restuarant is updated successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast("Something went wrong when updating restuarant");
+    stopLoading();
+  }
+};
+
+
+export const deleteRestuarant = async (id: string) => {
+  try {
+    startLoading();
+    const response = await axios.delete(`${link}/api/restuarants/${id}`);
+    stopLoading();
+    showSuccessToast("Restuarant is deleted successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast("Something went wrong when deleting restuarant");
+    stopLoading();
+  }
+};
+
+
+
+
+export const deleteCategory = async (id: string) => {
+  try {
+    startLoading();
+    const response = await axios.delete(`${link}/api/category/${id}`);
+    stopLoading();
+    showSuccessToast("Category is deleted successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast("Something went wrong when deleting category");
+    stopLoading();
+  }
+};
+
+export const updateCategory = async (id: string, data: any) => {
+  try {
+    startLoading();
+    const response = await axios.put(`${link}/api/category/${id}`, data, {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    });
+    stopLoading();
+    showSuccessToast("Category is updated successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast("Something went wrong when updating category");
+    stopLoading();
+  }
+};
+
+
+export const updateOffer = async (id: string, data: any) => {
+  try {
+    startLoading();
+    const response = await axios.put(`${link}/api/offer/${id}`, data, {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    });
+    stopLoading();
+    showSuccessToast("Offer is updated successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast("Something went wrong when updating offer");
+    stopLoading();
+  }
+};
+
+
+
+export const deleteOffer = async (id: string) => {
+  try {
+    startLoading();
+    const response = await axios.delete(`${link}/api/offer/${id}`);
+    stopLoading();
+    showSuccessToast("Offer is deleted successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast("Something went wrong when deleting offer");
+    stopLoading();
+  }
+};

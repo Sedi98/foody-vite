@@ -1,14 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import AdminHeader from "../../../components/Admin/Shared/AdminHeader";
 import CategoryItem from "../../../components/Admin/Category/CategoryItem/CategoryItem";
-import { getCategory } from "../../../services/Api/Api";
+import DeleteModal from "../../../components/Shared/Modal/Modal";
+import { getCategory, deleteCategory } from "../../../services/Api/Api";
+import { ProductContext } from "../../../Context/ProductContext";
 
 const Category = () => {
+  const { setValue, setVariation, setActiveData, value } =
+    useContext(ProductContext);
   const [categories, setCategories] = useState<any[]>([]);
 
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<string>("");
+  const [isDeleted, setIsDeleted] = useState<boolean>(false);
+
   useEffect(() => {
+    if (isDeleted) {
+      setIsDeleted(false);
+    }
     getCategoryData();
-  }, []);
+  }, [isDeleted, !value]);
 
   const getCategoryData = async () => {
     try {
@@ -18,6 +29,29 @@ const Category = () => {
     } catch (err: any) {
       console.log(err);
     }
+  };
+
+  const handleEdit = (item: any) => {
+    setActiveData(item);
+    setValue();
+    setVariation("category");
+    
+  };
+
+  const openModal = (id: string): void => {
+    setSelectedItem(id);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = (): void => {
+    setIsModalOpen(false);
+  };
+
+  const handleDelete = (): void => {
+    deleteCategory(selectedItem);
+    setIsModalOpen(false);
+    setSelectedItem("");
+    setIsDeleted(true);
   };
 
   return (
@@ -44,8 +78,12 @@ const Category = () => {
                   img={data.img_url}
                   name={data.name}
                   slug={data.slug}
-                  editFunc={() => {}}
-                  deleteFunc={() => {}}
+                  editFunc={() => {
+                    handleEdit(data);
+                  }}
+                  deleteFunc={() => {
+                    openModal(data.id);
+                  }}
                 />
               );
             })}
@@ -56,6 +94,12 @@ const Category = () => {
           </tbody>
         </table>
       </div>
+
+      <DeleteModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onDelete={handleDelete}
+      />
     </div>
   );
 };

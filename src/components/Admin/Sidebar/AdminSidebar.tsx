@@ -1,5 +1,5 @@
 import SidebarItem from "./SidebarItem";
-
+// icons
 import dash from "../../../assets/icons/admin/dashboard.svg";
 import category from "../../../assets/icons/admin/category.svg";
 import products from "../../../assets/icons/admin/products.svg";
@@ -7,6 +7,7 @@ import orders from "../../../assets/icons/admin/orders.svg";
 import logout from "../../../assets/icons/admin/logout.svg";
 import restaurants from "../../../assets/icons/admin/restaurants.svg";
 import offer from "../../../assets/icons/admin/offer.svg";
+// react router dom
 import { useNavigate } from "react-router-dom";
 
 const AdminSidebar = () => {

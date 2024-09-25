@@ -22,29 +22,31 @@ import AddRestaurant from "../AddProduct/AddRestaurant";
 
 
 
+
 const Main = () => {
+  const [editData, setEditData] = useState<any>(null);
   const [value, setValue] = useState<boolean>(false);
-  const [type, setType] = useState<string>("");
-  const [op, setOp] = useState<string>("");
+  const [modalType, setModalType] = useState<string>("");
+
 
   const handleTrigger=()=>{
     setValue(!value)
     
   }
 
-  const handleType=(val:string)=>{
-    console.log(val);
-    
-    setType(val)
-    
+  const setEditDataFunc = (data: any) => {
+    setEditData(data)
   }
 
-  const handleOperation=(val:string)=>{
-    setOp(val)
-    
+ const SetVariation = (type: string) => {
+    setModalType(type)
   }
+
+  
+
+ 
   return (
-    <ProductContext.Provider value={{ value: value, setValue:handleTrigger, type: type, setType:handleType,operation: '', setOperation: handleOperation }}>
+    <ProductContext.Provider value={{ value: value, setValue:handleTrigger, data: editData,setActiveData: setEditDataFunc, variation: modalType, setVariation: SetVariation }}>
     <div className="bg-[#1e1e30] h-auto lg:h-screen px-5 overflow-x-hidden">
       <AdminNavbar />
 
@@ -52,10 +54,10 @@ const Main = () => {
       <AdminSidebar/>
       
 
-      {(value && type === "Product") && <AddProduct type={type} op={op}  />}
-      {(value && type === "Offer") && <AddOffer type={type} op={op} />}
-      {(value && type === "Category") && <AddCategory type={type} op={op} />}
-      {(value && type === "Restaurant") && <AddRestaurant type={type} op={op} />}
+      {(value && modalType==='product') && <AddProduct data={editData}  />}
+      {(value && modalType==='offer') && <AddOffer data={editData}  />}
+      {(value && modalType==='category') && <AddCategory data={editData}  />}
+      {(value && modalType==='restaurant') && <AddRestaurant data={editData}  />}
       
       <div className="ml-0 md:ml-5 w-full h-full ">
       <Routes>

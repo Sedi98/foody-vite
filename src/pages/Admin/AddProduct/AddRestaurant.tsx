@@ -7,6 +7,7 @@ import {
   getCategory,
   postUpload,
   postRestuarant,
+  updateRestuarant,
 } from "../../../services/Api/Api";
 import { showErrorToast } from "../../../services/Utils/ToastUtils";
 
@@ -20,19 +21,19 @@ type inputProps = {
   delivery_price: number;
 };
 
-const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
-  const { value, setValue } = useContext(ProductContext);
+const AddRestaurant = ({data}:any) => {
+  const { value, setValue, setActiveData } = useContext(ProductContext);
   const [category, setCategory] = useState<any[]>([]);
   const [inputValue, setInputValue] = useState<inputProps>({
-    name: "",
-    category_id: "",
-    img_url: "",
-    cuisine: "",
-    address: "",
-    delivery_min: 0,
-    delivery_price: 0,
+    name: data?.name || "",
+    category_id: data?.category_id || "",
+    img_url: data?.img_url || "",
+    cuisine: data?.cuisine || "",
+    address: data?.address || "",
+    delivery_min: data?.delivery_min || 0,
+    delivery_price: data?.delivery_price || 0,
   });
-  const [img, setImg] = useState<string>("");
+  
   useEffect(() => {
     getCategory().then((res) => {
       setCategory(res.result.data);
@@ -40,9 +41,9 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
   }, []);
 
   const handleClick = async () => {
-    setInputValue({ ...inputValue, img_url: img });
+    
 
-    if (!img) {
+    if (!inputValue.img_url) {
       showErrorToast("Image is required");
       return;
     }
@@ -59,19 +60,37 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
     }
 
     console.log(inputValue);
-    await postRestuarant(inputValue);
+    let resp = data?.id ? await updateRestuarant(data.id,inputValue) : await postRestuarant(inputValue);
+    console.log(resp);
+    setActiveData(null);
+    setValue();
+    
   };
 
   const handleImage = async (file: File) => {
     let data = new FormData();
     data.append("file", file);
     let resp = await postUpload(data);
-    setImg(resp.img_url);
+    
     setInputValue((prevInputValue) => ({
       ...prevInputValue,
       img_url: resp.img_url,
     }));
   };
+
+  const handleCancel = () => {
+    setActiveData(null);
+    setValue();
+    setInputValue({
+      name: "",
+      category_id:"",
+      img_url:"",
+      cuisine:"",
+      address:"",
+      delivery_min:0,
+      delivery_price: 0,
+    })
+  }
 
   
   return (
@@ -91,7 +110,7 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
         }  flex-col pl-7 pt-7 pb-5 pr-7 lg:pr-14 fixed right-0 top-0  max-h-screen   overflow-y-auto h-screen duration-300`}
       >
         <h2 className=" text-neutral-300 font-medium text-2xl  mb-2">
-          {op} {type}
+          Add Restaurant
         </h2>
 
         <div className=" flex flex-col lg:flex-row w-full mb-20">
@@ -136,7 +155,7 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
         <div className="flex   flex-col   lg:flex-row  w-full mb-36 ">
           <div className="w-full lg:w-1/3">
             <p className=" text-neutral-300 font-medium  text-lg  tracking-wide">
-              {op} your {type} information
+              Add your restaurant information
             </p>
           </div>
 
@@ -218,7 +237,7 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
         <div className="flex justify-around  border-gray-500 border-t-4 pt-6  gap-10">
           <button
             className=" text-white bg-[#43445a] w-1/2 rounded-2xl py-3"
-            onClick={() => setValue()}
+            onClick={handleCancel}
           >
             Cancel
           </button>
@@ -226,7 +245,7 @@ const AddRestaurant = ({ type, op }: { type: string; op: string }) => {
             className=" text-white bg-[#c035a2] w-1/2 rounded-2xl py-3"
             onClick={handleClick}
           >
-            {op} {type}
+            {data ? "Update" : "Add"} Restaurant
           </button>
         </div>
       </div>
