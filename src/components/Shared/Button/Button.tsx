@@ -74,7 +74,7 @@ const Button: React.FC<Props> = ({ click, variation, text }: Props) => {
 
       {variation === "adminLog" && <button className=" text-white font-medium text-2xl  w-full bg-[#c035a2] py-3 rounded" onClick={click}>{text}</button>}
 
-      {variation === "adminAddProduct" && <button className="hidden sm:block bg-[#c035a2] text-white text-sm font-medium px-3 py-3 uppercase rounded-full  shadow-md hover:scale-95 transition-all duration-500 ml-auto mr-4" onClick={click}>{text}</button>}
+      {variation === "adminAddProduct" && <button className="hidden sm:block bg-[#c035a2] text-white text-sm font-medium px-3 py-3 uppercase rounded-full  shadow-md hover:scale-95 transition-all duration-500 ml-auto " onClick={click}>{text}</button>}
     </>
   );
 };

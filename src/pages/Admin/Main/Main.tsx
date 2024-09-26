@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ProductContext } from "../../../Context/ProductContext";
+import { useNavigate } from "react-router-dom";
+// services 
+import { checkUser } from "../../../services/Api/Api";
 // components
 import AdminNavbar from "../../../components/Admin/Navbar/AdminNavbar";
 import AdminSidebar from "../../../components/Admin/Sidebar/AdminSidebar";
@@ -24,9 +27,26 @@ import AddRestaurant from "../AddProduct/AddRestaurant";
 
 
 const Main = () => {
+  const navigate = useNavigate();
   const [editData, setEditData] = useState<any>(null);
   const [value, setValue] = useState<boolean>(false);
   const [modalType, setModalType] = useState<string>("");
+
+
+
+  useEffect(() => {
+
+    (async () => {
+      let data = await checkUser();
+      console.log(data);
+
+      if (!data) {
+        navigate('/admin-login');
+      }
+      
+    })()
+    
+  }, []);
 
 
   const handleTrigger=()=>{

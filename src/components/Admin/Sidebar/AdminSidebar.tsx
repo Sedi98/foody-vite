@@ -7,11 +7,19 @@ import orders from "../../../assets/icons/admin/orders.svg";
 import logout from "../../../assets/icons/admin/logout.svg";
 import restaurants from "../../../assets/icons/admin/restaurants.svg";
 import offer from "../../../assets/icons/admin/offer.svg";
+
+import { logOut } from "../../../services/Api/Api";
 // react router dom
 import { useNavigate } from "react-router-dom";
 
 const AdminSidebar = () => {
   const navigate = useNavigate();
+
+
+  const handleLogout = () => {
+    logOut();
+    navigate("/admin-login");
+  }
   return (
     <div className=" hidden sm:block">
       <aside className=" bg-[#c74feb] w-full sm:w-[256px] h-[474px] flex flex-col gap-2 pt-6 pl-2 sm:pl-6 pr-4 rounded-[14px]">
@@ -47,7 +55,7 @@ const AdminSidebar = () => {
         />
         <SidebarItem
           click={() => {
-            console.log("logout");
+            handleLogout();
           }}
           img={logout}
           text="Logout"

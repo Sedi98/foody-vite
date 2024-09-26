@@ -2,19 +2,20 @@ import axios from "axios";
 const link = "https://foody-server-tau.vercel.app";
 import { showErrorToast, showSuccessToast } from "../Utils/ToastUtils";
 import { startLoading, stopLoading } from "../../Context/useGlobalLoading";
+import { useNavigate } from "react-router-dom";
 
 const saveToken = (token: string, type: string) => {
   const encoded = btoa(token);
   localStorage.setItem(type, encoded);
 };
 
-// const decodeToken = (type: string) => {
-//   const encoded = localStorage.getItem(type);
-//   if (encoded) {
-//     const decoded = atob(encoded);
-//     return decoded;
-//   }
-// };
+const decodeToken = (type: string) => {
+  const encoded = localStorage.getItem(type);
+  if (encoded) {
+    const decoded = atob(encoded);
+    return decoded;
+  }
+};
 
 export const signUp = async (credentials: object) => {
   try {
@@ -41,7 +42,7 @@ export const signUp = async (credentials: object) => {
 export const signIn = async (credentials: any) => {
   try {
     startLoading();
-    console.log(credentials);
+    
 
     const response = await axios.post(`${link}/api/auth/signin`, credentials, {
       headers: {
@@ -51,7 +52,10 @@ export const signIn = async (credentials: any) => {
     });
     showSuccessToast(response.data.message);
     saveToken(response.data.user.access_token, "access_token");
+    saveToken(response.data.user.refresh_token, "refresh_token");
     stopLoading();
+    console.log(response.data);
+    
     return await response.data;
   } catch (err: any) {
     console.log(err);
@@ -59,6 +63,26 @@ export const signIn = async (credentials: any) => {
     stopLoading();
   }
 };
+
+
+export const checkUser = async () => {
+  try {
+    startLoading();
+    const response = await axios.get(`${link}/api/auth/user`, {
+      headers: {
+        Authorization: `Bearer ${decodeToken("access_token")}`,
+      },
+    });
+    stopLoading();
+    localStorage.setItem("user", response.data.user.fullname);
+    return true
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast(err.response.data.error);
+    stopLoading();
+    return false;
+  }
+}
 
 export const getCategory = async () => {
   try {
@@ -366,3 +390,12 @@ export const deleteOffer = async (id: string) => {
     stopLoading();
   }
 };
+
+
+
+// internal services
+export const logOut = async () => {
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("refresh_token");
+  localStorage.removeItem("color");
+}
