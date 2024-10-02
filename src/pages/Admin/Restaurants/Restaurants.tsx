@@ -9,6 +9,7 @@ import {
 import { RestaurantContext } from "../../../Context/RestaurantContext";
 import { ProductContext } from "../../../Context/ProductContext";
 import DeleteModal from "../../../components/Shared/Modal/Modal";
+import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
 type dataProps = {
   address: string;
@@ -92,6 +93,7 @@ const Restaurants = () => {
       value={{ options: select, setOption: switchCategory }}
     >
       <div>
+        <HelmetLib title="Admin-Restaurants" />
         <AdminHeader text="Restaurants" />
         <main
           className="grid grid-cols-1 content-start

@@ -6,6 +6,7 @@ import { RestaurantContext } from "../../../Context/RestaurantContext";
 import DeleteModal from "../../../components/Shared/Modal/Modal";
 
 import { ProductContext } from "../../../Context/ProductContext";
+import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
 type dataProps = {
   name: string;
@@ -110,6 +111,7 @@ const Products = () => {
       value={{ options: select, setOption: switchCategory }}
     >
       <div className="h-full">
+        <HelmetLib title="Admin-Products" />
         <AdminHeader text="Products" />
         <main className="grid grid-cols-1 content-start gap-4 md:grid-cols-3 lg:grid-cols-5 mt-5 overflow-auto  h-[calc(100vh-210px)]">
           {products?.map((item: itemProps, index: number) => {

@@ -1,4 +1,5 @@
 import Navbar from "../../../components/Shared/Navbar/Navbar";
+import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
 import FlexTextContainer from "../../../components/Client/Main/FlexTextContainer/FlexTextContainer";
 import FlexImgContainer from "../../../components/Client/Main/FlexImgContainer/FlexImgContainer";
@@ -11,6 +12,7 @@ import aboutImg from "../../../assets/img/about.svg";
 const About = () => {
   return (
     <>
+      <HelmetLib title="About Us" />
       <div className="mx-5 my-5">
         <Navbar />
       </div>

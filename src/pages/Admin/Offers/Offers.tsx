@@ -5,6 +5,7 @@ import { getOffers,deleteOffer } from "../../../services/Api/Api";
 import { ProductContext } from "../../../Context/ProductContext";
 
 import DeleteModal from "../../../components/Shared/Modal/Modal";
+import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
 
 const Offers = () => {
@@ -53,6 +54,7 @@ const Offers = () => {
   }
   return (
     <div>
+      <HelmetLib title="Admin-Offers" />
       <AdminHeader text="Offers" />
 
       <main className="h-[calc(100vh-210px)] overflow-auto mt-5">

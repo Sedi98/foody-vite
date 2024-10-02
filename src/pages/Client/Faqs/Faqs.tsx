@@ -2,12 +2,14 @@
 import Navbar from '../../../components/Shared/Navbar/Navbar'
 import Accordion from '../../../components/Client/Faq/Accordion'
 import Title from '../../../components/Shared/Title/Title'
+import HelmetLib from '../../../components/Shared/HelmetLib/HelmetLib'
 
 import Footer from '../Footer/Footer'
 
 const Faqs = () => {
   return (
     <>
+    <HelmetLib title="F.A.Q." />
     <div className='my-5 mx-5'>
     <Navbar />
     </div>

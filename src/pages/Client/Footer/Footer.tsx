@@ -4,15 +4,18 @@ import facebook from "../../../assets/img/fb.svg";
 import pizza from "../../../assets/img/pizza.svg";
 import potato from "../../../assets/img/potato.svg";
 
+import { useLocation } from "react-router-dom";
+
 const Footer = () => {
+  const location= useLocation()
   return (
     <>
-      <section className=" flex-col gap-10 justify-center px-3 sm:px-14 mb-96 mt-52 hidden lg:flex"></section>
+      <section className={` flex-col gap-10 justify-center px-3 sm:px-14  hidden ${location.pathname === "/" ? "lg:flex mb-96 mt-52" : ""}`}></section>
 
       <div className="flex-col hidden lg:flex justify-center items-center relative pt-44 pb-6 bg-black w-full">
         {/* float item */}
 
-        <section className="w-3/4 flex justify-around bg-slate-900 absolute -top-[300px] items-center rounded-3xl py-12 px-0 sm:px-9 text-white aos-init aos-animate">
+        <section className={`w-3/4 flex justify-around bg-slate-900 absolute -top-[300px] ${location.pathname === "/" ? "block" : "hidden"} items-center rounded-3xl py-12 px-0 sm:px-9 text-white `}>
           <img
             className="hidden sm:block w-[300px]"
             src={pizza}

@@ -1,5 +1,5 @@
 import "./App.css";
-import { useContext,useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import CustomCursor from "./components/Shared/Cursor/Cursor";
 // import Navbar from "./components/Shared/Navbar/Navbar";
@@ -20,20 +20,18 @@ import Faqs from "./pages/Client/Faqs/Faqs";
 import NotFound from "./pages/Client/NotFound/NotFound";
 import { useGlobalLoading } from "./Context/useGlobalLoading";
 import LoadingIndicator from "./components/Shared/LoadingIndicator/LoadingIndicator";
-
+import { getBasket } from "./services/Api/Api";
 
 import { ROUTER } from "./ROUTER";
 
-
 import { UserContext } from "./Context/UserContext";
+import { basketContext } from "./Context/BasketContext";
 import { checkUser } from "./services/Api/Api";
 
 function App() {
-  const { setUserID, setUser } = useContext(UserContext);
+  const { setUserID, setUser,user } = useContext(UserContext);
+  const { setCount,count } = useContext(basketContext);
   const { loading } = useGlobalLoading();
-  
-
-
 
   useEffect(() => {
     (async () => {
@@ -46,14 +44,26 @@ function App() {
         return false;
       } else {
         setUserID(resp);
+       
       }
     })();
   }, []);
-  
+
+
+
+  useEffect(() => {
+
+    (async () => {
+      console.log(count);
+      let basket = await getBasket(user.id);
+      setCount(basket.result.data.total_count);
+    })()
+   
+    
+  }, [count]);
+
   return (
     <>
-    
-
       <CustomCursor />
 
       {loading && <LoadingIndicator />}
@@ -75,7 +85,6 @@ function App() {
       </Routes>
 
       {/* <Footer /> */}
-    
     </>
   );
 }

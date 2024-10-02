@@ -449,7 +449,7 @@ export const addBasket = async (id:string,data:any) => {
       }
     });
     stopLoading();
-    console.log(response.data);
+    
     
     return await response.data;
   } catch (err) {
@@ -459,13 +459,14 @@ export const addBasket = async (id:string,data:any) => {
 };
 
 
-export const deleteBasket = async (id:string) => {
+export const deleteBasket = async (id:string,data:any) => {
   try {
     startLoading();
-    const response = await axios.delete(`${link}/api/basket/${id}`, {
+    const response = await axios.delete(`${link}/api/basket/delete`, {
       headers:{
         'Authorization':`Bearer ${id}`
-      }
+      },
+      data
     });
     stopLoading();
     return await response.data;
@@ -474,3 +475,45 @@ export const deleteBasket = async (id:string) => {
     return [];
   }
 };
+
+
+export const removeFromBasket = async (id:string,data:any) => {
+  try {
+    startLoading();
+    const response = await axios.delete(`${link}/api/basket/remove`, {
+      headers:{
+        'Authorization':`Bearer ${id}`
+      },
+      data
+    });
+    stopLoading();
+    return await response.data;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
+
+export const clearBasket = async (id:string,data:any) => {
+  try {
+    startLoading();
+    const response = await axios.delete(`${link}/api/basket/clear`, {
+      headers:{
+        'Authorization':`Bearer ${id}`
+      },
+      data
+    });
+    stopLoading();
+    return await response.data;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
+
+
+
+
+

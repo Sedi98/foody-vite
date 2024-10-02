@@ -4,6 +4,7 @@ import CategoryItem from "../../../components/Admin/Category/CategoryItem/Catego
 import DeleteModal from "../../../components/Shared/Modal/Modal";
 import { getCategory, deleteCategory } from "../../../services/Api/Api";
 import { ProductContext } from "../../../Context/ProductContext";
+import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
 const Category = () => {
   const { setValue, setVariation, setActiveData, value } =
@@ -56,6 +57,7 @@ const Category = () => {
 
   return (
     <div>
+      <HelmetLib title="Admin-Category" />
       <AdminHeader text="Category" />
 
       <div className="h-[calc(100vh-210px)] overflow-auto mt-5">

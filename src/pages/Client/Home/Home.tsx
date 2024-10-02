@@ -3,6 +3,7 @@ import Title from "../../../components/Shared/Title/Title";
 import Paragraph from "../../../components/Shared/Paragraph/Paragraph";
 import CardList from "../../../components/Client/Main/CardList/CardList";
 import Footer from "../Footer/Footer";
+import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 //
 
 //
@@ -12,7 +13,6 @@ import FlexTextContainer from "../../../components/Client/Main/FlexTextContainer
 import kfc from "../../../assets/img/kfc.svg";
 import pizza from "../../../assets/img/pizza.svg";
 import potato from "../../../assets/img/potato.svg";
-import React from "react";
 
 
 const Home = (): JSX.Element => {
@@ -22,6 +22,7 @@ const Home = (): JSX.Element => {
 
   return (
     <>
+    <HelmetLib title="Home" />
       <Hero />
       <section className="px-10 py-10 flex flex-col gap-10 ">
         <Title text="Features" variation="container" />

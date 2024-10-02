@@ -8,15 +8,6 @@ type UserContextProps = {
     setUser: React.Dispatch<React.SetStateAction<object|null>>
 }
 
-// type objProps = {
-//     fullname: string,
-//     username: string,
-//     access_token: string,
-//     refresh_token: string,
-//     email: string,
-//     id: string
-    
-// }
 
 const UserContext = createContext<UserContextProps>({
     userID: "",

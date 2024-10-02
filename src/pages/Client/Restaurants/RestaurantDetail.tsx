@@ -5,7 +5,9 @@ import { useLocation,useNavigate } from "react-router-dom";
 import { getRestaurantById, getProducts } from "../../../services/Api/Api";
 import Basket from "../../../components/Shared/Basket/Basket";
 import { UserContext } from "../../../Context/UserContext";
+import { basketContext } from "../../../Context/BasketContext";
 import { addBasket } from "../../../services/Api/Api";
+import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
 
 import RestaurantListItem from "../../../components/Client/Restaurants/RestaurantListItem";
@@ -13,7 +15,7 @@ import RestaurantListItem from "../../../components/Client/Restaurants/Restauran
 const RestaurantDetail = () => {
   let location: any = useLocation();
   const navigate=useNavigate()
-
+const {setTrigger} = React.useContext(basketContext)
   const {user} = React.useContext(UserContext)
  
   
@@ -26,9 +28,7 @@ const RestaurantDetail = () => {
     (async () => {
       location = location.pathname.split("/").pop();
       const response = await getRestaurantById(location);
-
       setDetails(response.result.data);
-
       if (response) {
         const prdResponse = await getProducts(location, "");
         setProducts(prdResponse.result.data);
@@ -44,14 +44,13 @@ const RestaurantDetail = () => {
       product_id
     }
 
-
     await addBasket(user?.id, obj);
-    
-    
+    setTrigger(true)
   }
 
   return (
     <>
+    <HelmetLib title={details?.name} />
       <div className="mx-5 my-5">
         <Navbar />
       </div>
@@ -91,8 +90,8 @@ const RestaurantDetail = () => {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between gap-5 mt-8">
-          <div className=" bg-[#f3f4f6] w-full sm:w-3/5">
+        <div className="flex flex-col sm:flex-row justify-between gap-5 mt-8 h-[65vh]">
+          <div className=" bg-[#f3f4f6] w-full sm:w-3/5 overflow-y-auto">
             <p className="text-center text-3xl text-neutral-800 font-semibold my-8">
               Products
             </p>

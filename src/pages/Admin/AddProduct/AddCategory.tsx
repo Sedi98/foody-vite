@@ -113,7 +113,7 @@ const AddCategory = ({data}:any) => {
             <img
               src={inputValue.img_url ? inputValue.img_url : "https://via.placeholder.com/124x124"}
               alt="img"
-              className=" w-[124px] h-[124px]"
+              className=" w-[124px] h-[124px] object-cover"
             />
           </div>
 
@@ -125,9 +125,8 @@ const AddCategory = ({data}:any) => {
                   accept="image/*"
                   
                   className=" absolute  opacity-0 w-full h-full cursor-pointer"
-                  onChange={(e) => {
-                    console.log(e.target.files);
-                    handleImage(e.target.files![0]);
+                  onChange={(e?: any) => {
+                    handleImage( e.target.files![0]);
                   }}
                 />
                 <img src={cloud} alt="" className="color: transparent;" />

@@ -18,7 +18,7 @@ const LinkContainer: React.FC = (): JSX.Element => {
   
   
   return (
-    <div className="flex gap-10 ml-auto mr-auto">
+    <div className="flex flex-col lg:flex-row gap-10 ml-auto mr-auto">
       <NavbarLinks isActive={active== ROUTER.Home ? true : false} text="Home" click={() => navigate(ROUTER.Home)} />
       <NavbarLinks
         text="Restorants"

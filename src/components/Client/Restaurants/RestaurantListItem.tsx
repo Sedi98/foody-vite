@@ -1,8 +1,5 @@
 import React from "react"
 
-
-
-
 type Props = {
     id: string;
     name: string;
@@ -12,7 +9,7 @@ type Props = {
     click: () => void;
 }
 
-const RestaurantListItem: React.FC<Props> = ({id, name, desc, image,price ,click}) => {
+const RestaurantListItem: React.FC<Props> = ({ name, desc, image,price ,click}) => {
   return (
     <div className='flex items-center gap-2 sm:gap-0 p-4 border-t-2 border-neutral-300 w-full justify-between'>
         <div className="flex items-center gap-8 w-full ">

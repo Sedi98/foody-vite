@@ -1,11 +1,13 @@
 import error from '../../../assets/img/404.svg'
 import Navbar from '../../../components/Shared/Navbar/Navbar'
+import HelmetLib from '../../../components/Shared/HelmetLib/HelmetLib'
 
 import Footer from '../Footer/Footer'
 
 const NotFound = (): JSX.Element => {
   return (
 <>
+<HelmetLib title="Not Found" />
 <div className='mx-5 my-5'>
 
 <Navbar />

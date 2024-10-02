@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../../../components/Shared/Navbar/Navbar";
+import Footer from "../../Client/Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 // components
 import User from "../User/User";
@@ -14,8 +15,6 @@ import { useNavigate } from "react-router-dom";
 const ProfileMain: React.FC = () => {
   const navigate = useNavigate();
 
-
-
   React.useEffect(() => {
     (async () => {
       let resp = await checkUser();
@@ -23,15 +22,13 @@ const ProfileMain: React.FC = () => {
 
       if (!resp) {
         localStorage.clear();
-        
+
         navigate("/login");
         return false;
       } else {
-        
       }
     })();
   }, []);
-
 
   return (
     <>
@@ -47,8 +44,12 @@ const ProfileMain: React.FC = () => {
             <Route path={"checkout"} element={<Checkout />} />
             <Route path={"orders"} element={<Orders />} />
           </Routes>
+
+         
         </div>
+
       </div>
+      <Footer />
     </>
   );
 };

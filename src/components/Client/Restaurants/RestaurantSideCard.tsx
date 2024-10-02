@@ -1,5 +1,5 @@
 import React from "react";
-import pizza from "../../../assets/img/pizza.svg";
+
 import { UserRstContext } from "../../../Context/UserRstContext";
 
 type Props = {

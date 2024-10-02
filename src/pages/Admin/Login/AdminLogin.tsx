@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Flag from "../../../components/Shared/Flag/Flag";
 import image from "../../../assets/img/admin-login.svg";
+import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 // components
 import Title from "../../../components/Shared/Title/Title";
 import Input from "../../../components/Shared/Input/Input";
@@ -38,6 +39,7 @@ const AdminLogin: React.FC = () => {
   };
   return (
     <div className="bg-[#1e1e30] h-auto lg:h-screen">
+      <HelmetLib title="Admin-Login" />
       <header className="  pt-14 pl-8">
         <p onClick={() => navigate(ROUTER.Home)} className=" text-[#F5F5F5] font-extrabold text-[28px]  ">
           Foody <span className=" text-[#EAAB00]">.</span>

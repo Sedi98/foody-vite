@@ -1,10 +1,13 @@
 
 import AdminHeader from '../../../components/Admin/Shared/AdminHeader'
 import trash from '../../../assets/icons/admin/delete.svg'
+import HelmetLib from '../../../components/Shared/HelmetLib/HelmetLib'
 
 const Orders = () => {
   return (
     <div>
+
+      <HelmetLib title="Admin-Orders" />
       <AdminHeader text='Orders' />
 
 

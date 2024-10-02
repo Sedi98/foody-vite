@@ -9,7 +9,7 @@ const Paragraph: React.FC<Props> = ({ text, variation }: Props) => {
   return (
     <>
       {variation === "hero" && (
-        <p className=" sm:text-xl text-neutral-500 w-3/4 ">{text}</p>
+        <p className=" text-center lg:text-left sm:text-xl text-neutral-500 w-full lg:w-3/4 ">{text}</p>
       )}
 
       {variation === "container" && (

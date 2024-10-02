@@ -20,7 +20,7 @@ const Button: React.FC<Props> = ({ click, variation, text }: Props) => {
 
       {variation === "navbar" && (
         <button
-          className="px-6 py-2 rounded-3xl bg-red-600 text-white font-medium shadow-md hover:scale-95 transition-all duration-500 hidden sm:block"
+          className="px-6 py-2 rounded-3xl bg-red-600 text-white font-medium shadow-md hover:scale-95 transition-all duration-500 block"
           onClick={click}
         >
           {text}

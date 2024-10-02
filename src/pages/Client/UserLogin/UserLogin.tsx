@@ -1,4 +1,4 @@
-import { useState,useContext } from "react";
+import { useState, useContext } from "react";
 
 import LoginNav from "../../../components/Shared/Navbar/LoginNav";
 import loginImg from "../../../assets/img/usrlogin.svg";
@@ -6,9 +6,14 @@ import registerImg from "../../../assets/img/usrReg.svg";
 import UserLoginCnt from "../../../components/Client/UserLogin/UserLoginCnt";
 import { useNavigate } from "react-router-dom";
 // context
-import { LoginContext,RegisterContext,AuthContext } from "../../../Context/LoginContext";
+import {
+  LoginContext,
+  RegisterContext,
+  AuthContext,
+} from "../../../Context/LoginContext";
 import { UserContext } from "../../../Context/UserContext";
-
+import { basketContext } from "../../../Context/BasketContext";
+import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
 // api
 
@@ -17,7 +22,8 @@ import { signUp, signIn } from "../../../services/Api/Api";
 const UserLogin = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
-  
+  const { setCount } = useContext(basketContext);
+
   const [usrMode, setUsrMode] = useState("login");
   const [loginCredentials, setloginCredentials] = useState({
     email: "",
@@ -47,19 +53,17 @@ const UserLogin = () => {
   };
 
   const handleLoginClick = async () => {
-    
     let response = await signIn(loginCredentials);
 
     setUser(response.user);
 
     if (response) {
-      
       navigate("/");
+      setCount(-1);
     }
   };
 
   const handleRegClick = async () => {
-    
     let response = await signUp(registerCredentials);
     console.log(response);
   };
@@ -81,6 +85,7 @@ const UserLogin = () => {
           }}
         >
           <div>
+            <HelmetLib title="Login" />
             <LoginNav />
             <section className="flex flex-col mt-5 sm:mt-0 sm:flex-row justify-center bg-white sm:bg-red-500 mx-8 mb-8 ">
               <div className="bg-red-500 m-auto w-full sm:w-1/2">
