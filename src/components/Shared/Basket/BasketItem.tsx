@@ -1,5 +1,5 @@
 import React from 'react'
-import pizza from '../../../assets/img/pizza.svg'
+
 import basketMinus from '../../../assets/icons/profile/basket_minus.svg'
 import basketPlus from '../../../assets/icons/profile/basket_plus.svg'
 import basketTrash from '../../../assets/icons/profile/basket_trash.svg'
