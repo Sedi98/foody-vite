@@ -86,13 +86,30 @@ const Input = ({
 
           <textarea
             className="block w-full resize-none bg-[#5a5b70] rounded-2xl font-medium text-base  text-white pl-5 py-3   "
-           
             placeholder={placeholder}
             value={inputVal}
             onChange={changeFunc}
             name={label?.toLocaleLowerCase()}
             maxLength={150}
           ></textarea>
+        </div>
+      )}
+
+      {variation === "profile" && (
+        <div className="w-full">
+          {label && (
+            <label className="text-xl font-medium text-neutral-500 mb-2">
+              {label}
+            </label>
+          )}
+
+          <input
+            className="p-4 rounded-md outline-none bg-white block w-full text-black"
+            type={type}
+            value={inputVal}
+            onChange={changeFunc}
+            placeholder={placeholder}
+          />
         </div>
       )}
     </>

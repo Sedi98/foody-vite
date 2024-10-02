@@ -4,13 +4,22 @@ import Paragraph from "../../../components/Shared/Paragraph/Paragraph";
 import CardList from "../../../components/Client/Main/CardList/CardList";
 import Footer from "../Footer/Footer";
 //
+
+//
 import FlexImgContainer from "../../../components/Client/Main/FlexImgContainer/FlexImgContainer";
 import FlexTextContainer from "../../../components/Client/Main/FlexTextContainer/FlexTextContainer";
 //
 import kfc from "../../../assets/img/kfc.svg";
 import pizza from "../../../assets/img/pizza.svg";
 import potato from "../../../assets/img/potato.svg";
+import React from "react";
+
+
 const Home = (): JSX.Element => {
+
+
+  
+
   return (
     <>
       <Hero />
@@ -39,7 +48,6 @@ const Home = (): JSX.Element => {
         <FlexImgContainer url={pizza} alt="food" />
       </section>
 
-
       <section className="py-10 px-10 flex flex-col lg:flex-row ">
         <FlexTextContainer
           title="Menu That Always Make You Fall In Love"
@@ -47,7 +55,6 @@ const Home = (): JSX.Element => {
         />
         <FlexImgContainer url={potato} alt="food" />
       </section>
-
 
       <section className="px-10 py-10 flex flex-col gap-10 ">
         <Title text="Our Popular Update New Foods" variation="container" />
@@ -59,8 +66,6 @@ const Home = (): JSX.Element => {
       </section>
 
       <Footer />
-
-      
     </>
   );
 };

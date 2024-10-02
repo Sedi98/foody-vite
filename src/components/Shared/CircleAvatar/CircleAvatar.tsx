@@ -21,13 +21,13 @@ const isLightColor = (hexColor: string): boolean => {
 
 // Define types for the props
 interface CircleAvatarProps {
-  firstName: string;
-  lastName: string;
+  username: string;
   localStorageKey: string;
 }
 
-const CircleAvatar: React.FC<CircleAvatarProps> = ({ firstName, lastName, localStorageKey }) => {
+const CircleAvatar: React.FC<CircleAvatarProps> = ({ username, localStorageKey }) => {
   const [bgColor, setBgColor] = useState<string | null>(null);
+  const [firstName, lastName] = username?.split(' ') || ['', ''];
 
   // Get initials from firstName and lastName
   const initials: string = `${firstName[0]}${lastName[0]}`.toUpperCase();

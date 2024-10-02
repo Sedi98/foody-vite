@@ -1,19 +1,22 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 
 import LoginNav from "../../../components/Shared/Navbar/LoginNav";
 import loginImg from "../../../assets/img/usrlogin.svg";
 import registerImg from "../../../assets/img/usrReg.svg";
 import UserLoginCnt from "../../../components/Client/UserLogin/UserLoginCnt";
+import { useNavigate } from "react-router-dom";
 // context
-import { LoginContext } from "../../../Context/LoginContext";
-import { AuthContext } from "../../../Context/LoginContext";
-import { RegisterContext } from "../../../Context/LoginContext";
+import { LoginContext,RegisterContext,AuthContext } from "../../../Context/LoginContext";
+import { UserContext } from "../../../Context/UserContext";
+
 
 // api
 
 import { signUp, signIn } from "../../../services/Api/Api";
 
 const UserLogin = () => {
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
   
   const [usrMode, setUsrMode] = useState("login");
   const [loginCredentials, setloginCredentials] = useState({
@@ -47,7 +50,12 @@ const UserLogin = () => {
     
     let response = await signIn(loginCredentials);
 
-    console.log(response);
+    setUser(response.user);
+
+    if (response) {
+      
+      navigate("/");
+    }
   };
 
   const handleRegClick = async () => {

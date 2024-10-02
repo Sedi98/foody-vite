@@ -72,9 +72,32 @@ const Button: React.FC<Props> = ({ click, variation, text }: Props) => {
         </button>
       )}
 
-      {variation === "adminLog" && <button className=" text-white font-medium text-2xl  w-full bg-[#c035a2] py-3 rounded" onClick={click}>{text}</button>}
+      {variation === "adminLog" && (
+        <button
+          className=" text-white font-medium text-2xl  w-full bg-[#c035a2] py-3 rounded"
+          onClick={click}
+        >
+          {text}
+        </button>
+      )}
 
-      {variation === "adminAddProduct" && <button className="hidden sm:block bg-[#c035a2] text-white text-sm font-medium px-3 py-3 uppercase rounded-full  shadow-md hover:scale-95 transition-all duration-500 ml-auto " onClick={click}>{text}</button>}
+      {variation === "adminAddProduct" && (
+        <button
+          className="hidden sm:block bg-[#c035a2] text-white text-sm font-medium px-3 py-3 uppercase rounded-full  shadow-md hover:scale-95 transition-all duration-500 ml-auto "
+          onClick={click}
+        >
+          {text}
+        </button>
+      )}
+
+      {variation === "profile" && (
+        <button
+          className=" w-[286px] sm:w-full mt-7 h-[53px] rounded bg-[#6FCF97] text-white font-medium transition-transform transform duration-300 hover:scale-95"
+          onClick={click}
+        >
+          {text}
+        </button>
+      )}
     </>
   );
 };

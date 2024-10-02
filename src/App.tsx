@@ -1,4 +1,5 @@
 import "./App.css";
+import { useContext,useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import CustomCursor from "./components/Shared/Cursor/Cursor";
 // import Navbar from "./components/Shared/Navbar/Navbar";
@@ -10,6 +11,7 @@ import Restaurants from "./pages/Client/Restaurants/Restaurants";
 import RestaurantDetail from "./pages/Client/Restaurants/RestaurantDetail";
 import AdminLogin from "./pages/Admin/Login/AdminLogin";
 import Main from "./pages/Admin/Main/Main";
+import ProfileMain from "./pages/Profile/ProfileMain/ProfileMain";
 //
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -22,12 +24,36 @@ import LoadingIndicator from "./components/Shared/LoadingIndicator/LoadingIndica
 
 import { ROUTER } from "./ROUTER";
 
+
+import { UserContext } from "./Context/UserContext";
+import { checkUser } from "./services/Api/Api";
+
 function App() {
+  const { setUserID, setUser } = useContext(UserContext);
   const { loading } = useGlobalLoading();
-  console.log(loading);
+  
+
+
+
+  useEffect(() => {
+    (async () => {
+      let resp = await checkUser();
+
+      if (!resp) {
+        localStorage.clear();
+        setUserID(null);
+        setUser(null);
+        return false;
+      } else {
+        setUserID(resp);
+      }
+    })();
+  }, []);
   
   return (
     <>
+    
+
       <CustomCursor />
 
       {loading && <LoadingIndicator />}
@@ -43,11 +69,13 @@ function App() {
         <Route path={ROUTER.Restaurants_client} element={<Restaurants />} />
         <Route path={ROUTER.AdminLogin} element={<AdminLogin />} />
         <Route path={ROUTER.AdminHome} element={<Main />} />
+        <Route path={ROUTER.ProfileHome} element={<ProfileMain />} />
         <Route path="/restaurant-detail/:id" element={<RestaurantDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
       {/* <Footer /> */}
+    
     </>
   );
 }

@@ -13,4 +13,6 @@ export const ROUTER ={
     RestaurantDetail: "/restaurant-detail/:id",
     AdminLogin: "/admin-login",
     AdminHome: "/admin/*",
+    NotFound: "*",
+    ProfileHome: "/profile/*",
 }

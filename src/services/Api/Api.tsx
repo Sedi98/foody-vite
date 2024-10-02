@@ -2,7 +2,6 @@ import axios from "axios";
 const link = "https://foody-server-tau.vercel.app";
 import { showErrorToast, showSuccessToast } from "../Utils/ToastUtils";
 import { startLoading, stopLoading } from "../../Context/useGlobalLoading";
-import { useNavigate } from "react-router-dom";
 
 const saveToken = (token: string, type: string) => {
   const encoded = btoa(token);
@@ -42,7 +41,6 @@ export const signUp = async (credentials: object) => {
 export const signIn = async (credentials: any) => {
   try {
     startLoading();
-    
 
     const response = await axios.post(`${link}/api/auth/signin`, credentials, {
       headers: {
@@ -53,17 +51,18 @@ export const signIn = async (credentials: any) => {
     showSuccessToast(response.data.message);
     saveToken(response.data.user.access_token, "access_token");
     saveToken(response.data.user.refresh_token, "refresh_token");
+    localStorage.setItem("userInfo", JSON.stringify(response.data.user));
     stopLoading();
     console.log(response.data);
-    
+
     return await response.data;
   } catch (err: any) {
     console.log(err);
     showErrorToast(err.response.data.error);
     stopLoading();
+    return false;
   }
 };
-
 
 export const checkUser = async () => {
   try {
@@ -75,21 +74,43 @@ export const checkUser = async () => {
     });
     stopLoading();
     localStorage.setItem("user", response.data.user.fullname);
-    return true
+
+    return response.data.user.id;
+  } catch (err: any) {
+    stopLoading();
+    return false;
+  }
+};
+
+
+
+export const updateUser = async ( data: any) => {
+  try {
+    startLoading();
+    console.log(data);
+    
+    const response = await axios.put(`${link}/api/auth/user`, JSON.stringify(data), {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${decodeToken("access_token")}`,
+      },
+    });
+    stopLoading();
+    showSuccessToast('User updated successfully');
+    return await response.data;
   } catch (err: any) {
     console.log(err);
     showErrorToast(err.response.data.error);
     stopLoading();
-    return false;
   }
-}
+};
 
 export const getCategory = async () => {
   try {
     startLoading();
     const response = await axios.get(`${link}/api/category`);
     stopLoading();
-    
+
     return await response.data;
   } catch (err: any) {
     console.log(err);
@@ -115,11 +136,23 @@ export const getRestuarants = async (search?: string, category_id?: string) => {
   }
 };
 
-
-export const getProducts = async ( rest_id?: string,search?: string) => {
+export const getRestaurantById = async (id: string) => {
   try {
     startLoading();
-    
+    const response = await axios.get(`${link}/api/restuarants/${id}`);
+    stopLoading();
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+
+    stopLoading();
+  }
+};
+
+export const getProducts = async (rest_id?: string, search?: string) => {
+  try {
+    startLoading();
+
     const response = await axios.get(
       `${link}/api/products?${search && `search=${search}&`}${
         rest_id && `rest_id=${rest_id}`
@@ -206,9 +239,6 @@ export const postOffer = async (data: any) => {
   }
 };
 
-
-
-
 export const postRestuarant = async (data: any) => {
   try {
     startLoading();
@@ -249,7 +279,6 @@ export const postProduct = async (data: any) => {
   }
 };
 
-
 export const deleteProduct = async (id: string) => {
   try {
     startLoading();
@@ -263,7 +292,6 @@ export const deleteProduct = async (id: string) => {
     stopLoading();
   }
 };
-
 
 export const updateProduct = async (id: string, data: any) => {
   try {
@@ -284,7 +312,6 @@ export const updateProduct = async (id: string, data: any) => {
   }
 };
 
-
 export const updateRestuarant = async (id: string, data: any) => {
   try {
     startLoading();
@@ -304,7 +331,6 @@ export const updateRestuarant = async (id: string, data: any) => {
   }
 };
 
-
 export const deleteRestuarant = async (id: string) => {
   try {
     startLoading();
@@ -318,9 +344,6 @@ export const deleteRestuarant = async (id: string) => {
     stopLoading();
   }
 };
-
-
-
 
 export const deleteCategory = async (id: string) => {
   try {
@@ -355,7 +378,6 @@ export const updateCategory = async (id: string, data: any) => {
   }
 };
 
-
 export const updateOffer = async (id: string, data: any) => {
   try {
     startLoading();
@@ -375,8 +397,6 @@ export const updateOffer = async (id: string, data: any) => {
   }
 };
 
-
-
 export const deleteOffer = async (id: string) => {
   try {
     startLoading();
@@ -391,11 +411,66 @@ export const deleteOffer = async (id: string) => {
   }
 };
 
-
-
 // internal services
 export const logOut = async () => {
   localStorage.removeItem("access_token");
   localStorage.removeItem("refresh_token");
   localStorage.removeItem("color");
-}
+  localStorage.removeItem("userInfo");
+};
+
+// basket
+
+export const getBasket = async (id:string) => {
+  try {
+    startLoading();
+    const response = await axios.get(`${link}/api/basket`, {
+      headers:{
+        'Authorization':`Bearer ${id}`
+      }
+    });
+    stopLoading();
+    return await response.data;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
+
+export const addBasket = async (id:string,data:any) => {
+  try {
+    console.log(id);
+    
+    startLoading();
+    const response = await axios.post(`${link}/api/basket/add`, data, {
+      headers:{
+        'Authorization':`Bearer ${id}`
+      }
+    });
+    stopLoading();
+    console.log(response.data);
+    
+    return await response.data;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
+
+export const deleteBasket = async (id:string) => {
+  try {
+    startLoading();
+    const response = await axios.delete(`${link}/api/basket/${id}`, {
+      headers:{
+        'Authorization':`Bearer ${id}`
+      }
+    });
+    stopLoading();
+    return await response.data;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
