@@ -82,21 +82,23 @@ export const checkUser = async () => {
   }
 };
 
-
-
-export const updateUser = async ( data: any) => {
+export const updateUser = async (data: any) => {
   try {
     startLoading();
     console.log(data);
-    
-    const response = await axios.put(`${link}/api/auth/user`, JSON.stringify(data), {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${decodeToken("access_token")}`,
-      },
-    });
+
+    const response = await axios.put(
+      `${link}/api/auth/user`,
+      JSON.stringify(data),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${decodeToken("access_token")}`,
+        },
+      }
+    );
     stopLoading();
-    showSuccessToast('User updated successfully');
+    showSuccessToast("User updated successfully");
     return await response.data;
   } catch (err: any) {
     console.log(err);
@@ -342,6 +344,8 @@ export const deleteRestuarant = async (id: string) => {
     console.log(err);
     showErrorToast("Something went wrong when deleting restuarant");
     stopLoading();
+  } finally {
+    stopLoading();
   }
 };
 
@@ -355,6 +359,8 @@ export const deleteCategory = async (id: string) => {
   } catch (err: any) {
     console.log(err);
     showErrorToast("Something went wrong when deleting category");
+    stopLoading();
+  } finally {
     stopLoading();
   }
 };
@@ -375,6 +381,8 @@ export const updateCategory = async (id: string, data: any) => {
     console.log(err);
     showErrorToast("Something went wrong when updating category");
     stopLoading();
+  } finally {
+    stopLoading();
   }
 };
 
@@ -394,6 +402,8 @@ export const updateOffer = async (id: string, data: any) => {
     console.log(err);
     showErrorToast("Something went wrong when updating offer");
     stopLoading();
+  } finally {
+    stopLoading();
   }
 };
 
@@ -408,6 +418,8 @@ export const deleteOffer = async (id: string) => {
     console.log(err);
     showErrorToast("Something went wrong when deleting offer");
     stopLoading();
+  } finally {
+    stopLoading();
   }
 };
 
@@ -421,99 +433,139 @@ export const logOut = async () => {
 
 // basket
 
-export const getBasket = async (id:string) => {
+export const getBasket = async (id: string) => {
   try {
     startLoading();
     const response = await axios.get(`${link}/api/basket`, {
-      headers:{
-        'Authorization':`Bearer ${id}`
-      }
+      headers: {
+        Authorization: `Bearer ${id}`,
+      },
     });
     stopLoading();
     return await response.data;
   } catch (err) {
     console.log(err);
     return [];
+  } finally {
+    stopLoading();
   }
 };
 
-
-export const addBasket = async (id:string,data:any) => {
+export const addBasket = async (id: string, data: any) => {
   try {
     console.log(id);
-    
+
     startLoading();
     const response = await axios.post(`${link}/api/basket/add`, data, {
-      headers:{
-        'Authorization':`Bearer ${id}`
-      }
+      headers: {
+        Authorization: `Bearer ${id}`,
+      },
     });
     stopLoading();
-    
-    
+
     return await response.data;
   } catch (err) {
     console.log(err);
     return [];
+  } finally {
+    stopLoading();
   }
 };
 
-
-export const deleteBasket = async (id:string,data:any) => {
+export const deleteBasket = async (id: string, data: any) => {
   try {
     startLoading();
     const response = await axios.delete(`${link}/api/basket/delete`, {
-      headers:{
-        'Authorization':`Bearer ${id}`
+      headers: {
+        Authorization: `Bearer ${id}`,
       },
-      data
+      data,
     });
     stopLoading();
     return await response.data;
   } catch (err) {
     console.log(err);
     return [];
+  } finally {
+    stopLoading();
   }
 };
 
-
-export const removeFromBasket = async (id:string,data:any) => {
+export const removeFromBasket = async (id: string, data: any) => {
   try {
     startLoading();
     const response = await axios.delete(`${link}/api/basket/remove`, {
-      headers:{
-        'Authorization':`Bearer ${id}`
+      headers: {
+        Authorization: `Bearer ${id}`,
       },
-      data
+      data,
     });
     stopLoading();
     return await response.data;
   } catch (err) {
     console.log(err);
     return [];
+  } finally {
+    stopLoading();
   }
 };
 
-
-export const clearBasket = async (id:string,data:any) => {
+export const clearBasket = async (id: string, data: any) => {
   try {
     startLoading();
     const response = await axios.delete(`${link}/api/basket/clear`, {
-      headers:{
-        'Authorization':`Bearer ${id}`
+      headers: {
+        Authorization: `Bearer ${id}`,
       },
-      data
+      data,
     });
     stopLoading();
     return await response.data;
   } catch (err) {
     console.log(err);
     return [];
+  } finally {
+    stopLoading();
   }
 };
 
+export const postUserOrder = async (data: any) => {
+  try {
+    startLoading();
+    const response = await axios.post(`${link}/api/order`, data, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${decodeToken("access_token")}`,
+      },
+    });
+    stopLoading();
+    showSuccessToast("Order created successfully");
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast(err.response.data.error);
+    stopLoading();
+  } finally {
+    stopLoading();
+  }
+};
 
-
-
-
-
+export const getUserOrders = async () => {
+  try {
+    startLoading();
+    const response = await axios.get(`${link}/api/order/user`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${decodeToken("access_token")}`,
+      },
+    });
+    stopLoading();
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast(err.response.data.error);
+    stopLoading();
+  } finally {
+    stopLoading();
+  }
+};

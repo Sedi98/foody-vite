@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import basket from "../../../assets/icons/client/basket.svg";
 import basket_red from "../../../assets/icons/profile/basket_red.svg";
 import emptyBasket from "../../../assets/icons/client/emptyBasket.svg";
@@ -21,14 +22,9 @@ const Basket: React.FC<Props> = ({ type }) => {
 
   React.useEffect(() => {
     (async () => {
-     
-
       if (user.id) {
         const resp = await getBasket(user.id);
-        
         setData(resp.result.data);
-        
-        
         setPrdList(resp.result.data.items);
         setCount(resp.result.data.total_count)
         return true;
@@ -77,14 +73,11 @@ const Basket: React.FC<Props> = ({ type }) => {
     }
 
     await clearBasket(user.id,obj)
-
     setTrigger(true)
 
-
-  
   }
 
-
+const navigate = useNavigate();
   return (
     <div
       className={`flex flex-col bg-[#f3f4f6] p-4 w-full ${
@@ -124,7 +117,7 @@ const Basket: React.FC<Props> = ({ type }) => {
 
       <div className={`flex rounded-full items-center justify-between p-2 ${prdList.length > 0 ? "bg-red-600" : "bg-neutral-300"}  mt-4`}>
         <p className={`text-white text-lg font-medium ml-4`}>Checkout</p>
-        <button className={`${prdList.length>0?"text-red-500":"text-white"} bg-white font-medium py-1 px-10 rounded-full shadow-md hover:scale-95 transition-all duration-500`}>
+        <button onClick={() => navigate("/profile/checkout")} className={`${prdList.length>0?"text-red-500":"text-white"} bg-white font-medium py-1 px-10 rounded-full shadow-md hover:scale-95 transition-all duration-500`}>
           {data.total_amount} &#x20BC;
         </button>
       </div>

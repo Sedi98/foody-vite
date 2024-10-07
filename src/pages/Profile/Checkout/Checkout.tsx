@@ -5,7 +5,7 @@ import radioChecked from "../../../assets/icons/profile/radio_checked.svg";
 import radio from "../../../assets/icons/profile/radio.svg";
 import { UserContext } from "../../../Context/UserContext";
 import OrderItem from "../../../components/Profile/Order/OrderItem";
-import { getBasket } from "../../../services/Api/Api";
+import { getBasket, postUserOrder } from "../../../services/Api/Api";
 import { showErrorToast } from "../../../services/Utils/ToastUtils";
 
 type Props = {
@@ -26,6 +26,7 @@ const Checkout: React.FC = () => {
   const { user } = React.useContext(UserContext);
   const [result, setResult] = React.useState<any>([]);
   const [list, setList] = React.useState<any>([]);
+  const [resetBasket, setResetBasket] = React.useState<boolean>(false);
   const [inputVal, setInputVal] = React.useState<Props>({
     delivery_address: "",
     contact: "",
@@ -34,21 +35,27 @@ const Checkout: React.FC = () => {
   });
 
   React.useEffect(() => {
+    if (resetBasket) {
+      setResetBasket(false);
+    }
     (async () => {
       let resp = await getBasket(user.id);
-      console.log(resp);
 
       setResult(resp.result.data);
       setList(resp.result.data.items);
+
+      setInputVal({
+        ...inputVal,
+        basket_id: resp.result.data.id ? resp.result.data.id : "",
+      });
     })();
-  }, []);
+  }, [resetBasket]);
 
-  const handleSubmit = () => {
-
+  const handleSubmit = async () => {
     setInputVal({
       ...inputVal,
       basket_id: result.id,
-    })
+    });
     if (inputVal.delivery_address === "") {
       showErrorToast("Delivery address is required");
       return;
@@ -72,7 +79,23 @@ const Checkout: React.FC = () => {
     dataObj.payment_method = inputVal.payment_method;
     dataObj.basket_id = inputVal.basket_id;
 
-    console.log(dataObj);
+    if (!/^\+994\d{9}$/.test(inputVal.contact)) {
+      showErrorToast(
+        "Phone number is not valid. It must start with +994 and be 13 characters long."
+      );
+      return false;
+    }
+    await postUserOrder(dataObj);
+
+    setInputVal({
+      delivery_address: "",
+      contact: "",
+      payment_method: 0,
+      basket_id: "",
+    });
+    setResetBasket(true);
+    
+    
   };
 
   return (
@@ -137,7 +160,7 @@ const Checkout: React.FC = () => {
         </div>
 
         <div className="w-full sm:w-[40%] flex flex-col  px-3 sm:px-8 py-5 flex-wrap gap-0 sm:bg-[#f3f4f6] rounded-md">
-          <p className="w-full text-center text-neutral-500 font-medium text-xl">
+          <p className="w-full text-center text-neutral-500 font-medium text-xl mb-4">
             Orders
           </p>
 
