@@ -83,8 +83,8 @@ const Restaurants = () => {
     setIsModalOpen(false);
   };
 
-  const handleDelete = (): void => {
-    deleteRestuarant(selectedItem);
+  const handleDelete = async() => {
+   await deleteRestuarant(selectedItem);
     setIsModalOpen(false);
     setSelectedItem("");
     setIsDeleted(true);

@@ -18,7 +18,7 @@ const AddCategory = ({data}:any) => {
     img_url: string;
   };
 
-  console.log(data);
+  
   
 
   const [inputValue, setInputValue] = useState<Option>({

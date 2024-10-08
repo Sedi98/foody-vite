@@ -100,8 +100,8 @@ const Products = () => {
     setIsModalOpen(false);
   };
 
-  const handleDelete = (): void => {
-    deleteProduct(selectedItem);
+  const handleDelete = async() => {
+    await deleteProduct(selectedItem);
     setIsModalOpen(false);
     setSelectedItem('');
     setIsDeleted(true);

@@ -590,3 +590,23 @@ export const deleteOrder = async (data: any) => {
     stopLoading();
   }
 };
+
+export const getAllOrders = async () => {
+  try {
+    startLoading();
+    const response = await axios.get(`${link}/api/order`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${decodeToken("access_token")}`,
+      },
+    });
+    stopLoading();
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    showErrorToast(err.response.data.error);
+    stopLoading();
+  } finally {
+    stopLoading();
+  }
+}

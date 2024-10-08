@@ -36,8 +36,8 @@ const Offers = () => {
     setIsModalOpen(false);
   };
 
-  const handleDelete = (): void => {
-    deleteOffer(selectedItem);
+  const handleDelete = async () => {
+    await deleteOffer(selectedItem);
     setIsModalOpen(false);
     setSelectedItem("");
     setIsDeleted(true);

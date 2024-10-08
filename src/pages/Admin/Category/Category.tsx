@@ -50,8 +50,8 @@ const Category = () => {
     setIsModalOpen(false);
   };
 
-  const handleDelete = (): void => {
-    deleteCategory(selectedItem);
+  const handleDelete = async() => {
+    await deleteCategory(selectedItem);
     setIsModalOpen(false);
     setSelectedItem("");
     setIsDeleted(true);
