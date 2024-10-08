@@ -29,7 +29,7 @@ const Checkout: React.FC = () => {
   const [result, setResult] = React.useState<any>([]);
   const [list, setList] = React.useState<any>([]);
   const [resetBasket, setResetBasket] = React.useState<boolean>(false);
-  const [showSuccess, setShowSuccess] = React.useState<boolean>(true);
+  const [showSuccess, setShowSuccess] = React.useState<boolean>(false);
   const [inputVal, setInputVal] = React.useState<Props>({
     delivery_address: "",
     contact: "",
