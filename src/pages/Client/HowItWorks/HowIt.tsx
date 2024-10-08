@@ -17,10 +17,7 @@ const HowIt = () => {
     <>
 
     <HelmetLib title={t('howItTitle')} />
-    <div className='mx-5 my-5'>
-
-    <Navbar />
-    </div>
+    <div className='mx-0 my-0  lg:mx-5 lg:my-5'><Navbar /></div>
 
     <div style={{textAlign:'center'}} className='flex flex-col px-10 py-10 items-center my-5 mx-5 text-center '>
         <FlexTextContainer title={t('howItTitle')} text={t('howItText')} />

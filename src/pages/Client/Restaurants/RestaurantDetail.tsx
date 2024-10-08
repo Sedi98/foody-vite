@@ -110,8 +110,8 @@ const RestaurantDetail = () => {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between gap-5 mt-8 h-[65vh]">
-          <div className=" bg-[#f3f4f6] w-full sm:w-3/5 overflow-y-auto">
+        <div className="flex flex-col md:flex-row justify-between gap-5 mt-8 h-[65vh]">
+          <div className=" bg-[#f3f4f6] w-full md:w-3/5 overflow-y-auto min-h-full">
             <p className="text-center text-3xl text-neutral-800 font-semibold my-8">
               {t("rstPrdListTitle")}
             </p>

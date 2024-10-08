@@ -39,7 +39,7 @@ const BasketItem:React.FC<Props> = ({data,minusFunc,plusFunc,removeFunc}) => {
       </div>
 
 
-      <span className="absolute top-0 right-0 sm:right-0 sm:top-2 w-8" onClick={removeFunc}>
+      <span className="absolute top-0 right-0 left-0 md:right-0 sm:top-2 w-8" onClick={removeFunc}>
         <img src={basketTrash} alt="icon" />
       </span>
     </div>

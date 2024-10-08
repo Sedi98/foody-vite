@@ -15,9 +15,7 @@ const About = () => {
   return (
     <>
       <HelmetLib title={t("aboutTitle")} />
-      <div className="mx-5 my-5">
-        <Navbar />
-      </div>
+      <div className='mx-0 my-0  lg:mx-5 lg:my-5'><Navbar /></div>
       <section className="h-[100vh] flex flex-col lg:flex-row mx-5 my-5 py-5 px-5 text-center lg:text-left">
         <FlexTextContainer
           title={t("aboutTitle")}
