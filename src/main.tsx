@@ -3,6 +3,7 @@ import App from "./App.tsx";
 import "./main.css";
 import { UserContextProvider } from "./Context/UserContext.tsx";
 import { BasketProvider } from "./Context/BasketContext.tsx";
+import './i18n'
 
 import { BrowserRouter } from "react-router-dom";
 
