@@ -6,8 +6,9 @@ import { getRestaurantById, getProducts } from "../../../services/Api/Api";
 import Basket from "../../../components/Shared/Basket/Basket";
 import { UserContext } from "../../../Context/UserContext";
 import { basketContext } from "../../../Context/BasketContext";
-import { addBasket } from "../../../services/Api/Api";
+import { addBasket,checkUser } from "../../../services/Api/Api";
 import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
+import { showErrorToast } from "../../../services/Utils/ToastUtils";
 
 
 import RestaurantListItem from "../../../components/Client/Restaurants/RestaurantListItem";
@@ -23,6 +24,22 @@ const {setTrigger} = React.useContext(basketContext)
 
   const [details, setDetails] = React.useState<any>({});
   const [products, setProducts] = React.useState<any>([]);
+
+
+  React.useEffect(() => {
+    (async () => {
+      let resp = await checkUser();
+      console.log(resp);
+
+      if (!resp) {
+        localStorage.clear();
+        navigate("/login");
+        showErrorToast("Please login first");
+        return false;
+      } else {
+      }
+    })();
+  }, []);
 
   React.useEffect(() => {
     (async () => {
@@ -62,6 +79,7 @@ const {setTrigger} = React.useContext(basketContext)
             src={details.img_url}
             alt="detail"
             loading="lazy"
+            
           />
         </div>
         <div className="aboutCnt flex flex-col sm:flex-row justify-between items-start sm:items-center">

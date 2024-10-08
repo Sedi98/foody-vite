@@ -1,5 +1,5 @@
 import React from "react";
-import menuIcon from '../../../assets/icons/profile/order_menu.svg'
+import menuIcon from "../../../assets/icons/profile/order_menu.svg";
 
 type Props = {
   id: string;
@@ -8,6 +8,8 @@ type Props = {
   amount: number;
   paymentMethod: number;
   contact: string;
+  onDelete: () => void;
+  onShow: () => void;
 };
 
 const OrderTr: React.FC<Props> = ({
@@ -17,6 +19,8 @@ const OrderTr: React.FC<Props> = ({
   amount,
   paymentMethod,
   contact,
+  onDelete,
+  onShow
 }) => {
   function timeSince(timestamp: number) {
     const currentTimestamp = Date.now(); // Get current time in milliseconds
@@ -32,27 +36,55 @@ const OrderTr: React.FC<Props> = ({
       return `${days} day${days > 1 ? "s" : ""} ago`;
     }
 
+    if (hours >= 1) {
+      return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+    }
     // If less than one day, return the number of hours
-    return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+    return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
   }
 
+  const [showMenu, setShowMenu] = React.useState<boolean>(false);
+
+  const handleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
-    <tr className="border-b border-gray-200">
-      <td className=" py-2 px-4 w-24">
-        {" "}
-        <span className="border-[1px] border-gray-500 rounded-lg px-2 py-2 max-w-10 w-10 overflow-hidden text-ellipsis ">
-          {id}
-        </span>{" "}
-      </td>
-      <td className="text-center py-2 px-4">{timeSince(time)}</td>
-      <td className="text-center py-2 px-4">{deliveryAddress}</td>
-      <td className="text-center py-2 px-4">{amount} &#8380;</td>
-      <td className="text-center py-2 px-4">
-        {paymentMethod == 0 ? "Cash" : "Card"}
-      </td>
-      <td className="text-center py-2 px-4">{contact}</td>
-      <td className="w-10"><img src={menuIcon} alt="icon" /></td>
-    </tr>
+    <>
+      <tr className="border-b border-gray-200">
+        <td className=" py-2 px-4 flex justify-center items-center">
+          {" "}
+          <span className="border-[1px] border-gray-500 rounded-lg px-2 py-2 max-w-32 w-32 overflow-hidden text-ellipsis text-sm">
+            {id}
+          </span>{" "}
+        </td>
+        <td className="text-center py-2 px-4">{timeSince(time)}</td>
+        <td className="text-center py-2 px-4">{deliveryAddress}</td>
+        <td className="text-center py-2 px-4">{amount} &#8380;</td>
+        <td className="text-center py-2 px-4">
+          {paymentMethod === 0 ? "Cash" : "Card"}
+        </td>
+        <td className="text-center py-2 px-4">{contact}</td>
+        <td
+          onClick={handleMenu}
+          className="text-center py-2 px-4 relative "
+        >
+          <img src={menuIcon} alt="icon" className="min-w-[5px] w-[5px]" />
+
+          <div
+            onMouseLeave={() => setShowMenu(false)}
+            className={`absolute top-10 -left-10 shadow-md text-left  bg-white px-4 py-2 z-20 ${
+              showMenu ? "" : "hidden"
+            }`}
+          >
+            <p onClick={onShow} className="text-green-500">Show</p>
+            <p onClick={onDelete} className="text-red-700">
+              Delete
+            </p>
+          </div>
+        </td>
+      </tr>
+    </>
   );
 };
 

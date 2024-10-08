@@ -1,24 +1,59 @@
 import React from "react";
-import { getUserOrders } from "../../../services/Api/Api";
+import { getUserOrders, deleteOrder } from "../../../services/Api/Api";
 import OrderTr from "../../../components/Profile/Order/OrderTr";
+import DeleteModal from "../../../components/Shared/Modal/Modal";
+import OrderDetailsModal from "../../../components/Profile/Order/OrderDetailsModal";
+import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
 const Orders: React.FC = () => {
   const [orders, setOrders] = React.useState<any>([]);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [selectedItem, setSelectedItem] = React.useState("");
+  const [refresher, setRefresher] = React.useState(false);
+  const [detailModalOpen, setDetailModalOpen] = React.useState(false);
+  const [productList, setProductList] = React.useState<any[]>([]);
 
   React.useEffect(() => {
+    if (refresher) {
+      setRefresher(false);
+    }
     (async () => {
       let resp = await getUserOrders();
       console.log(resp.result.data);
       setOrders(resp.result.data);
     })();
-  }, []);
+  }, [refresher]);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedItem("");
+  };
+
+  const closeDetailModal = () => {
+    setDetailModalOpen(false);
+    setProductList([]);
+  };
+
+  const handleDelete = async () => {
+    console.log(selectedItem);
+    const orderObj = {
+      order_id: selectedItem,
+    };
+
+    let resp = await deleteOrder(orderObj);
+    console.log(resp);
+    setIsModalOpen(false);
+    setRefresher(true);
+  };
 
   return (
-    <div className="w-full bg-[#f3f4f6] rounded-md p-4">
-      <h2 className="font-semibold text-3xl text-neutral-700">Orders</h2>
+    <>
+    <HelmetLib title="Orders" />
+    <div className="w-full bg-[#f3f4f6] rounded-md p-4 h-screen">
+      <h2 className="font-semibold text-3xl text-neutral-700 pb-2">Orders</h2>
 
-      <div className="max-w-full overflow-x-auto">
-        <table className="min-w-full bg-white ">
+      <div className="max-w-full overflow-x-auto h-full">
+        <table className="min-w-full bg-white  ">
           <thead className="h-16 border-b border-slate-700">
             <tr>
               <th className="max-w-32">ID</th>
@@ -31,7 +66,7 @@ const Orders: React.FC = () => {
             </tr>
           </thead>
 
-          <tbody className="h-full overflow-auto">
+          <tbody className="overflow-auto h-full align-top">
             {orders.map((item: any, index: number) => {
               return (
                 <OrderTr
@@ -40,15 +75,39 @@ const Orders: React.FC = () => {
                   time={item.created}
                   deliveryAddress={item.delivery_address}
                   amount={item.amount}
-                  paymentMethod={item.paymentMethod}
+                  paymentMethod={item.payment_method}
                   contact={item.contact}
+                  onDelete={() => {
+                    setSelectedItem(item.id);
+                    setIsModalOpen(true);
+                  }}
+                  onShow={() => {
+                    setDetailModalOpen(true);
+                    setProductList(item.products);
+                  }}
                 />
               );
             })}
           </tbody>
         </table>
+        <DeleteModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          onDelete={handleDelete}
+        />
+
+        <OrderDetailsModal
+          isOpen={detailModalOpen}
+          onClose={closeDetailModal}
+          orders={productList}
+        />
       </div>
     </div>
+    
+    
+    
+    </>
+    
   );
 };
 

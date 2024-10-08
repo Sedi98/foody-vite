@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
             variation="hero"
           />
           <Paragraph
-            text="Welcome to our vibrant food site, a digital haven for culinary enthusiasts seeking a delightful gastronomic experience. Within these virtual pages."
+            text="At Foody, we make ordering from your favorite local restaurants easy and convenient. Whether you're craving a quick bite or planning a feast, our platform connects you with a wide range of delicious options. Explore, choose, and enjoy—all from the comfort of your home."
             variation="hero"
           />
 

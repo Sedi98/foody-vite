@@ -1,34 +1,30 @@
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import AdminHeader from "../../../components/Admin/Shared/AdminHeader";
 import OfferItem from "../../../components/Admin/Offers/OfferItem/OfferItem";
-import { getOffers,deleteOffer } from "../../../services/Api/Api";
+import { getOffers, deleteOffer } from "../../../services/Api/Api";
 import { ProductContext } from "../../../Context/ProductContext";
 
 import DeleteModal from "../../../components/Shared/Modal/Modal";
 import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
-
 const Offers = () => {
-  const { value, setValue, setVariation, setActiveData } = useContext(ProductContext);
+  const { value, setValue, setVariation, setActiveData } =
+    useContext(ProductContext);
   const [offers, setOffers] = useState<any[]>([]);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<string>("");
   const [isDeleted, setIsDeleted] = useState<boolean>(false);
 
-
   useEffect(() => {
     getOffersData();
   }, [isDeleted, !value]);
-
-
 
   const handleEdit = (item: any) => {
     setActiveData(item);
     setValue();
     setVariation("offer");
   };
-
 
   const openModal = (id: string): void => {
     setSelectedItem(id);
@@ -40,7 +36,7 @@ const Offers = () => {
   };
 
   const handleDelete = (): void => {
-     deleteOffer(selectedItem);
+    deleteOffer(selectedItem);
     setIsModalOpen(false);
     setSelectedItem("");
     setIsDeleted(true);
@@ -50,8 +46,7 @@ const Offers = () => {
     const response = await getOffers();
     console.log(response.result.data);
     setOffers(response.result.data);
-    
-  }
+  };
   return (
     <div>
       <HelmetLib title="Admin-Offers" />
@@ -69,22 +64,33 @@ const Offers = () => {
             </tr>
           </thead>
           <tbody className="">
-
             {/* <OfferItem /> */}
             {offers.map((data) => {
-              return <OfferItem key={data.id} offerID={data.id} img={data.img_url} name={data.name} desc={data.description} editFunc={() => {handleEdit(data)}} deleteFunc={() => {openModal(data.id)}}/>
+              return (
+                <OfferItem
+                  key={data.id}
+                  offerID={data.id}
+                  img={data.img_url}
+                  name={data.name}
+                  desc={data.description}
+                  editFunc={() => {
+                    handleEdit(data);
+                  }}
+                  deleteFunc={() => {
+                    openModal(data.id);
+                  }}
+                />
+              );
             })}
-
-
           </tbody>
         </table>
       </main>
 
       <DeleteModal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          onDelete={handleDelete}
-        />
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onDelete={handleDelete}
+      />
     </div>
   );
 };

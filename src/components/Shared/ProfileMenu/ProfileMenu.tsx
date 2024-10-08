@@ -10,7 +10,7 @@ const ProfileMenu: React.FC = () => {
     window.location.reload();
   };
   return (
-    <ul className="absolute top-14 right-0 w-[160px] bg-white z-50 hidden sm:flex flex-col gap-1 p-4 shadow-xl rounded-md">
+    <ul className="absolute top-14 right-0 w-[160px] bg-white z-50 flex flex-col gap-1 p-4 shadow-xl rounded-md">
       <MenuItem click={() => navigate("/profile/")} text="Profile" />
       <MenuItem click={() => navigate("/profile/basket")} text="Your Basket" />
       <MenuItem click={() => navigate("/profile/orders")} text="Your Orders" />

@@ -26,7 +26,7 @@ const RestaurantCard: React.FC<Props> = ({id, name, desc,image, del_prc, del_tim
         alt="restaurant"
         className="w-[300px] h-40 object-cover mx-auto"
         loading="lazy"
-        decoding="async"
+        
       />
       
         <Title text={name} variation="restaurants" />

@@ -117,7 +117,7 @@ const navigate = useNavigate();
 
       <div className={`flex rounded-full items-center justify-between p-2 ${prdList.length > 0 ? "bg-red-600" : "bg-neutral-300"}  mt-4`}>
         <p className={`text-white text-lg font-medium ml-4`}>Checkout</p>
-        <button onClick={() => navigate("/profile/checkout")} className={`${prdList.length>0?"text-red-500":"text-white"} bg-white font-medium py-1 px-10 rounded-full shadow-md hover:scale-95 transition-all duration-500`}>
+        <button onClick={() => data.total_count > 0 && navigate("/profile/checkout")} className={`${prdList.length>0?"text-red-500":"text-black"} bg-white font-medium py-1 px-10 rounded-full shadow-md hover:scale-95 transition-all duration-500`}>
           {data.total_amount} &#x20BC;
         </button>
       </div>

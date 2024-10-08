@@ -5,6 +5,7 @@ import Button from "../../../components/Shared/Button/Button";
 import { postUpload, updateUser } from "../../../services/Api/Api";
 import { UserContext } from "../../../Context/UserContext";
 import { showErrorToast } from "../../../services/Utils/ToastUtils";
+import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
 type UserProps = {
   phone: string;
@@ -89,6 +90,11 @@ const User = () => {
   };
 
   return (
+
+    <>
+
+    <HelmetLib title="Profile" />
+    
     <div className="w-full bg-[#f3f4f6] rounded-md p-6">
       <h2 className=" font-semibold text-3xl text-neutral-600  tracking-wide">Profile</h2>
       <div className=" w-full flex  justify-center ">
@@ -164,6 +170,9 @@ const User = () => {
         <Button click={handleSubmit} text="Save" variation="profile" />
       </div>
     </div>
+    
+    </>
+    
   );
 };
 

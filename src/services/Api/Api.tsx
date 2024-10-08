@@ -569,3 +569,24 @@ export const getUserOrders = async () => {
     stopLoading();
   }
 };
+
+export const deleteOrder = async (data: any) => {
+  try {
+    startLoading();
+    const response = await axios.delete(`${link}/api/order`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${decodeToken("access_token")}`,
+      },
+      data,
+    });
+    stopLoading();
+    return await response.data;
+  } catch (err: any) {
+    console.log(err);
+    // showErrorToast(err.response.data.error);
+    stopLoading();
+  } finally {
+    stopLoading();
+  }
+};
