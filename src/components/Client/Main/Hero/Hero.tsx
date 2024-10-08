@@ -5,6 +5,9 @@ import heroImg from "../../../../assets/img/hero_img.svg";
 import Button from "../../../Shared/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import heroOne from '../../../../assets/img/hero_card_one.svg'
+import heroTwo from '../../../../assets/img/hero_card_two.svg'
+import heroThree from '../../../../assets/img/hero_card_three.svg'
 
 import Navbar from "../../../Shared/Navbar/Navbar";
 
@@ -42,8 +45,11 @@ const Hero: React.FC = () => {
             />
           </div>
         </div>
-        <div className="right w-full sm:w-1/2 bg-black rounded-[85px] flex justify-center items-center">
+        <div className="right w-full sm:w-1/2 bg-black rounded-[85px] flex justify-center items-center relative" >
           <img src={heroImg} alt="foody" />
+          <img src={heroOne} className="hidden lg:block absolute top-0 right-0 animate-bounce duration-1000" alt="card" />
+          <img src={heroTwo} className="hidden lg:block absolute bottom-0 -right-10 animate-bounce" alt="card" />
+          <img src={heroThree} className="hidden lg:block absolute bottom-[50%] -left-10 animate-bounce " alt="card" />
         </div>
       </div>
     </div>

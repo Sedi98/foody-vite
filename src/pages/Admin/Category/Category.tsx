@@ -5,8 +5,10 @@ import DeleteModal from "../../../components/Shared/Modal/Modal";
 import { getCategory, deleteCategory } from "../../../services/Api/Api";
 import { ProductContext } from "../../../Context/ProductContext";
 import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
+import { useTranslation } from "react-i18next";
 
 const Category = () => {
+  const { t } = useTranslation();
   const { setValue, setVariation, setActiveData, value } =
     useContext(ProductContext);
   const [categories, setCategories] = useState<any[]>([]);
@@ -58,7 +60,7 @@ const Category = () => {
   return (
     <div>
       <HelmetLib title="Admin-Category" />
-      <AdminHeader variant="Category" text="Category" />
+      <AdminHeader variant="Category" text={t("adminSidebarCategory")} />
 
       <div className="h-[calc(100vh-210px)] overflow-auto mt-5">
         <table className="w-[100%] bg-white rounded-lg">

@@ -4,7 +4,7 @@ import AdminProductCard from "../../../components/Admin/Products/ProductCard/Adm
 import { getProducts, getRestuarants,deleteProduct } from "../../../services/Api/Api";
 import { RestaurantContext } from "../../../Context/RestaurantContext";
 import DeleteModal from "../../../components/Shared/Modal/Modal";
-
+import { useTranslation } from "react-i18next";
 import { ProductContext } from "../../../Context/ProductContext";
 import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
@@ -27,6 +27,7 @@ type itemProps = {
 };
 
 const Products = () => {
+  const { t } = useTranslation();
   const { setValue,setActiveData, setVariation,value } = React.useContext(ProductContext);
   const [products, setProducts] = React.useState([]);
   const [restaurants, setRestaurants] = React.useState([]);
@@ -112,7 +113,7 @@ const Products = () => {
     >
       <div className="h-full">
         <HelmetLib title="Admin-Products" />
-        <AdminHeader variant="Products" text="Products" />
+        <AdminHeader variant="Products" text={t("adminSidebarProducts")} />
         <main className="grid grid-cols-1 content-start gap-4 md:grid-cols-3 lg:grid-cols-5 mt-5 overflow-auto  h-[calc(100vh-210px)]">
           {products?.map((item: itemProps, index: number) => {
             return (
