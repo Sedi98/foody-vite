@@ -3,10 +3,12 @@ import twitter from "../../../assets/img/twitter.svg";
 import facebook from "../../../assets/img/fb.svg";
 import pizza from "../../../assets/img/pizza.svg";
 import potato from "../../../assets/img/potato.svg";
+import { useTranslation } from "react-i18next";
 
 import { useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const location= useLocation()
   return (
     <>
@@ -25,10 +27,10 @@ const Footer = () => {
           <div className="flex flex-col items-center gap-5">
             <p className=" font-medium text-xl sm:text-4xl w-9/12 text-center leading-tight">
               {" "}
-              Discover Restaurants Near From you
+              {t("footerCardTitle")}
             </p>
             <button className=" bg-orange-500 px-12 py-4 font-medium text-md rounded-full hover:scale-95 transition-all duration-500">
-              Get Started
+             {t("footerCardBtnText")}
             </button>
           </div>
           <img

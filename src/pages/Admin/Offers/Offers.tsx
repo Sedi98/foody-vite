@@ -3,11 +3,12 @@ import AdminHeader from "../../../components/Admin/Shared/AdminHeader";
 import OfferItem from "../../../components/Admin/Offers/OfferItem/OfferItem";
 import { getOffers, deleteOffer } from "../../../services/Api/Api";
 import { ProductContext } from "../../../Context/ProductContext";
-
+import { useTranslation } from "react-i18next";
 import DeleteModal from "../../../components/Shared/Modal/Modal";
 import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 
 const Offers = () => {
+  const { t } = useTranslation();
   const { value, setValue, setVariation, setActiveData } =
     useContext(ProductContext);
   const [offers, setOffers] = useState<any[]>([]);
@@ -50,16 +51,16 @@ const Offers = () => {
   return (
     <div>
       <HelmetLib title="Admin-Offers" />
-      <AdminHeader text="Offers" />
+      <AdminHeader variant="Offers" text={t("adminSidebarOffers")} />
 
       <main className="h-[calc(100vh-210px)] overflow-auto mt-5">
         <table className=" w-full bg-white ">
           <thead className="h-16  text-center text-sm not-italic font-semibold leading-6">
             <tr>
-              <td>ID</td>
-              <td>Image</td>
-              <td>Title</td>
-              <td>Description</td>
+              <td>{t("adminOfferTableThId")}</td>
+              <td>{t("adminOfferTableThImage")}</td>
+              <td>{t("adminOfferTableThTitle")}</td>
+              <td>{t("adminOfferTableThDescription")}</td>
               <td>#</td>
             </tr>
           </thead>

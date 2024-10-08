@@ -5,9 +5,10 @@ import { RestaurantContext } from "../../../Context/RestaurantContext";
 
 type Props = {
   text: string;
+  variant: string;
 };
 
-const AdminHeader: React.FC<Props> = ({ text }) => {
+const AdminHeader: React.FC<Props> = ({ text,variant }) => {
   const { setValue,setVariation,setActiveData} = useContext(ProductContext);
   const { options, setOption } = useContext(RestaurantContext);
   const [select, setSelect] = useState<string>("");
@@ -31,7 +32,7 @@ const AdminHeader: React.FC<Props> = ({ text }) => {
         {text}
       </p>
 
-      {text === "Restaurants" && (
+      {variant === "Restaurants" && (
         <Select
           placeholder="Category"
           variation="adminHeader"
@@ -40,7 +41,7 @@ const AdminHeader: React.FC<Props> = ({ text }) => {
           changeFunc={handleSelection}
         />
       )}
-      {text === "Products" && (
+      {variant === "Products" && (
         <Select
           placeholder="Restaurant"
           variation="adminHeader"
@@ -50,7 +51,7 @@ const AdminHeader: React.FC<Props> = ({ text }) => {
         />
       )}
 
-      {text === "Category" && (
+      {variant === "Category" && (
         <button
           className="bg-[#c035a2] py-2 px-8 text-white font-bold text-sm rounded-[14px] uppercase"
           onClick={() => handleClick('category')}
@@ -58,7 +59,7 @@ const AdminHeader: React.FC<Props> = ({ text }) => {
           + Add Category
         </button>
       )}
-      {text === "Restaurants" && (
+      {variant === "Restaurants" && (
         <button
           className="bg-[#c035a2] py-2 px-8 text-white font-bold text-sm rounded-[14px] uppercase"
           onClick={() => handleClick('restaurant')}
@@ -66,7 +67,7 @@ const AdminHeader: React.FC<Props> = ({ text }) => {
           + Add Restaurant
         </button>
       )}
-      {text === "Offers" && (
+      {variant === "Offers" && (
         <button
           className="bg-[#c035a2] py-2 px-8 text-white font-bold text-sm rounded-[14px] uppercase"
           onClick={() => handleClick('offer')}

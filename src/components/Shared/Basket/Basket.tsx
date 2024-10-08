@@ -8,6 +8,7 @@ import BasketItem from "./BasketItem";
 import { UserContext } from "../../../Context/UserContext";
 import { basketContext } from "../../../Context/BasketContext";
 import { getBasket,deleteBasket,addBasket,removeFromBasket,clearBasket } from "../../../services/Api/Api";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   type?: string;
@@ -78,6 +79,7 @@ const Basket: React.FC<Props> = ({ type }) => {
   }
 
 const navigate = useNavigate();
+const { t } = useTranslation();
   return (
     <div
       className={`flex flex-col bg-[#f3f4f6] p-4 w-full ${
@@ -91,7 +93,7 @@ const navigate = useNavigate();
             prdList.length > 0 ? "text-red-600" : "text-neutral-500"
           } text-lg`}
         >
-          {data.total_count} Items
+          {data.total_count} {t("basketItemsTxt")}
         </p>
 
         <span className="ml-auto w-8" onClick={() => handleClear()}>
@@ -108,7 +110,7 @@ const navigate = useNavigate();
             <img src={emptyBasket} alt="emptyBasket" />
             <p className="text-neutral-500 text-4xl font-medium">Opss!</p>
             <p className="text-neutral-500 text-4xl font-medium">
-              Basket is empty
+              {t("basketEmpty")}
             </p>
           </div>
         )}
@@ -116,7 +118,7 @@ const navigate = useNavigate();
       </div>
 
       <div className={`flex rounded-full items-center justify-between p-2 ${prdList.length > 0 ? "bg-red-600" : "bg-neutral-300"}  mt-4`}>
-        <p className={`text-white text-lg font-medium ml-4`}>Checkout</p>
+        <p className={`text-white text-lg font-medium ml-4`}>{t("basketCheckoutTxt")}</p>
         <button onClick={() => data.total_count > 0 && navigate("/profile/checkout")} className={`${prdList.length>0?"text-red-500":"text-black"} bg-white font-medium py-1 px-10 rounded-full shadow-md hover:scale-95 transition-all duration-500`}>
           {data.total_amount} &#x20BC;
         </button>

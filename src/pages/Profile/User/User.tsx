@@ -6,6 +6,7 @@ import { postUpload, updateUser } from "../../../services/Api/Api";
 import { UserContext } from "../../../Context/UserContext";
 import { showErrorToast } from "../../../services/Utils/ToastUtils";
 import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
+import { useTranslation } from "react-i18next";
 
 type UserProps = {
   phone: string;
@@ -25,7 +26,9 @@ type objProps = {
   phone?: string;
   img_url?: string;
 };
+
 const User = () => {
+  const { t } = useTranslation();
   const { user } = React.useContext(UserContext);
 
   const [inputValue, setInputValue] = React.useState<UserProps>({
@@ -96,7 +99,7 @@ const User = () => {
     <HelmetLib title="Profile" />
     
     <div className="w-full bg-[#f3f4f6] rounded-md p-6">
-      <h2 className=" font-semibold text-3xl text-neutral-600  tracking-wide">Profile</h2>
+      <h2 className=" font-semibold text-3xl text-neutral-600  tracking-wide">{t("ProfileMenuUsrTitle")}</h2>
       <div className=" w-full flex  justify-center ">
         <span className="relative">
           <img
@@ -119,7 +122,7 @@ const User = () => {
       <div className=" sm:m-10 grid grid-cols-1 lg:grid-cols-2 gap-7  ">
         <Input
           type="text"
-          label="Phone"
+          label={t("ProfileMenuUsrPhoneLabel")}
           variation="profile"
           placeholder="+994"
           changeFunc={(e: any) =>
@@ -129,7 +132,7 @@ const User = () => {
         />
         <Input
           type="email"
-          label="Email"
+          label={t("ProfileMenuUsrEmailLabel")}
           variation="profile"
           placeholder=""
           changeFunc={(e: any) =>
@@ -139,7 +142,7 @@ const User = () => {
         />
         <Input
           type="text"
-          label="Username"
+          label={t("ProfileMenuUsrNameLabel")}
           variation="profile"
           placeholder=""
           changeFunc={(e: any) =>
@@ -149,7 +152,7 @@ const User = () => {
         />
         <Input
           type="text"
-          label="Address"
+          label={t("ProfileMenuUsrAddressLabel")}
           variation="profile"
           placeholder=""
           changeFunc={(e: any) =>
@@ -159,7 +162,7 @@ const User = () => {
         />
         <Input
           type="text"
-          label="Fullname"
+          label={t("ProfileMenuUsrFullnameLabel")}
           variation="profile"
           placeholder=""
           changeFunc={(e: any) =>
@@ -167,7 +170,7 @@ const User = () => {
           }
           inputVal={inputValue.fullname}
         />
-        <Button click={handleSubmit} text="Save" variation="profile" />
+        <Button click={handleSubmit} text={t("ProfileMenuUsrBtnSave")} variation="profile" />
       </div>
     </div>
     

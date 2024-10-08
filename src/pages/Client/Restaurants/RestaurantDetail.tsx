@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../../components/Shared/Navbar/Navbar";
 import Button from "../../../components/Shared/Button/Button";
+import { useTranslation } from "react-i18next";
 import { useLocation,useNavigate } from "react-router-dom";
 import { getRestaurantById, getProducts } from "../../../services/Api/Api";
 import Basket from "../../../components/Shared/Basket/Basket";
@@ -14,9 +15,10 @@ import { showErrorToast } from "../../../services/Utils/ToastUtils";
 import RestaurantListItem from "../../../components/Client/Restaurants/RestaurantListItem";
 
 const RestaurantDetail = () => {
+  const {t} = useTranslation()
   let location: any = useLocation();
   const navigate=useNavigate()
-const {setTrigger} = React.useContext(basketContext)
+  const {setTrigger} = React.useContext(basketContext)
   const {user} = React.useContext(UserContext)
  
   
@@ -94,16 +96,16 @@ const {setTrigger} = React.useContext(basketContext)
 
           <div className="flex gap-10 border-y-2 sm:border-none py-2 sm:p-0 w-full sm:w-max my-2 sm:my-0 items-center justify-between sm:justify-center">
             <div className="flex flex-col gap-1 text-neutral-500">
-              <p className="text-lg">Cousine</p>
+              <p className="text-lg">{t("rstDetailCuisineText")}</p>
               <p>{details?.cuisine || " "}</p>
             </div>
 
             <div className="flex items-center gap-2">
               <Button
-                text={`${details?.delivery_price || " "}$ Delivery`}
+                text={`${details?.delivery_price || " "}$ ${t("rstCardDelivery")}`}
                 variation="detailContained"
               />
-              <Button text="Back" variation="detail" click={() => {navigate('/restaurants-client')} } />
+              <Button text={t("rstDetailBackText")} variation="detail" click={() => {navigate('/restaurants-client')} } />
             </div>
           </div>
         </div>
@@ -111,7 +113,7 @@ const {setTrigger} = React.useContext(basketContext)
         <div className="flex flex-col sm:flex-row justify-between gap-5 mt-8 h-[65vh]">
           <div className=" bg-[#f3f4f6] w-full sm:w-3/5 overflow-y-auto">
             <p className="text-center text-3xl text-neutral-800 font-semibold my-8">
-              Products
+              {t("rstPrdListTitle")}
             </p>
             {products.map((product: any, index: number) => (
               <RestaurantListItem

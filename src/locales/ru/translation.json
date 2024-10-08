@@ -1,4 +1,146 @@
 {
-    "welcome": "Welcome",
-    "description": "This is an example application."
-  }
+  "navLinkHome": "Главная",
+  "navLinkRestaurants": "Рестораны",
+  "navLinkAbout": "О нас",
+  "navLinkHowIt": "Как это работает",
+  "navLinkFaq": "Часто задаваемые вопросы",
+  "navInputPlaceholder": "Поиск",
+  "navBtnSignIn": "Войти",
+
+  "homeHeroTitle": "Наш сайт упрощает поиск местной еды",
+  "homeHeroText": "С Foody заказывать из ваших любимых местных ресторанов стало легко и удобно. Хотите быстрый перекус или планируете настоящий пир? Наша платформа соединяет вас с широким выбором вкуснейших блюд. Исследуйте, выбирайте и наслаждайтесь — не выходя из дома.",
+  "homeHeroRegister": "Зарегистрироваться",
+  "homeHeroOrder": "Заказать сейчас",
+
+  "homeFeaturesTitle": "Особенности",
+  "homeFeaturesText": "Добро пожаловать на наш яркий кулинарный сайт, цифровое пространство для тех, кто ищет захватывающие гастрономические впечатления. Исследуйте наши страницы и откройте для себя новый мир вкусов.",
+
+  "homeFeaturesCardOneTitle": "Скидочный ваучер",
+  "homeFeaturesCardOneText": "Экономьте на следующем заказе с нашим эксклюзивным ваучером. Будь то ужин в одиночестве или с друзьями — наслаждайтесь любимыми блюдами с выгодой. Получите свой ваучер уже сейчас и начинайте экономить!",
+  
+  "homeFeaturesCardThreeTitle": "Быстрая доставка на дом",
+  "homeFeaturesCardThreeText": "Хотите чего-то вкусного? Мы быстро и надежно доставим ваше любимое блюдо прямо к вашему порогу. Наслаждайтесь вкусом без ожидания!",
+  
+  "homeFeaturesCardTwoTitle": "Здоровое питание",
+  "homeFeaturesCardTwoText": "Мы заботимся о вашем здоровье, поэтому предлагаем блюда из свежих и экологически чистых продуктов, выращенных местными поставщиками.",
+  
+  "homePopularUpdateTitle": "Популярные новинки блюд",
+  "homePopularUpdateText": "Исследуйте наш список популярных пользователей и посмотрите, как они используют нашу платформу.",
+  
+  "homeTestTitle": "Меню, которое заставит вас влюбиться",
+  "homeTestText": "Lorem ipsum — это текст-заполнитель, который часто используется в графике, печати и издательском деле для предварительного просмотра макетов и визуальных макетов.",
+
+  "footerCardTitle": "Найдите рестораны рядом с вами",
+  "footerCardBtnText": "Начать",
+
+  "rstAllText": "Все",
+  "rstFilterText": "Фильтр",
+  "rstCardTime": "мин",
+  "rstCardDelivery": "Доставка",
+
+  "rstDetailCuisineText": "Кухня",
+  "rstDetailBackText": "Назад",
+  "rstPrdListTitle": "Продукты",
+
+  "basketItemsTxt": "Товары",
+  "basketCheckoutTxt": "Оформить заказ",
+  "basketEmpty": "Корзина пуста",
+
+  "aboutTitle": "О нас",
+  "aboutText": "Lorem ipsum — это текст-заполнитель, который часто используется в графике, печати и издательском деле для предварительного просмотра макетов и визуальных макетов.",
+
+  "howItTitle": "Как это работает",
+  "howItText": "В период распродаж доставка может быть увеличена. Ознакомьтесь с обновленными сроками на странице оформления заказа. Обратите внимание, что после оформления заказа его изменение невозможно. Все налоги и сборы включены в цену продукта.",
+
+  "faqTitle": "Часто задаваемые вопросы",
+
+  "faqQ1": "Как сделать заказ?",
+  "faqQ1Ans": "Lorem ipsum — это текст-заполнитель, который часто используется в графике, печати и издательском деле для предварительного просмотра макетов и визуальных макетов.",
+
+  "faqQ2": "Как отследить мой заказ?",
+  "faqQ2Ans": "Lorem ipsum — это текст-заполнитель, который часто используется в графике, печати и издательском деле для предварительного просмотра макетов и визуальных макетов.",
+
+  "faqQ3": "Могу ли я отменить заказ?",
+  "faqQ3Ans": "Lorem ipsum — это текст-заполнитель, который часто используется в графике, печати и издательском деле для предварительного просмотра макетов и визуальных макетов.",
+
+  "faqQ4": "Как оплатить мой заказ?",
+  "faqQ4Ans": "Lorem ipsum — это текст-заполнитель, который часто используется в графике, печати и издательском деле для предварительного просмотра макетов и визуальных макетов.",
+
+  "faqQ5": "Какова ваша политика возврата?",
+  "faqQ5Ans": "Lorem ipsum — это текст-заполнитель, который часто используется в графике, печати и издательском деле для предварительного просмотра макетов и визуальных макетов.",
+
+  "faqQ6": "Какие методы оплаты вы принимаете?",
+  "faqQ6Ans": "Lorem ipsum — это текст-заполнитель, который часто используется в графике, печати и издательском деле для предварительного просмотра макетов и визуальных макетов.",
+
+  "profileSideProfile": "Профиль",
+  "profileSideOrders": "Заказы",
+  "profileSideLogout": "Выйти",
+  "profileSideBasket": "Корзина",
+  "profileSideCheckout": "Оформление заказа",
+
+  "ProfileMenuUsrTitle": "Профиль",
+  "ProfileMenuUsrNameLabel": "Имя пользователя",
+  "ProfileMenuUsrFullnameLabel": "Полное имя",
+  "ProfileMenuUsrEmailLabel": "Электронная почта",
+  "ProfileMenuUsrPhoneLabel": "Телефон",
+  "ProfileMenuUsrAddressLabel": "Адрес",
+  "ProfileMenuUsrBtnSave": "Сохранить",
+
+  "ProfileMenuOrdersTitle": "Заказы",
+  "ProfileMenuOrderTableThId": "ID",
+  "ProfileMenuOrderTableThTime": "Время",
+  "ProfileMenuOrderTableThDeliveryAddress": "Адрес доставки",
+  "ProfileMenuOrderTableThAmount": "Сумма",
+  "ProfileMenuOrderTableThPayment": "Способ оплаты",
+  "ProfileMenuOrderTableThContact": "Контакт",
+  "ProfileMenuOrderTableCustomerId": "ID клиента",
+
+  "ProfileMenuOrderBtnShow": "Показать",
+  "ProfileMenuOrderBtnDelete": "Удалить",
+
+  "ProfileMenuDetailsTitle": "Детали",
+  "ProfileMenuDetailsTableThImage": "Изображение",
+  "ProfileMenuDetailsTableThName": "Название",
+  "ProfileMenuDetailsTableThPrice": "Цена",
+  "ProfileMenuDetailsTableThPhone": "Количество",
+  "ProfileMenuDetailsTableThAddress": "Сумма",
+  "ProfileMenuDetailsBtnClose": "Закрыть",
+
+  "ProfileMenuCheckoutTitle": "Оформление заказа",
+  "ProfileMenuCheckoutSuccessText": "Ваш заказ получен",
+  "ProfileMenuCheckoutLabelAddress": "Адрес доставки",
+  "ProfileMenuCheckoutPlaceholderAddress": "Введите ваш адрес",
+  "ProfileMenuCheckoutPaymentMethodTitle": "Способ оплаты",
+  "ProfileMenuCheckoutBtnCash": "Наличные",
+  "ProfileMenuCheckoutBtnCard": "Банковская карта",
+  "ProfileMenuCheckoutBtnSubmit": "Оформить заказ",
+
+  "UserLoginTitle": "Войти",
+  "UserLoginBtnLogin": "Войти",
+
+  "UserRegisterTitle": "Зарегистрироваться",
+  "UserRegisterBtnRegister": "Зарегистрироваться",
+  "UserLoginPassText": "Пароль",
+
+  "adminLoginTitle": "Добро пожаловать, Администратор",
+  "adminLoginBtnLogin": "Войти",
+
+  "adminSidebarDashboard": "Панель управления",
+  "adminSidebarRestaurants": "Рестораны",
+  "adminSidebarProducts": "Продукты",
+  "adminSidebarOrders": "Заказы",
+  "adminSidebarCategory": "Категории",
+  "adminSidebarOffers": "Предложения",
+  "adminSidebarLogout": "Выйти",
+
+  "adminOfferTableThId": "ID",
+  "adminOfferTableThImage": "Изображение",
+  "adminOfferTableThTitle": "Заголовок",
+  "adminOfferTableThDescription": "Описание",
+  "adminAddProduct": "Добавить продукт",
+
+  "deleteModalTitle": "Вы уверены, что хотите удалить?",
+  "deleteModalText": "Внимание! Если вы удалите этот элемент, вернуть его будет невозможно...",
+  "deleteModalBtnDelete": "Удалить",
+  "deleteModalBtnCancel": "Отмена"
+}

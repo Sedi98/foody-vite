@@ -1,4 +1,146 @@
 {
-    "welcome": "Welcome",
-    "description": "This is an example application."
-  }
+  "navLinkHome": "Home",
+  "navLinkRestaurants": "Restaurants",
+  "navLinkAbout": "About Us",
+  "navLinkHowIt": "How it works",
+  "navLinkFaq": "FAQs",
+  "navInputPlaceholder": "Search",
+  "navBtnSignIn": "Sign in",
+
+  "homeHeroTitle": "Our Food site makes it easy to find local food",
+  "homeHeroText": "At Foody, we make ordering from your favorite local restaurants easy and convenient. Whether you're craving a quick bite or planning a feast, our platform connects you with a wide range of delicious options. Explore, choose, and enjoy—all from the comfort of your home.",
+  "homeHeroRegister": "Register",
+  "homeHeroOrder": "Order Now",
+
+  "homeFeaturesTitle": "Features",
+  "homeFeaturesText": "Welcome to our vibrant food site, a digital haven for culinary enthusiasts seeking a delightful gastronomic experience. Within these virtual pages.",
+
+  "homeFeaturesCardOneTitle": "Discount Voucher",
+  "homeFeaturesCardOneText": "Save big on your next order with our exclusive voucher. Whether dining solo or with friends, enjoy your favorite foods for less. Grab yours now and start saving!",
+
+  "homeFeaturesCardThreeTitle": "Fast Home Delivery",
+  "homeFeaturesCardThreeText": "Craving something tasty? We’ve got you covered with quick, reliable delivery straight to your door. Enjoy your favorite foods without the wait!",
+
+  "homeFeaturesCardTwoTitle": "Healthy Food",
+  "homeFeaturesCardTwoText": "We understand that your health is important to us. That's why we offer healthy food options that are made with fresh, locally sourced ingredients.",
+
+  "homePopularUpdateTitle": "Our Popular Update New Foods",
+  "homePopularUpdateText": "Explore our list of popular users and see how they use our platform.",
+
+  "homeTestTitle": "Menu That Always Make You Fall In Love",
+  "homeTestText": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+
+  "footerCardTitle": "Discover Restaurants Near From you",
+  "footerCardBtnText": "Get Started",
+
+  "rstAllText": "All",
+  "rstFilterText": "Filter",
+  "rstCardTime": "min",
+  "rstCardDelivery": "Delivery",
+
+  "rstDetailCuisineText": "Cuisine",
+  "rstDetailBackText": "Back",
+  "rstPrdListTitle": "Products",
+
+  "basketItemsTxt": "Items",
+  "basketCheckoutTxt": "Checkout",
+  "basketEmpty": "Basket is empty",
+
+  "aboutTitle": "About Us",
+  "aboutText": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups..",
+
+  "howItTitle": "How it works",
+  "howItText": "Delivery may be extended during sale periods. Please refer to the checkout page for an updated estimate for your location. Kindly note that once you have placed an order, it is no longer possible to modify your order. Taxes and duties are included in all product prices.It is possible to place an order with shipment to a different address than your home or billing address when paying with a credit card. Please note that Klarna payments require that your order is shipped to your registered home address.",
+
+  "faqTitle": "FAQs",
+
+  "faqQ1": "How do I place an order?",
+  "faqQ1Ans": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+
+  "faqQ2": "How do I track my order?",
+  "faqQ2Ans": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+
+  "faqQ3": "Can I cancel my order?",
+  "faqQ3Ans": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+
+  "faqQ4": "How do I pay for my order?",
+  "faqQ4Ans": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+
+  "faqQ5": "What is your return policy?",
+  "faqQ5Ans": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+
+  "faqQ6": "What payment methods do you accept?",
+  "faqQ6Ans": "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+
+  "profileSideProfile": "Profile",
+  "profileSideOrders": "Orders",
+  "profileSideLogout": "Logout",
+  "profileSideBasket": "Basket",
+  "profileSideCheckout": "Checkout",
+
+  "ProfileMenuUsrTitle": "Profile",
+  "ProfileMenuUsrNameLabel": "User Name",
+  "ProfileMenuUsrFullnameLabel": "Full Name",
+  "ProfileMenuUsrEmailLabel": "Email",
+  "ProfileMenuUsrPhoneLabel": "Phone",
+  "ProfileMenuUsrAddressLabel": "Address",
+  "ProfileMenuUsrBtnSave": "Save",
+
+  "ProfileMenuOrdersTitle": "Orders",
+  "ProfileMenuOrderTableThId": "ID",
+  "ProfileMenuOrderTableThTime": "Time",
+  "ProfileMenuOrderTableThDeliveryAddress": "Delivery Address",
+  "ProfileMenuOrderTableThAmount": "Amount",
+  "ProfileMenuOrderTableThPayment": "Payment Method",
+  "ProfileMenuOrderTableThContact": "Contact",
+  "ProfileMenuOrderTableCustomerId": "Customer ID",
+
+  "ProfileMenuOrderBtnShow": "Show",
+  "ProfileMenuOrderBtnDelete": "Delete",
+
+  "ProfileMenuDetailsTitle": "Details",
+  "ProfileMenuDetailsTableThImage": "Image",
+  "ProfileMenuDetailsTableThName": "Name",
+  "ProfileMenuDetailsTableThPrice": "Price",
+  "ProfileMenuDetailsTableThPhone": "Count",
+  "ProfileMenuDetailsTableThAddress": "Amount",
+  "ProfileMenuDetailsBtnClose": "Close",
+
+  "ProfileMenuCheckoutTitle": "Checkout",
+  "ProfileMenuCheckoutSuccessText": "Your order has been received",
+  "ProfileMenuCheckoutLabelAddress": "Delivery Address",
+  "ProfileMenuCheckoutPlaceholderAddress": "Enter your address",
+  "ProfileMenuCheckoutPaymentMethodTitle": "Payment Method",
+  "ProfileMenuCheckoutBtnCash": "Cash",
+  "ProfileMenuCheckoutBtnCard": "Bank Card",
+  "ProfileMenuCheckoutBtnSubmit": "Checkout",
+
+  "UserLoginTitle": "Login",
+  "UserLoginBtnLogin": "Login",
+
+  "UserRegisterTitle": "Register",
+  "UserRegisterBtnRegister": "Register",
+  "UserLoginPassText": "Password",
+
+  "adminLoginTitle": "Welcome Admin",
+  "adminLoginBtnLogin": "Sign in",
+
+  "adminSidebarDashboard": "Dashboard",
+  "adminSidebarRestaurants": "Restaurants",
+  "adminSidebarProducts": "Products",
+  "adminSidebarOrders": "Orders",
+  "adminSidebarCategory": "Category",
+  "adminSidebarOffers": "Offers",
+  "adminSidebarLogout": "Logout",
+
+  "adminOfferTableThId": "ID",
+  "adminOfferTableThImage": "Image",
+  "adminOfferTableThTitle": "Title",
+  "adminOfferTableThDescription": "Description",
+  "adminAddProduct": "Add Product",
+
+  "deleteModalTitle": "Are you sure want to delete?",
+  "deleteModalText": " Attention! If you delete this item, it will not return back...",
+  "deleteModalBtnDelete": "Delete",
+  "deleteModalBtnCancel": "Cancel"
+}

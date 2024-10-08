@@ -1,14 +1,15 @@
-
+import { useTranslation } from 'react-i18next'
 import AdminHeader from '../../../components/Admin/Shared/AdminHeader'
 import trash from '../../../assets/icons/admin/delete.svg'
 import HelmetLib from '../../../components/Shared/HelmetLib/HelmetLib'
 
 const Orders = () => {
+  const { t } = useTranslation()
   return (
     <div>
 
       <HelmetLib title="Admin-Orders" />
-      <AdminHeader text='Orders' />
+      <AdminHeader variant='Orders' text={t('adminSidebarOrders')} />
 
 
       <main className='h-[calc(100vh-210px)] mt-5'>
@@ -17,17 +18,17 @@ const Orders = () => {
       <table className="min-w-full bg-white">
   <thead className="h-16 text-center text-sm not-italic font-semibold leading-6">
     <tr>
-      <td>ID</td>
-      <td>Customer ID</td>
-      <td>Time</td>
-      <td>Delivery Address</td>
-      <td>Payment Method</td>
-      <td>Amount</td>
-      <td>Contact</td>
+      <td>{t('ProfileMenuOrderTableThId')}</td>
+      <td>{t('ProfileMenuOrderTableCustomerId')}</td>
+      <td>{t('ProfileMenuOrderTableThTime')}</td>
+      <td>{t('ProfileMenuOrderTableThDeliveryAddress')}</td>
+      <td>{t('ProfileMenuOrderTableThPayment')}</td>
+      <td>{t('ProfileMenuOrderTableThAmount')}</td>
+      <td>{t('ProfileMenuOrderTableThContact')}</td>
     </tr>
   </thead>
   <tbody>
-    <div className="Toastify"></div>
+    
     <tr className="h-14 text-center border-slate-700 border-y text-gray-900 text-sm not-italic font-normal leading-5">
       <td>
         <div>

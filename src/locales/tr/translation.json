@@ -1,4 +1,146 @@
 {
-    "welcome": "Welcome",
-    "description": "This is an example application."
-  }
+  "navLinkHome": "Ana Sayfa",
+  "navLinkRestaurants": "Restoranlar",
+  "navLinkAbout": "Hakkımızda",
+  "navLinkHowIt": "Nasıl Çalışır",
+  "navLinkFaq": "SSS",
+  "navInputPlaceholder": "Ara",
+  "navBtnSignIn": "Giriş Yap",
+
+  "homeHeroTitle": "Yerel yiyecekleri bulmak artık daha kolay",
+  "homeHeroText": "Foody ile sevdiğiniz yerel restoranlardan sipariş vermek kolay ve pratik. İster hızlı bir atıştırmalık ister büyük bir ziyafet planlayın, platformumuz geniş bir lezzet yelpazesini ayağınıza getirir. Keşfedin, seçin ve evinizin rahatlığında keyfini çıkarın.",
+  "homeHeroRegister": "Kayıt Ol",
+  "homeHeroOrder": "Şimdi Sipariş Ver",
+
+  "homeFeaturesTitle": "Özellikler",
+  "homeFeaturesText": "Yemek tutkunları için dijital bir cennete hoş geldiniz. Bu sayfalarda gastronomik bir maceraya atılmaya hazır olun.",
+
+  "homeFeaturesCardOneTitle": "İndirim Kuponu",
+  "homeFeaturesCardOneText": "Bir sonraki siparişinizde özel kuponumuzla büyük indirim kazanın. İster yalnız ister arkadaşlarınızla yemek yiyin, en sevdiğiniz yiyeceklerin tadını daha az ödeyerek çıkarın. Kuponunuzu hemen alın ve tasarruf etmeye başlayın!",
+  
+  "homeFeaturesCardThreeTitle": "Hızlı Teslimat",
+  "homeFeaturesCardThreeText": "Lezzetli bir şeyler mi arıyorsunuz? Hızlı ve güvenilir teslimatımızla sizleri bekletmeden kapınıza getiriyoruz. En sevdiğiniz yiyeceklerin tadını beklemeden çıkarın!",
+  
+  "homeFeaturesCardTwoTitle": "Sağlıklı Gıdalar",
+  "homeFeaturesCardTwoText": "Sağlığınız bizim için önemli. Bu yüzden taze ve yerel kaynaklardan elde edilen malzemelerle hazırlanan sağlıklı yiyecek seçenekleri sunuyoruz.",
+  
+  "homePopularUpdateTitle": "Popüler Güncellenmiş Yiyeceklerimiz",
+  "homePopularUpdateText": "Platformumuzu kullanan popüler kullanıcılarımızı keşfedin ve nasıl kullandıklarını görün.",
+  
+  "homeTestTitle": "Her Zaman Aşık Olacağınız Menü",
+  "homeTestText": "Lorem ipsum, grafik, baskı ve yayıncılık sektöründe sıkça kullanılan, görsel tasarımların önizlemesi için kullanılan yer tutucu bir metindir.",
+
+  "footerCardTitle": "Size En Yakın Restoranları Keşfedin",
+  "footerCardBtnText": "Başlayın",
+
+  "rstAllText": "Hepsi",
+  "rstFilterText": "Filtrele",
+  "rstCardTime": "dk",
+  "rstCardDelivery": "Teslimat",
+
+  "rstDetailCuisineText": "Mutfak",
+  "rstDetailBackText": "Geri",
+  "rstPrdListTitle": "Ürünler",
+
+  "basketItemsTxt": "Ürünler",
+  "basketCheckoutTxt": "Ödeme",
+  "basketEmpty": "Sepet boş",
+
+  "aboutTitle": "Hakkımızda",
+  "aboutText": "Lorem ipsum, grafik, baskı ve yayıncılık sektöründe sıkça kullanılan, görsel tasarımların önizlemesi için kullanılan yer tutucu bir metindir.",
+
+  "howItTitle": "Nasıl Çalışır",
+  "howItText": "Satış dönemlerinde teslimat süresi uzayabilir. Siparişinizi tamamladığınızda güncellenmiş tahmini teslimat süresini görebilirsiniz. Siparişinizi verdikten sonra değişiklik yapmanız mümkün değildir. Vergi ve harçlar tüm ürün fiyatlarına dahildir.",
+
+  "faqTitle": "Sıkça Sorulan Sorular",
+
+  "faqQ1": "Nasıl sipariş verebilirim?",
+  "faqQ1Ans": "Lorem ipsum, grafik, baskı ve yayıncılık sektöründe sıkça kullanılan, görsel tasarımların önizlemesi için kullanılan yer tutucu bir metindir.",
+
+  "faqQ2": "Siparişimi nasıl takip ederim?",
+  "faqQ2Ans": "Lorem ipsum, grafik, baskı ve yayıncılık sektöründe sıkça kullanılan, görsel tasarımların önizlemesi için kullanılan yer tutucu bir metindir.",
+
+  "faqQ3": "Siparişimi iptal edebilir miyim?",
+  "faqQ3Ans": "Lorem ipsum, grafik, baskı ve yayıncılık sektöründe sıkça kullanılan, görsel tasarımların önizlemesi için kullanılan yer tutucu bir metindir.",
+
+  "faqQ4": "Siparişimi nasıl öderim?",
+  "faqQ4Ans": "Lorem ipsum, grafik, baskı ve yayıncılık sektöründe sıkça kullanılan, görsel tasarımların önizlemesi için kullanılan yer tutucu bir metindir.",
+
+  "faqQ5": "İade politikası nedir?",
+  "faqQ5Ans": "Lorem ipsum, grafik, baskı ve yayıncılık sektöründe sıkça kullanılan, görsel tasarımların önizlemesi için kullanılan yer tutucu bir metindir.",
+
+  "faqQ6": "Hangi ödeme yöntemlerini kabul ediyorsunuz?",
+  "faqQ6Ans": "Lorem ipsum, grafik, baskı ve yayıncılık sektöründe sıkça kullanılan, görsel tasarımların önizlemesi için kullanılan yer tutucu bir metindir.",
+
+  "profileSideProfile": "Profil",
+  "profileSideOrders": "Siparişler",
+  "profileSideLogout": "Çıkış Yap",
+  "profileSideBasket": "Sepet",
+  "profileSideCheckout": "Ödeme",
+
+  "ProfileMenuUsrTitle": "Profil",
+  "ProfileMenuUsrNameLabel": "Kullanıcı Adı",
+  "ProfileMenuUsrFullnameLabel": "Tam Adı",
+  "ProfileMenuUsrEmailLabel": "E-posta",
+  "ProfileMenuUsrPhoneLabel": "Telefon",
+  "ProfileMenuUsrAddressLabel": "Adres",
+  "ProfileMenuUsrBtnSave": "Kaydet",
+
+  "ProfileMenuOrdersTitle": "Siparişler",
+  "ProfileMenuOrderTableThId": "ID",
+  "ProfileMenuOrderTableThTime": "Zaman",
+  "ProfileMenuOrderTableThDeliveryAddress": "Teslimat Adresi",
+  "ProfileMenuOrderTableThAmount": "Tutar",
+  "ProfileMenuOrderTableThPayment": "Ödeme Yöntemi",
+  "ProfileMenuOrderTableThContact": "İletişim",
+  "ProfileMenuOrderTableCustomerId": "Müşteri ID",
+
+  "ProfileMenuOrderBtnShow": "Göster",
+  "ProfileMenuOrderBtnDelete": "Sil",
+
+  "ProfileMenuDetailsTitle": "Detaylar",
+  "ProfileMenuDetailsTableThImage": "Görsel",
+  "ProfileMenuDetailsTableThName": "Adı",
+  "ProfileMenuDetailsTableThPrice": "Fiyat",
+  "ProfileMenuDetailsTableThPhone": "Adet",
+  "ProfileMenuDetailsTableThAddress": "Tutar",
+  "ProfileMenuDetailsBtnClose": "Kapat",
+
+  "ProfileMenuCheckoutTitle": "Ödeme",
+  "ProfileMenuCheckoutSuccessText": "Siparişiniz alındı",
+  "ProfileMenuCheckoutLabelAddress": "Teslimat Adresi",
+  "ProfileMenuCheckoutPlaceholderAddress": "Adresinizi girin",
+  "ProfileMenuCheckoutPaymentMethodTitle": "Ödeme Yöntemi",
+  "ProfileMenuCheckoutBtnCash": "Nakit",
+  "ProfileMenuCheckoutBtnCard": "Banka Kartı",
+  "ProfileMenuCheckoutBtnSubmit": "Ödeme Yap",
+
+  "UserLoginTitle": "Giriş Yap",
+  "UserLoginBtnLogin": "Giriş Yap",
+
+  "UserRegisterTitle": "Kayıt Ol",
+  "UserRegisterBtnRegister": "Kayıt Ol",
+  "UserLoginPassText": "Şifre",
+
+  "adminLoginTitle": "Hoş Geldiniz Yönetici",
+  "adminLoginBtnLogin": "Giriş Yap",
+
+  "adminSidebarDashboard": "Yönetim Paneli",
+  "adminSidebarRestaurants": "Restoranlar",
+  "adminSidebarProducts": "Ürünler",
+  "adminSidebarOrders": "Siparişler",
+  "adminSidebarCategory": "Kategori",
+  "adminSidebarOffers": "Teklifler",
+  "adminSidebarLogout": "Çıkış Yap",
+
+  "adminOfferTableThId": "ID",
+  "adminOfferTableThImage": "Görsel",
+  "adminOfferTableThTitle": "Başlık",
+  "adminOfferTableThDescription": "Açıklama",
+  "adminAddProduct": "Ürün Ekle",
+
+  "deleteModalTitle": "Silmek istediğinizden emin misiniz?",
+  "deleteModalText": "Dikkat! Bu öğeyi silerseniz geri dönüşü olmayacak...",
+  "deleteModalBtnDelete": "Sil",
+  "deleteModalBtnCancel": "İptal"
+}

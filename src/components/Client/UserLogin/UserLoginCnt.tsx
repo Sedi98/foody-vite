@@ -1,14 +1,19 @@
 import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import UsrLoginHead from "./UsrLoginHead";
 import Input from "../../Shared/Input/Input";
 import Button from "../../Shared/Button/Button";
-import { AuthContext, LoginContext, RegisterContext } from "../../../Context/LoginContext";
+import {
+  AuthContext,
+  LoginContext,
+  RegisterContext,
+} from "../../../Context/LoginContext";
 
 const UserLoginCnt: React.FC = () => {
   const { mode } = useContext(LoginContext);
   const { setValue, value, handleLoginClick } = useContext(AuthContext);
   const { setRegValue, regValue, handleRegClick } = useContext(RegisterContext);
-
+  const { t } = useTranslation();
   return (
     <div className="w-full flex flex-col gap-20 bg-white py-12 mx-auto">
       <UsrLoginHead />
@@ -26,14 +31,14 @@ const UserLoginCnt: React.FC = () => {
 
           <Input
             type="password"
-            label="Password"
+            label={t("UserLoginPassText")}
             variation="login"
-            placeholder="Password"
+            placeholder={t("UserLoginPassText")}
             changeFunc={(e: any) => setValue(e.target.value, "password")}
             inputVal={value.password}
           />
 
-          <Button click={handleLoginClick} text="Login" variation="login" />
+          <Button click={handleLoginClick} text={t("UserLoginBtnLogin")} variation="login" />
         </div>
       )}
 
@@ -68,14 +73,14 @@ const UserLoginCnt: React.FC = () => {
 
           <Input
             type="password"
-            label="Password"
+            label={t("UserLoginPassText")}
             variation="login"
             placeholder="Password"
             changeFunc={(e: any) => setRegValue(e.target.value, "password")}
             inputVal={regValue.password}
           />
 
-          <Button click={handleRegClick} text="Register" variation="login" />
+          <Button click={handleRegClick} text={t("UserRegisterBtnRegister")} variation="login" />
         </div>
       )}
     </div>

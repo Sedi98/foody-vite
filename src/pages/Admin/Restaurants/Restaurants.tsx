@@ -6,6 +6,7 @@ import {
   deleteRestuarant,
   getCategory,
 } from "../../../services/Api/Api";
+import { useTranslation } from "react-i18next";
 import { RestaurantContext } from "../../../Context/RestaurantContext";
 import { ProductContext } from "../../../Context/ProductContext";
 import DeleteModal from "../../../components/Shared/Modal/Modal";
@@ -24,6 +25,7 @@ type dataProps = {
 };
 
 const Restaurants = () => {
+  const { t } = useTranslation();
   const { setValue, setActiveData, setVariation, value } =
     useContext(ProductContext);
   const [select, setSelect] = useState<any[]>([]);
@@ -94,7 +96,7 @@ const Restaurants = () => {
     >
       <div>
         <HelmetLib title="Admin-Restaurants" />
-        <AdminHeader text="Restaurants" />
+        <AdminHeader variant="Restaurants" text={t("adminSidebarRestaurants")} />
         <main
           className="grid grid-cols-1 content-start
        md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-5 overflow-auto h-[calc(100vh-210px)]"

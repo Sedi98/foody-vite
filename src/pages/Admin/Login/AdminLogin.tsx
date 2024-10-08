@@ -9,10 +9,12 @@ import Button from "../../../components/Shared/Button/Button";
 // navigation
 import { ROUTER } from "../../../ROUTER";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 // api
 import { signIn } from "../../../services/Api/Api";
 
 const AdminLogin: React.FC = () => {
+  const { t } = useTranslation();
     const navigate = useNavigate();
   const [loginCredentials, setloginCredentials] = useState({
     email: "",
@@ -49,7 +51,7 @@ const AdminLogin: React.FC = () => {
       <main className="flex justify-center items-center h-full lg:h-[calc(100vh-100px)] ">
         <section className="  flex flex-col-reverse   sm:flex-col-reverse  md:flex-row   ">
           <div className=" w-full sm:w-full md:w-1/2  md:bg-[#38394e] py-14  px-6 sm:px-7 md:px-12 ">
-            <Title text="Welcome Admin" variation="admin" />
+            <Title text={t("adminLoginTitle")} variation="admin" />
 
             <div className=" flex flex-col  gap-6 mb-9">
               <Input
@@ -61,13 +63,13 @@ const AdminLogin: React.FC = () => {
               />
               <Input
                 type="password"
-                placeholder="Password"
+                placeholder={t("UserLoginPassText")}
                 changeFunc={(e: any) => handleInput(e.target.value, "password")}
                 inputVal={loginCredentials.password}
                 variation="admin"
               />
             </div>
-            <Button text="Sign In" variation="adminLog" click={handleClick} />
+            <Button text={t("adminLoginBtnLogin")} variation="adminLog" click={handleClick} />
           </div>
 
           <div className=" w-full sm:w-full relative md:w-1/2  py-14 px-7 md:bg-white">

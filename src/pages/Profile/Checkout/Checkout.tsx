@@ -9,6 +9,7 @@ import { getBasket, postUserOrder } from "../../../services/Api/Api";
 import { showErrorToast } from "../../../services/Utils/ToastUtils";
 import checkoutImg from '../../../assets/icons/profile/checkout_success.svg';
 import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   delivery_address: string;
@@ -25,6 +26,7 @@ type objProps = {
 };
 
 const Checkout: React.FC = () => {
+  const { t } = useTranslation();
   const { user } = React.useContext(UserContext);
   const [result, setResult] = React.useState<any>([]);
   const [list, setList] = React.useState<any>([]);
@@ -61,6 +63,7 @@ const Checkout: React.FC = () => {
   }, [resetBasket]);
 
   const handleSubmit = async () => {
+    
     setInputVal({
       ...inputVal,
       basket_id: result.id,
@@ -106,26 +109,28 @@ const Checkout: React.FC = () => {
     setShowSuccess(true);
   };
 
+ 
+
   return (
     <>
       <HelmetLib title="Checkout" />
       {showSuccess ? (
         <div className="w-full  flex flex-col justify-center items-center bg-[#f3f4f6]  ">
           <img src={checkoutImg} alt="" />
-          <p className="text-3xl font-semibold text-neutral-700 mt-4">Your order has been received</p>
+          <p className="text-3xl font-semibold text-neutral-700 mt-4">{t("ProfileMenuCheckoutSuccessText")}</p>
         </div>
       ) : (
         <div className="w-full flex flex-col-reverse md:flex-row gap-8">
           <div className="w-full bg-[#f3f4f6] rounded-md p-7">
             <h2 className="font-semibold text-3xl text-neutral-700">
-              Checkout
+              {t("ProfileMenuCheckoutTitle")}
             </h2>
 
             <div className="flex flex-col gap-4 mt-4">
               <Input
-                label="Delivery Address"
+                label={t("ProfileMenuCheckoutLabelAddress")}
                 type="text"
-                placeholder="Enter your address"
+                placeholder={t("ProfileMenuCheckoutPlaceholderAddress")}
                 variation="profile"
                 changeFunc={(e: any) =>
                   setInputVal({ ...inputVal, delivery_address: e.target.value })
@@ -136,7 +141,7 @@ const Checkout: React.FC = () => {
               <Input
                 label="Phone Number"
                 type="text"
-                placeholder="Enter your email"
+                placeholder="+994"
                 variation="profile"
                 changeFunc={(e: any) =>
                   setInputVal({ ...inputVal, contact: e.target.value })
@@ -146,7 +151,7 @@ const Checkout: React.FC = () => {
             </div>
             <div className="paymet mt-4">
               <h2 className="font-semibold text-xl text-neutral-500">
-                Payment Method
+                {t("ProfileMenuCheckoutPaymentMethodTitle")}
               </h2>
 
               <div className="flex gap-8 ">
@@ -160,7 +165,7 @@ const Checkout: React.FC = () => {
                     src={inputVal.payment_method === 0 ? radioChecked : radio}
                     alt=""
                   />
-                  <label className=" text-neutral-500">Cash</label>
+                  <label className=" text-neutral-500">{t("ProfileMenuCheckoutBtnCash")}</label>
                 </div>
 
                 <div
@@ -173,16 +178,16 @@ const Checkout: React.FC = () => {
                     src={inputVal.payment_method === 1 ? radioChecked : radio}
                     alt=""
                   />
-                  <label className=" text-neutral-500">Credit Card</label>
+                  <label className=" text-neutral-500">{t("ProfileMenuCheckoutBtnCard")}</label>
                 </div>
               </div>
             </div>
-            <Button variation="profile" text="Checkout" click={handleSubmit} />
+            <Button variation="profile" text={t("ProfileMenuCheckoutBtnSubmit")} click={handleSubmit} />
           </div>
 
           <div className="w-full sm:w-[40%] flex flex-col  px-3 sm:px-8 py-5 flex-wrap gap-0 sm:bg-[#f3f4f6] rounded-md">
             <p className="w-full text-center text-neutral-500 font-medium text-xl mb-4">
-              Orders
+              {t("ProfileMenuOrdersTitle")}
             </p>
 
             <div className="flex flex-col mt-4 sm:mt-0 gap-6 max-h-72 pr-2 overflow-y-auto ">
@@ -197,7 +202,7 @@ const Checkout: React.FC = () => {
             </div>
 
             <div className="flex justify-between items-center px-0 border-t-2 pt-4 border-t-neutral-300 mt-auto">
-              <p className="text-black font-bold text-xl">Total</p>
+              <p className="text-black font-bold text-xl">{t("ProfileMenuOrderTableThAmount")}</p>
               <p className="text-xl">{result.total_amount} &#8380;</p>
             </div>
           </div>

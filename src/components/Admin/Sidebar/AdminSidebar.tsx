@@ -1,4 +1,5 @@
 import SidebarItem from "./SidebarItem";
+import { useTranslation } from "react-i18next";
 // icons
 import dash from "../../../assets/icons/admin/dashboard.svg";
 import category from "../../../assets/icons/admin/category.svg";
@@ -13,6 +14,7 @@ import { logOut } from "../../../services/Api/Api";
 import { useNavigate } from "react-router-dom";
 
 const AdminSidebar = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
 
@@ -26,39 +28,39 @@ const AdminSidebar = () => {
         <SidebarItem
           click={() => navigate("/admin/")}
           img={dash}
-          text="Dashboard"
+          text={t("adminSidebarDashboard")}
         />
         <SidebarItem
           click={() => navigate("/admin/products")}
           img={products}
-          text="Products"
+          text={t("adminSidebarProducts")}
         />
         <SidebarItem
           click={() => navigate("/admin/restaurants")}
           img={restaurants}
-          text="Restaurants"
+          text={t("adminSidebarRestaurants")}
         />
         <SidebarItem
           click={() => navigate("/admin/category")}
           img={category}
-          text="Category"
+          text={t("adminSidebarCategory")}
         />
         <SidebarItem
           click={() => navigate("/admin/orders")}
           img={orders}
-          text="Orders"
+          text={t("adminSidebarOrders")}
         />
         <SidebarItem
           click={() => navigate("/admin/offers")}
           img={offer}
-          text="Offer"
+          text={t("adminSidebarOffers")}
         />
         <SidebarItem
           click={() => {
             handleLogout();
           }}
           img={logout}
-          text="Logout"
+          text={t("adminSidebarLogout")}
         />
       </aside>
     </div>

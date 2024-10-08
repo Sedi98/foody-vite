@@ -5,7 +5,7 @@ import CardList from "../../../components/Client/Main/CardList/CardList";
 import Footer from "../Footer/Footer";
 import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 //
-
+import { useTranslation } from "react-i18next";
 //
 import FlexImgContainer from "../../../components/Client/Main/FlexImgContainer/FlexImgContainer";
 import FlexTextContainer from "../../../components/Client/Main/FlexTextContainer/FlexTextContainer";
@@ -16,7 +16,7 @@ import potato from "../../../assets/img/potato.svg";
 
 
 const Home = (): JSX.Element => {
-
+const { t } = useTranslation();
 
   
 
@@ -25,9 +25,9 @@ const Home = (): JSX.Element => {
     <HelmetLib title="Home" />
       <Hero />
       <section className="px-10 py-10 flex flex-col gap-10 ">
-        <Title text="Features" variation="container" />
+        <Title text={t("homeFeaturesTitle")} variation="container" />
         <Paragraph
-          text="Welcome to our vibrant food site, a digital haven for culinary enthusiasts seeking a delightful gastronomic experience. Within these virtual pages."
+          text={t("homeFeaturesText")}
           variation="container"
         />
         <CardList />
@@ -35,32 +35,32 @@ const Home = (): JSX.Element => {
 
       <section className="py-10 px-10 flex flex-col lg:flex-row ">
         <FlexTextContainer
-          title="Menu That Always Make You Fall In Love"
-          text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+          title={t("homeTestTitle")}
+          text={t("homeTestText")}
         />
         <FlexImgContainer url={kfc} alt="food" />
       </section>
 
       <section className="py-10 px-10 flex flex-col lg:flex-row-reverse  ">
         <FlexTextContainer
-          title="Menu That Always Make You Fall In Love"
-          text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+        title={t("homeTestTitle")}
+        text={t("homeTestText")}
         />
         <FlexImgContainer url={pizza} alt="food" />
       </section>
 
       <section className="py-10 px-10 flex flex-col lg:flex-row ">
         <FlexTextContainer
-          title="Menu That Always Make You Fall In Love"
-          text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+        title={t("homeTestTitle")}
+        text={t("homeTestText")}
         />
         <FlexImgContainer url={potato} alt="food" />
       </section>
 
       <section className="px-10 py-10 flex flex-col gap-10 ">
-        <Title text="Our Popular Update New Foods" variation="container" />
+        <Title text={t("homePopularUpdateTitle")} variation="container" />
         <Paragraph
-          text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."
+          text={t("homePopularUpdateText")}
           variation="container"
         />
         <CardList />

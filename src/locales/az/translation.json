@@ -1,4 +1,146 @@
 {
-    "welcome": "Welcome",
-    "description": "This is an example application."
-  }
+  "navLinkHome": "Ana səhifə",
+  "navLinkRestaurants": "Restoranlar",
+  "navLinkAbout": "Haqqımızda",
+  "navLinkHowIt": "Necə işləyir",
+  "navLinkFaq": "Tez-tez verilən suallar",
+  "navInputPlaceholder": "Axtar",
+  "navBtnSignIn": "Daxil ol",
+
+  "homeHeroTitle": "Yerli yeməkləri tapmaq indi daha asandır",
+  "homeHeroText": "Foody olaraq, sevdiyiniz yerli restoranlardan sifarişi rahat və əlçatan edirik. Tələsik qəlyanaltı və ya böyük ziyafət planladığınız zaman, platformamız sizi geniş çeşiddə dadlı yeməklərlə birləşdirir. Araşdırın, seçin və zövq alın – evinizin rahatlığından.",
+  "homeHeroRegister": "Qeydiyyatdan keç",
+  "homeHeroOrder": "İndi sifariş et",
+
+  "homeFeaturesTitle": "Xüsusiyyətlər",
+  "homeFeaturesText": "Yemək həvəskarları üçün bənzərsiz rəqəmsal bir məkana xoş gəldiniz. Həzz alınan kulinariya təcrübəsini bu səhifələrdə yaşayın.",
+
+  "homeFeaturesCardOneTitle": "Endirim Kuponu",
+  "homeFeaturesCardOneText": "Növbəti sifarişinizdə xüsusi kuponla böyük endirim əldə edin. Tək yemək və ya dostlarınızla birgə, sevdiyiniz yeməkləri daha az qiymətə zövq alın. Endiriminizi əldə edin və qənaət etməyə başlayın!",
+  
+  "homeFeaturesCardThreeTitle": "Sürətli Çatdırılma",
+  "homeFeaturesCardThreeText": "Dadlı nəyəsə ehtiyacınız var? Biz sizə tez və etibarlı çatdırılma ilə xidmət edirik. Gözləmədən sevdiyiniz yeməklərdən zövq alın!",
+  
+  "homeFeaturesCardTwoTitle": "Sağlam Qidalar",
+  "homeFeaturesCardTwoText": "Sağlamlığınız bizim üçün vacibdir. Bu səbəbdən təzə və yerli qaynaqlardan alınan inqrediyentlərlə hazırlanan sağlam qida seçimləri təklif edirik.",
+  
+  "homePopularUpdateTitle": "Populyar Yenilənmiş Yeməklərimiz",
+  "homePopularUpdateText": "Platformamızı istifadə edən populyar istifadəçilərimizi kəşf edin və onların necə istifadə etdiyini görün.",
+  
+  "homeTestTitle": "Hər zaman sevəcəyiniz menyu",
+  "homeTestText": "Lorem ipsum, qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan mətn yerlikidir, vizual görünüşləri öncədən nəzərdən keçirmək üçün istifadə olunur.",
+  
+  "footerCardTitle": "Sizə yaxın restoranları kəşf edin",
+  "footerCardBtnText": "Başla",
+
+  "rstAllText": "Hamısı",
+  "rstFilterText": "Filtrlə",
+  "rstCardTime": "dəq",
+  "rstCardDelivery": "Çatdırılma",
+
+  "rstDetailCuisineText": "Mətbəx",
+  "rstDetailBackText": "Geri",
+  "rstPrdListTitle": "Məhsullar",
+
+  "basketItemsTxt": "Əşyalar",
+  "basketCheckoutTxt": "Sifariş et",
+  "basketEmpty": "Səbət boşdur",
+
+  "aboutTitle": "Haqqımızda",
+  "aboutText": "Lorem ipsum, qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan mətn yerlikidir, vizual görünüşləri öncədən nəzərdən keçirmək üçün istifadə olunur.",
+
+  "howItTitle": "Necə işləyir",
+  "howItText": "Çatdırılma satış dövrlərində uzadıla bilər. Sifarişinizi tamamlayanda çatdırılma vaxtı barədə yenilənmiş məlumatı alın. Sifarişinizi yerləşdirdikdən sonra onu dəyişmək mümkün deyil. Məhsul qiymətlərinə vergilər və rüsumlar daxil edilib.",
+
+  "faqTitle": "Tez-tez verilən suallar",
+
+  "faqQ1": "Sifarişi necə verə bilərəm?",
+  "faqQ1Ans": "Lorem ipsum, qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan mətn yerlikidir, vizual görünüşləri öncədən nəzərdən keçirmək üçün istifadə olunur.",
+
+  "faqQ2": "Sifarişimi necə izləyərəm?",
+  "faqQ2Ans": "Lorem ipsum, qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan mətn yerlikidir, vizual görünüşləri öncədən nəzərdən keçirmək üçün istifadə olunur.",
+
+  "faqQ3": "Sifarişi ləğv edə bilərəm?",
+  "faqQ3Ans": "Lorem ipsum, qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan mətn yerlikidir, vizual görünüşləri öncədən nəzərdən keçirmək üçün istifadə olunur.",
+
+  "faqQ4": "Sifarişi necə ödəyirəm?",
+  "faqQ4Ans": "Lorem ipsum, qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan mətn yerlikidir, vizual görünüşləri öncədən nəzərdən keçirmək üçün istifadə olunur.",
+
+  "faqQ5": "Geri qaytarma siyasətiniz nədir?",
+  "faqQ5Ans": "Lorem ipsum, qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan mətn yerlikidir, vizual görünüşləri öncədən nəzərdən keçirmək üçün istifadə olunur.",
+
+  "faqQ6": "Hansı ödəniş üsullarını qəbul edirsiniz?",
+  "faqQ6Ans": "Lorem ipsum, qrafik, çap və nəşriyyat sənayesində geniş istifadə olunan mətn yerlikidir, vizual görünüşləri öncədən nəzərdən keçirmək üçün istifadə olunur.",
+
+  "profileSideProfile": "Profil",
+  "profileSideOrders": "Sifarişlər",
+  "profileSideLogout": "Çıxış",
+  "profileSideBasket": "Səbət",
+  "profileSideCheckout": "Ödəniş",
+
+  "ProfileMenuUsrTitle": "Profil",
+  "ProfileMenuUsrNameLabel": "İstifadəçi adı",
+  "ProfileMenuUsrFullnameLabel": "Tam adı",
+  "ProfileMenuUsrEmailLabel": "Email",
+  "ProfileMenuUsrPhoneLabel": "Telefon",
+  "ProfileMenuUsrAddressLabel": "Ünvan",
+  "ProfileMenuUsrBtnSave": "Yadda saxla",
+
+  "ProfileMenuOrdersTitle": "Sifarişlər",
+  "ProfileMenuOrderTableThId": "ID",
+  "ProfileMenuOrderTableThTime": "Vaxt",
+  "ProfileMenuOrderTableThDeliveryAddress": "Çatdırılma Ünvanı",
+  "ProfileMenuOrderTableThAmount": "Məbləğ",
+  "ProfileMenuOrderTableThPayment": "Ödəniş Metodu",
+  "ProfileMenuOrderTableThContact": "Əlaqə",
+  "ProfileMenuOrderTableCustomerId": "Müştəri ID",
+
+  "ProfileMenuOrderBtnShow": "Göstər",
+  "ProfileMenuOrderBtnDelete": "Sil",
+
+  "ProfileMenuDetailsTitle": "Detallar",
+  "ProfileMenuDetailsTableThImage": "Şəkil",
+  "ProfileMenuDetailsTableThName": "Ad",
+  "ProfileMenuDetailsTableThPrice": "Qiymət",
+  "ProfileMenuDetailsTableThPhone": "Say",
+  "ProfileMenuDetailsTableThAddress": "Məbləğ",
+  "ProfileMenuDetailsBtnClose": "Bağla",
+
+  "ProfileMenuCheckoutTitle": "Ödəniş",
+  "ProfileMenuCheckoutSuccessText": "Sifarişiniz qəbul edildi",
+  "ProfileMenuCheckoutLabelAddress": "Çatdırılma Ünvanı",
+  "ProfileMenuCheckoutPlaceholderAddress": "Ünvanınızı daxil edin",
+  "ProfileMenuCheckoutPaymentMethodTitle": "Ödəniş Metodu",
+  "ProfileMenuCheckoutBtnCash": "Nəğd",
+  "ProfileMenuCheckoutBtnCard": "Bank Kartı",
+  "ProfileMenuCheckoutBtnSubmit": "Ödəniş et",
+
+  "UserLoginTitle": "Daxil ol",
+  "UserLoginBtnLogin": "Daxil ol",
+
+  "UserRegisterTitle": "Qeydiyyatdan keç",
+  "UserRegisterBtnRegister": "Qeydiyyat",
+  "UserLoginPassText": "Şifrə",
+
+  "adminLoginTitle": "Admin Xoş gəldiniz",
+  "adminLoginBtnLogin": "Daxil ol",
+
+  "adminSidebarDashboard": "İdarə Paneli",
+  "adminSidebarRestaurants": "Restoranlar",
+  "adminSidebarProducts": "Məhsullar",
+  "adminSidebarOrders": "Sifarişlər",
+  "adminSidebarCategory": "Kateqoriya",
+  "adminSidebarOffers": "Təkliflər",
+  "adminSidebarLogout": "Çıxış",
+
+  "adminOfferTableThId": "ID",
+  "adminOfferTableThImage": "Şəkil",
+  "adminOfferTableThTitle": "Başlıq",
+  "adminOfferTableThDescription": "Təsvir",
+  "adminAddProduct": "Məhsul əlavə et",
+
+  "deleteModalTitle": "Silmək istədiyinizdən əminsiniz?",
+  "deleteModalText": "Diqqət! Bu elementi silsəniz, geri qaytarmaq mümkün olmayacaq...",
+  "deleteModalBtnDelete": "Sil",
+  "deleteModalBtnCancel": "Ləğv et"
+}

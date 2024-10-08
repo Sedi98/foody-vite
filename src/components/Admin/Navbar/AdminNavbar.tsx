@@ -5,10 +5,12 @@ import CircleAvatar from '../../Shared/CircleAvatar/CircleAvatar'
 import { ProductContext } from '../../../Context/ProductContext'
 import { ROUTER } from '../../../ROUTER'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import {UserContext} from "../../../Context/UserContext";
 
 
 const AdminNavbar: React.FC = () => {
+  const {t} = useTranslation()
   const navigate = useNavigate()
   const {user} = useContext(UserContext)
  
@@ -26,7 +28,7 @@ useEffect(() => {
   return (
     <nav className='flex gap-4 justify-between m-0 py-5 mb-4 items-center rounded-md lg:py-5 px-5 sm:m-0 sm:mb-4 bg-[#27283c] sm:p-5'>
         <h1 onClick={() => navigate(ROUTER.Home)} className='text-white text-3xl font-extrabold flex items-center'>Foody <span className='text-[#EAAB00]'>.</span></h1>
-        <Button text="+ Add Product" variation="adminAddProduct" click={() => handleClick('product')} />
+        <Button text={`+ ${t('adminAddProduct')}`} variation="adminAddProduct" click={() => handleClick('product')} />
         <Flag />
         <CircleAvatar username={activeUsr?.fullname} localStorageKey='color' />
     </nav>

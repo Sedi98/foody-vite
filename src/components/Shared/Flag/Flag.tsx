@@ -6,7 +6,7 @@ const Flag = (): JSX.Element => {
   const { i18n } = useTranslation();
   const [show, setShow] = useState(false);
 
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState(localStorage.getItem("i18nextLng") || "en");
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);

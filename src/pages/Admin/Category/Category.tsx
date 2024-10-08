@@ -58,7 +58,7 @@ const Category = () => {
   return (
     <div>
       <HelmetLib title="Admin-Category" />
-      <AdminHeader text="Category" />
+      <AdminHeader variant="Category" text="Category" />
 
       <div className="h-[calc(100vh-210px)] overflow-auto mt-5">
         <table className="w-[100%] bg-white rounded-lg">

@@ -1,5 +1,7 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import menuIcon from "../../../assets/icons/profile/order_menu.svg";
+
 
 type Props = {
   id: string;
@@ -49,6 +51,8 @@ const OrderTr: React.FC<Props> = ({
     setShowMenu(!showMenu);
   };
 
+  const {t} = useTranslation();
+
   return (
     <>
       <tr className="border-b border-gray-200">
@@ -77,9 +81,9 @@ const OrderTr: React.FC<Props> = ({
               showMenu ? "" : "hidden"
             }`}
           >
-            <p onClick={onShow} className="text-green-500">Show</p>
+            <p onClick={onShow} className="text-green-500">{t("ProfileMenuOrderBtnShow")}</p>
             <p onClick={onDelete} className="text-red-700">
-              Delete
+              {t("ProfileMenuOrderBtnDelete")}
             </p>
           </div>
         </td>

@@ -1111,6 +1111,10 @@ video {
   width: 50px;
 }
 
+.w-\[5px\] {
+  width: 5px;
+}
+
 .w-\[80\%\] {
   width: 80%;
 }
@@ -1126,18 +1130,6 @@ video {
 .w-max {
   width: -moz-max-content;
   width: max-content;
-}
-
-.w-2 {
-  width: 0.5rem;
-}
-
-.w-\[4px\] {
-  width: 4px;
-}
-
-.w-\[5px\] {
-  width: 5px;
 }
 
 .min-w-12 {
@@ -1160,12 +1152,12 @@ video {
   min-width: 20px;
 }
 
-.min-w-full {
-  min-width: 100%;
-}
-
 .min-w-\[5px\] {
   min-width: 5px;
+}
+
+.min-w-full {
+  min-width: 100%;
 }
 
 .max-w-32 {

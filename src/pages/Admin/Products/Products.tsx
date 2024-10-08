@@ -112,7 +112,7 @@ const Products = () => {
     >
       <div className="h-full">
         <HelmetLib title="Admin-Products" />
-        <AdminHeader text="Products" />
+        <AdminHeader variant="Products" text="Products" />
         <main className="grid grid-cols-1 content-start gap-4 md:grid-cols-3 lg:grid-cols-5 mt-5 overflow-auto  h-[calc(100vh-210px)]">
           {products?.map((item: itemProps, index: number) => {
             return (

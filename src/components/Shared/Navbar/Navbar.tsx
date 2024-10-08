@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-
+import { useTranslation } from "react-i18next";
 import LinkContainer from "./LinkContainer";
 import logo from "../../../assets/img/brand.svg";
 import Input from "../Input/Input";
@@ -15,8 +15,10 @@ import closeIcon from "../../../assets/icons/client/close.svg";
 
 import { UserContext } from "../../../Context/UserContext";
 
+
 const Navbar = () => {
   const { user } = useContext(UserContext);
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
   const [value, setValue] = useState<string>("");
@@ -106,7 +108,7 @@ const Navbar = () => {
         <Input
           variation="navbar"
           type="text"
-          placeholder="Search"
+          placeholder={t("navInputPlaceholder")}
           inputVal={value}
           changeFunc={handleInput}
         />
@@ -115,7 +117,7 @@ const Navbar = () => {
         {!user && (
           <Button
             variation="navbar"
-            text="Sign In"
+            text={t("navBtnSignIn")}
             click={() => navigate(ROUTER.UserLogin)}
           />
         )}
