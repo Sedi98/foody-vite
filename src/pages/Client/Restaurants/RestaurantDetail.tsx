@@ -2,31 +2,28 @@ import React from "react";
 import Navbar from "../../../components/Shared/Navbar/Navbar";
 import Button from "../../../components/Shared/Button/Button";
 import { useTranslation } from "react-i18next";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getRestaurantById, getProducts } from "../../../services/Api/Api";
 import Basket from "../../../components/Shared/Basket/Basket";
 import { UserContext } from "../../../Context/UserContext";
 import { basketContext } from "../../../Context/BasketContext";
-import { addBasket,checkUser } from "../../../services/Api/Api";
+import { addBasket, checkUser } from "../../../services/Api/Api";
 import HelmetLib from "../../../components/Shared/HelmetLib/HelmetLib";
 import { showErrorToast } from "../../../services/Utils/ToastUtils";
-
 
 import RestaurantListItem from "../../../components/Client/Restaurants/RestaurantListItem";
 
 const RestaurantDetail = () => {
-  const {t} = useTranslation()
-  let location: any = useLocation();
-  const navigate=useNavigate()
-  const {setTrigger} = React.useContext(basketContext)
-  const {user} = React.useContext(UserContext)
- 
-  
- 
+  const { id } = useParams();
+  console.log(id);
+
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { setTrigger } = React.useContext(basketContext);
+  const { user } = React.useContext(UserContext);
 
   const [details, setDetails] = React.useState<any>({});
   const [products, setProducts] = React.useState<any>([]);
-
 
   React.useEffect(() => {
     (async () => {
@@ -45,31 +42,30 @@ const RestaurantDetail = () => {
 
   React.useEffect(() => {
     (async () => {
-      location = location.pathname.split("/").pop();
-      const response = await getRestaurantById(location);
+      if (!id) {
+        return false;
+      }
+      const response = await getRestaurantById(id);
       setDetails(response.result.data);
       if (response) {
-        const prdResponse = await getProducts(location, "");
+        const prdResponse = await getProducts(id, "");
         setProducts(prdResponse.result.data);
-        
       }
     })();
   }, []);
 
-
-  const addToBasket = async(product_id:string) => {
-    
+  const addToBasket = async (product_id: string) => {
     const obj = {
-      product_id
-    }
+      product_id,
+    };
 
     await addBasket(user?.id, obj);
-    setTrigger(true)
-  }
+    setTrigger(true);
+  };
 
   return (
     <>
-    <HelmetLib title={details?.name} />
+      <HelmetLib title={details?.name} />
       <div className="mx-5 my-5">
         <Navbar />
       </div>
@@ -81,7 +77,6 @@ const RestaurantDetail = () => {
             src={details.img_url}
             alt="detail"
             loading="lazy"
-            
           />
         </div>
         <div className="aboutCnt flex flex-col sm:flex-row justify-between items-start sm:items-center">
@@ -102,10 +97,18 @@ const RestaurantDetail = () => {
 
             <div className="flex items-center gap-2">
               <Button
-                text={`${details?.delivery_price || " "}$ ${t("rstCardDelivery")}`}
+                text={`${details?.delivery_price || " "}$ ${t(
+                  "rstCardDelivery"
+                )}`}
                 variation="detailContained"
               />
-              <Button text={t("rstDetailBackText")} variation="detail" click={() => {navigate('/restaurants-client')} } />
+              <Button
+                text={t("rstDetailBackText")}
+                variation="detail"
+                click={() => {
+                  navigate("/restaurants-client");
+                }}
+              />
             </div>
           </div>
         </div>
@@ -126,12 +129,9 @@ const RestaurantDetail = () => {
                 click={() => addToBasket(product.id)}
               />
             ))}
-       
           </div>
 
           <Basket />
-
-          
         </div>
       </div>
     </>
