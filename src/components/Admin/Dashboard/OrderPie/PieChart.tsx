@@ -48,7 +48,7 @@ export function PieChart() {
       chartType="PieChart"
       width="100%"
       height="300px"
-      
+      className="w-full h-full -z-50"
       data={data}
       options={options}
     />

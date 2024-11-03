@@ -21,6 +21,7 @@ import AddOffer from "../AddProduct/AddOffer";
 import AddCategory from "../AddProduct/AddCategory";
 import AddRestaurant from "../AddProduct/AddRestaurant";
 import {UserContext} from "../../../Context/UserContext";
+import { MenuProvider } from "../../../Context/MenuContext";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -70,6 +71,8 @@ const Main = () => {
         setVariation: SetVariation,
       }}
     >
+
+      <MenuProvider>
       <div className="bg-[#1e1e30] h-auto lg:h-screen px-5 overflow-x-hidden">
         <AdminNavbar />
 
@@ -95,6 +98,7 @@ const Main = () => {
           </div>
         </div>
       </div>
+      </MenuProvider>
     </ProductContext.Provider>
   );
 };

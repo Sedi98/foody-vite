@@ -27,7 +27,7 @@ const AdminHeader: React.FC<Props> = ({ text,variant }) => {
   };
 
   return (
-    <div className=" bg-[#27283c] rounded-2xl flex flex-col sm:flex-row justify-between items-center p-8 m-0 w-full">
+    <div className=" bg-[#27283c] rounded-2xl flex flex-col gap-4 sm:flex-row justify-between items-center p-8 m-0 w-full">
       <p className="text-white text-xl not-italic font-medium leading-5">
         {text}
       </p>

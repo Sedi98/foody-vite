@@ -48,7 +48,7 @@ const Select = ({
 
       {variation === "adminHeader" && (
         <select
-          className="block bg-[#5a5b70] rounded-2xl font-medium text-base  text-white pl-5 py-1 mr-5 text-whiteLight w-[150px] overflow-x-auto ml-auto  "
+          className="block bg-[#5a5b70] rounded-2xl font-medium text-base  text-white pl-5 py-1 md:mr-5 text-whiteLight w-[150px] overflow-x-auto m-0 md:ml-auto  "
           value={inputVal}
           onChange={changeFunc}
         >
