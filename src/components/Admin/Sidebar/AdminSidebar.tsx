@@ -26,78 +26,87 @@ const AdminSidebar: React.FC = () => {
     navigate("/admin-login");
   };
   return (
-    <div
-      className={`block absolute h-screen md:h-auto md:static top-0 left-0 `}
-    >
-      <aside
-        className={` ${
-          isOpen ? "fixed -left-[300px]" : " static"
-        } transition-all duration-500 bg-[#c74feb] w-[250px] sm:w-[256px] h-full md:h-[474px] flex flex-col gap-2 pt-6 pl-2 sm:pl-6 pr-4 rounded-[14px] z-50`}
+    <>
+      <div
+        className={`block absolute h-screen md:h-auto md:relative top-0 left-0 z-20 `}
       >
-        <div className="text-white text-3xl font-extrabold flex items-center gap-4 md:hidden">
-          {" "}
-          <img
-            onClick={() => setIsOpen(!isOpen)}
-            className="w-[24px] h-[24px]"
-            src={backIcon}
-            alt=""
-          />{" "}
-          <p>
-            Foody <span className="text-orange-500">.</span>{" "}
-          </p>
-        </div>
-        <SidebarItem
-          click={() => {
-            navigate("/admin/");
-            setIsOpen(false);
-          }}
-          img={dash}
-          text={t("adminSidebarDashboard")}
-        />
-        <SidebarItem
-          click={() => {
-            navigate("/admin/products");
-          }}
-          img={products}
-          text={t("adminSidebarProducts")}
-        />
-        <SidebarItem
-          click={() => {
-            navigate("/admin/restaurants");
-          }}
-          img={restaurants}
-          text={t("adminSidebarRestaurants")}
-        />
-        <SidebarItem
-          click={() => {
-            navigate("/admin/category");
-          }}
-          img={category}
-          text={t("adminSidebarCategory")}
-        />
-        <SidebarItem
-          click={() => {
-            navigate("/admin/orders");
-          }}
-          img={orders}
-          text={t("adminSidebarOrders")}
-        />
-        <SidebarItem
-          click={() => {
-            navigate("/admin/offers");
-          }}
-          img={offer}
-          text={t("adminSidebarOffers")}
-        />
-        <SidebarItem
-          click={() => {
-            handleLogout();
-          }}
-          img={logout}
-          text={t("adminSidebarLogout")}
-        />
-      </aside>
-    </div>
+        <aside
+          className={` ${
+            isOpen ? " static"  : "absolute -left-[300px]"
+          } z-20 transition-all duration-500 bg-[#c74feb] w-[250px] sm:w-[256px] h-full md:h-[474px] flex flex-col gap-2 pt-6 pl-2 sm:pl-6 pr-4 rounded-[14px]`}
+        >
+          <div className="text-white text-3xl font-extrabold flex items-center gap-4 md:hidden z-20">
+            {" "}
+            <img
+              onClick={() => setIsOpen(!isOpen)}
+              className="w-[24px] h-[24px]"
+              src={backIcon}
+              alt=""
+            />{" "}
+            <p>
+              Foody <span className="text-orange-500">.</span>{" "}
+            </p>
+          </div>
+          <SidebarItem
+            click={() => {
+              navigate("/admin/");
+             
+            }}
+            img={dash}
+            text={t("adminSidebarDashboard")}
+          />
+          <SidebarItem
+            click={() => {
+              navigate("/admin/products");
+            }}
+            img={products}
+            text={t("adminSidebarProducts")}
+          />
+          <SidebarItem
+            click={() => {
+              navigate("/admin/restaurants");
+            }}
+            img={restaurants}
+            text={t("adminSidebarRestaurants")}
+          />
+          <SidebarItem
+            click={() => {
+              navigate("/admin/category");
+            }}
+            img={category}
+            text={t("adminSidebarCategory")}
+          />
+          <SidebarItem
+            click={() => {
+              navigate("/admin/orders");
+            }}
+            img={orders}
+            text={t("adminSidebarOrders")}
+          />
+          <SidebarItem
+            click={() => {
+              navigate("/admin/offers");
+            }}
+            img={offer}
+            text={t("adminSidebarOffers")}
+          />
+          <SidebarItem
+            click={() => {
+              handleLogout();
+            }}
+            img={logout}
+            text={t("adminSidebarLogout")}
+          />
+        </aside>
+      </div>
+
+      <div
+        onClick={() => setIsOpen(!isOpen)}
+        className={`absolute z-0 h-screen md:hidden md:h-auto md:static top-0 left-0 ${
+          isOpen ? "bg-[#00000061] w-screen"  : ""
+        }`}
+      ></div>
+    </>
   );
 };
 

@@ -63,41 +63,34 @@ const Category = () => {
       <AdminHeader variant="Category" text={t("adminSidebarCategory")} />
 
       <div className="h-[calc(100vh-210px)] overflow-auto mt-5">
-        <table className="w-[100%] bg-white rounded-lg">
-          <thead className="h-16 text-sm px-8">
-            <tr>
-              <th>ID</th>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Slug</th>
-              <th>#</th>
-            </tr>
-          </thead>
-          <tbody>
-            {categories.map((data) => {
-              return (
-                <CategoryItem
-                  key={data.id}
-                  CategoryId={data.id}
-                  img={data.img_url}
-                  name={data.name}
-                  slug={data.slug}
-                  editFunc={() => {
-                    handleEdit(data);
-                  }}
-                  deleteFunc={() => {
-                    openModal(data.id);
-                  }}
-                />
-              );
-            })}
+  <div className="w-full overflow-x-auto">
+    <table className="min-w-full bg-white rounded-lg border border-gray-200 shadow-md">
+      <thead className="h-16 text-sm bg-gray-100">
+        <tr className="text-left">
+          <th className="px-4 py-2">ID</th>
+          <th className="px-4 py-2">Image</th>
+          <th className="px-4 py-2">Name</th>
+          <th className="px-4 py-2">Slug</th>
+          <th className="px-4 py-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {categories.map((data) => (
+          <CategoryItem
+            key={data.id}
+            CategoryId={data.id}
+            img={data.img_url}
+            name={data.name}
+            slug={data.slug}
+            editFunc={() => handleEdit(data)}
+            deleteFunc={() => openModal(data.id)}
+          />
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
 
-            {/* {data.map((data) => {
-              return <CategoryItem />;
-            })} */}
-          </tbody>
-        </table>
-      </div>
 
       <DeleteModal
         isOpen={isModalOpen}

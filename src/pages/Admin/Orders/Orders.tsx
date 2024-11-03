@@ -22,37 +22,40 @@ const Orders: React.FC = () => {
       <HelmetLib title="Admin-Orders" />
       <AdminHeader variant="Orders" text={t("adminSidebarOrders")} />
 
-      <main className="h-[calc(100vh-210px)] mt-5">
-        <table className="min-w-full bg-white">
-          <thead className="h-16 text-center text-sm not-italic font-semibold leading-6">
-            <tr>
-              <td>{t("ProfileMenuOrderTableThId")}</td>
-              <td>{t("ProfileMenuOrderTableCustomerId")}</td>
-              <td>{t("ProfileMenuOrderTableThTime")}</td>
-              <td>{t("ProfileMenuOrderTableThDeliveryAddress")}</td>
-              <td>{t("ProfileMenuOrderTableThPayment")}</td>
-              <td>{t("ProfileMenuOrderTableThAmount")}</td>
-              <td>{t("ProfileMenuOrderTableThContact")}</td>
-            </tr>
-          </thead>
-          <tbody>
-            {/* <OrderItem /> */}
-            {orders.map((order, index) => (
-              <OrderItem
-                key={index}
-                id={order.id}
-                customerId={order.customer_id}
-                createdAt={order.created}
-                address={order.delivery_address}
-                paymentType={order.payment_method}
-                total={order.amount}
-                contact={order.contact}
-                deleteFunc={() => {}}
-              />
-            ))}
-          </tbody>
-        </table>
-      </main>
+      <main className="h-[calc(100vh-210px)] mt-5 overflow-x-auto">
+  <div className="min-w-full inline-block align-middle">
+    <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
+      <thead className="bg-gray-100 h-16 text-center text-sm font-semibold leading-6">
+        <tr>
+          <td className="px-4 py-2">{t("ProfileMenuOrderTableThId")}</td>
+          <td className="px-4 py-2">{t("ProfileMenuOrderTableCustomerId")}</td>
+          <td className="px-4 py-2">{t("ProfileMenuOrderTableThTime")}</td>
+          <td className="px-4 py-2">{t("ProfileMenuOrderTableThDeliveryAddress")}</td>
+          <td className="px-4 py-2">{t("ProfileMenuOrderTableThPayment")}</td>
+          <td className="px-4 py-2">{t("ProfileMenuOrderTableThAmount")}</td>
+          <td className="px-4 py-2">{t("ProfileMenuOrderTableThContact")}</td>
+          <td className="px-4 py-2">#</td>
+        </tr>
+      </thead>
+      <tbody>
+        {orders.map((order, index) => (
+          <OrderItem
+            key={index}
+            id={order.id}
+            customerId={order.customer_id}
+            createdAt={order.created}
+            address={order.delivery_address}
+            paymentType={order.payment_method}
+            total={order.amount}
+            contact={order.contact}
+            deleteFunc={() => {}}
+          />
+        ))}
+      </tbody>
+    </table>
+  </div>
+</main>
+
     </div>
   );
 };

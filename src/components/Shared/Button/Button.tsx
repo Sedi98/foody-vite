@@ -83,10 +83,14 @@ const Button: React.FC<Props> = ({ click, variation, text }: Props) => {
 
       {variation === "adminAddProduct" && (
         <button
-          className="hidden sm:block bg-[#c035a2] text-white text-sm font-medium px-3 py-3 uppercase rounded-full  shadow-md hover:scale-95 transition-all duration-500 ml-auto "
+          className=" flex items-center justify-center gap-2 bg-[#c035a2] text-white text-sm font-medium md:px-3 md:py-3 uppercase rounded-full  shadow-md hover:scale-95 transition-all duration-500 min-w-[50px] min-h-[50px] md:min-h-auto m-0 md:ml-auto "
           onClick={click}
         >
+          +
+          <span className="hidden md:block">
           {text}
+          </span>
+          
         </button>
       )}
 

@@ -8,7 +8,7 @@ type Props = {
 
 const SidebarItem: React.FC<Props> = ({img, text,click}) => {
   return (
-    <span onClick={click} className="flex gap-6 items-center cursor-pointer p-3  hover:bg-white  hover:rounded  hover:bg-opacity-10  ">
+    <span onClick={click} className="z-20 flex gap-6 items-center cursor-pointer p-3  hover:bg-white  hover:rounded  hover:bg-opacity-10  ">
       <img
         src={img}
         alt="icon"

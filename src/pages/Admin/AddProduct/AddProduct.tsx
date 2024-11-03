@@ -86,19 +86,17 @@ const AddProduct = ({data}: {data?: any}) => {
   return (
     <>
 
-    {value && (
-      <span
-      className="bg-[#c035a2] text-lg text-white font-medium px-3 py-1 rounded-full fixed top-[20px] right-[67.5%] z-50 "
-      onClick={() => setValue()}
-      
-    >
-      X
-    </span>
-    )}
-      
+{value && (
+        <span
+          className="bg-[#c035a2] text-lg text-white font-medium px-3 py-1 rounded-full fixed top-[20px] right-[20px] md:right-[67.5%] z-50 "
+          onClick={() => setValue()}
+        >
+          X
+        </span>
+      )}
 
       <div
-        className={` bg-[#27283c] w-2/3 z-50 ${
+        className={` bg-[#27283c] w-full md:w-2/3 z-40 ${
           value ? "right-0" : "right-[-67%]"
         }  flex-col pl-7 pt-7 pb-5 pr-7 lg:pr-14 fixed right-0 top-0  max-h-screen   overflow-y-auto h-screen duration-300`}
       >

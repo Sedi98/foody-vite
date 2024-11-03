@@ -30,7 +30,7 @@ const AdminNavbar: React.FC = () => {
   };
   return (
     <>
-      <nav className="flex gap-4 justify-between m-0 py-5 mb-4 items-center rounded-md lg:py-5 px-5 sm:m-0 sm:mb-4 bg-[#27283c] sm:p-5">
+      <nav className="flex gap-2 md:gap-4 justify-between py-5 px-2 mb-4 md:mb-4 items-center rounded-md lg:py-5 lg:px-5 sm:m-0 bg-[#27283c] sm:p-5">
         <img
           className="block sm:hidden w-10 h-10"
           src={navHam}
@@ -48,7 +48,7 @@ const AdminNavbar: React.FC = () => {
           Foody <span className="text-[#EAAB00]">.</span>
         </h1>
         <Button
-          text={`+ ${t("adminAddProduct")}`}
+          text={`${t("adminAddProduct")}`}
           variation="adminAddProduct"
           click={() => handleClick("product")}
         />
