@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import LinkContainer from "./LinkContainer";
 import logo from "../../../assets/img/brand.svg";
-import Input from "../Input/Input";
+
 import Flag from "../Flag/Flag";
 import Button from "../Button/Button";
 import { ROUTER } from "../../../ROUTER";
@@ -14,6 +14,7 @@ import hamburgerIcon from "../../../assets/icons/client/hamburger.svg";
 import closeIcon from "../../../assets/icons/client/close.svg";
 
 import { UserContext } from "../../../Context/UserContext";
+import NavbarSearch from "./NavbarSearch";
 
 
 const Navbar = () => {
@@ -21,7 +22,6 @@ const Navbar = () => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
-  const [value, setValue] = useState<string>("");
   const [activeUsr, setactiveUsr] = useState<any>(user);
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
@@ -30,10 +30,7 @@ const Navbar = () => {
     setactiveUsr(user);
   }, [user]);
 
-  const handleInput = (event: any) => {
-    console.log(event.target.value);
-    setValue(event.target.value);
-  };
+  
   return (
     <nav className="relative navbar h-[112px] rounded-md bg-[#f3f4f6] flex flex-row justify-between items-center px-2 lg:px-10">
       <span
@@ -105,13 +102,8 @@ const Navbar = () => {
 
       <div className="w-full justify-between items-center gap-8 hidden lg:flex">
         <LinkContainer />
-        <Input
-          variation="navbar"
-          type="text"
-          placeholder={t("navInputPlaceholder")}
-          inputVal={value}
-          changeFunc={handleInput}
-        />
+        
+        <NavbarSearch/>
         <Flag />
 
         {!user && (

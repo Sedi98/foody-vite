@@ -33,7 +33,7 @@ const AdminSidebar: React.FC = () => {
         <aside
           className={` ${
             isOpen ? " static"  : "absolute -left-[300px]"
-          } z-20 transition-all duration-500 bg-[#c74feb] w-[250px] sm:w-[256px] h-full md:h-[474px] flex flex-col gap-2 pt-6 pl-2 sm:pl-6 pr-4 rounded-[14px]`}
+          } z-20 transition-all delay-500 duration-500 bg-[#c74feb] w-[250px] sm:w-[256px] h-full md:h-[474px] flex flex-col gap-2 pt-6 pl-2 sm:pl-6 pr-4 rounded-[14px]`}
         >
           <div className="text-white text-3xl font-extrabold flex items-center gap-4 md:hidden z-20">
             {" "}

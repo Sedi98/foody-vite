@@ -24,7 +24,7 @@ const Input = ({
     <>
       {variation === "navbar" && (
         <input
-          className="capitalize px-6 py-3 relative rounded-xl outline-none shadow-sm ml-auto w-1/4"
+          className="capitalize px-6 py-3 relative rounded-xl outline-none shadow-sm ml-auto w-full"
           type={type}
           placeholder={placeholder}
           value={inputVal}

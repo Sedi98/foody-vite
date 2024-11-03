@@ -15,8 +15,6 @@ import RestaurantListItem from "../../../components/Client/Restaurants/Restauran
 
 const RestaurantDetail = () => {
   const { id } = useParams();
-  console.log(id);
-
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { setTrigger } = React.useContext(basketContext);
@@ -28,8 +26,6 @@ const RestaurantDetail = () => {
   React.useEffect(() => {
     (async () => {
       let resp = await checkUser();
-      console.log(resp);
-
       if (!resp) {
         localStorage.clear();
         navigate("/login");
@@ -50,9 +46,11 @@ const RestaurantDetail = () => {
       if (response) {
         const prdResponse = await getProducts(id, "");
         setProducts(prdResponse.result.data);
+      } else if(response.result.data === null) {
+        navigate("*");
       }
     })();
-  }, []);
+  }, [id]);
 
   const addToBasket = async (product_id: string) => {
     const obj = {
